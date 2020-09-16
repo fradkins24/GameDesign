@@ -10,15 +10,15 @@
 #for j in range (1,10): # first number is included, second is not
 #    print (j, end = '') #prints j horizontally
 #    print (" ", end = '') #prints a space
-#print ()
+#print () #used as an enter
 #print("I am done")
 # print("...")
 
 #nested loops
 #for line in range (1,10):
-    #for number in range(line):#variable in first loop controls second loop
-        #print(line, end = '')
-    #print()
+#    for number in range(line):#variable in first loop controls second loop
+#        print(line, end = '')
+#    print()
 
 #challenge/homework
 for line in range (1,10):
@@ -26,7 +26,8 @@ for line in range (1,10):
         print(" ", end = '')
     for number in range (line):
         print (line, end = '')
-        
+    for space in range (1): #number (1) indicates how many time to print the space (" ")
+        print(" ", end = '') #without the end statement, the space would be used as an enter
     for number in range (line):
         print (line, end = '')
     print ()
