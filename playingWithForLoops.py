@@ -25,20 +25,20 @@
 
  #PRIME CHALLENGE ASSIGNMENT
 
-start=25
-end=50
-for number in range(start,end):
-    if number%2==1:
-        if number%3==0:
-            print('',end = '')
-        elif number%5==0:
-            print('',end ='')
-        elif number%7==0:
-            print('',end = '')
-        else:
-            print (number)
+#start=25
+#end=50
+#for number in range(start,end):
+#    if number%2==1:
+#        if number%3==0:
+#            print('',end = '')
+#        elif number%5==0:
+#            print('',end ='')
+#        elif number%7==0:
+#           print('',end = '')
+#        else:
+#            print (number)
 
 # Fibonacci CHALLENGE ASSIGNMENT
 
-#for number in range (10):
-#    print
+for number in range (10):
+    print
