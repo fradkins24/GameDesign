@@ -41,4 +41,4 @@
 # Fibonacci CHALLENGE ASSIGNMENT
 
 for number in range (10):
-    print
+    print(number)
