@@ -42,7 +42,6 @@
 
 f1=0
 f2=1
-f3=1
 print (f1,end = ' ')
 print (f2, end = ' ')
 for number in range (0,8):
