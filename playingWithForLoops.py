@@ -40,5 +40,13 @@
 
 # Fibonacci CHALLENGE ASSIGNMENT
 
-for number in range (10):
-    print(number)
+f1=0
+f2=1
+f3=1
+print (f1,end = ' ')
+print (f2, end = ' ')
+for number in range (0,8):
+    f3=f1+f2
+    print (f3, end = ' ')
+    f1=f2 # re-assigns f1
+    f2=f3 # re-assigns f2 and repeats loop with new variables
