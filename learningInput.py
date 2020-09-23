@@ -26,13 +26,18 @@
 #STAR SHAPE
 
 for line in range(1,9):
-    for star in range(line):
+    for star in range(line): #print number of stars as number of line (line 1 - one star)
         print("*", end = '')
-    for space in range(8-line):
+    for space in range(8-line):# prints spaces according to line(line 2 - 6 spaces)
         print(' ', end = '')
-    for star in range (10-line):
+    for star in range (10-line): #prints stars according to line (line 3 - 7 stars)
         print ("*", end = '')
-    for space in range(line*2-2):
+    for space in range(line*2-2): # multiplys line by two, subtracts two, and then prints hat many spaces (line 4 - 6 spaces)
         print(" ", end = '')
-    print("j", end = '')
+    for star in range (9-line): #prints stars according to line (line 5 - 4 stars)
+        print("*", end = '')
+    for space in range (8-line): # prints spaces according to line (line 6 - 2 spaces)
+        print (" ", end = '')
+    for star in range (line): #prints number of stars as number of line (line 7 - 7 stars)
+        print ("*", end = '')
     print ()
