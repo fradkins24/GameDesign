@@ -13,11 +13,26 @@
 
 #NUMBERS PYRAMID
 
-for line in range (1,9):
-    for space in range (8-line):
+#for line in range (1,9):
+#    for space in range (8-line):
+#        print(" ", end = '')
+#    for number in range (line,0,-1): # goes all the way until 0, going down by one
+#        print (number, end = '')
+#    for number in range(2,line+1): #starts at 2 and goes until the line+1 (so that the last number is the line)
+#        print(number, end = '')
+#    print()
+
+
+#STAR SHAPE
+
+for line in range(1,9):
+    for star in range(line):
+        print("*", end = '')
+    for space in range(8-line):
+        print(' ', end = '')
+    for star in range (10-line):
+        print ("*", end = '')
+    for space in range(line*2-2):
         print(" ", end = '')
-    for number in range (line,0,-1): # goes all the way until 0, going down by one
-        print (number, end = '')
-    for number in range(2,line+1): #starts at 2 and goes until the line+1 (so that the last number is the line)
-        print(number, end = '')
-    print()
+    print("j", end = '')
+    print ()
