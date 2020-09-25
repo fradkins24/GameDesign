@@ -25,7 +25,7 @@
 
 #STAR SHAPE
 
-end= 9
+end= 9 #variable for number of lines, and if changed the code will still work
 for line in range(1,end):
     for star in range(line): #print number of stars as number of line (line 1 - one star)
         print("*", end = '')
