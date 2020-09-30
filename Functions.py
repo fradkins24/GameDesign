@@ -21,7 +21,9 @@ def loop_rows_col(row, col):
         for cols in range(col):
             print('*', end ='') #print number of rows and number of columns of *
         print()
+
 #start of main program
+
 loop_rows_col(5,7)
 # running_Loops(7)
 # for y in range (3):
