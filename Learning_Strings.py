@@ -29,6 +29,22 @@
 #HOMEWORK string
 
 strVar = "Here are the instructions to install Drivers\n" "1. After the download is completed go to where you saved the folder.\n""(By default everything you download from the Internet is saved to the Downloads folder)\n""2. Right click on the folder and choose ''Extract All'' and then choose ''Extract'' again.\n""3. Once all the contents have been extracted you may delete/disregard the folder with the zip icon.\n""4. Next, open and Run the SETUP file. (In most cases it is a setup.exe file OR one listed below:\n""*setup application\n""*Asussetup\n""*pnpinstal64\n""*pnputil\n""*Igxpin\n""5. Please choose to 'repair' or 'update' the existing installation (driver) IF any one of those options do appear during the set up.\n"
-print(strVar)
-indexDrive=(strVar.find("Drivers"))
-print(indexDrive)
+
+# indexDrive=(strVar.find("Drivers")) #trying to find how many times the word Drivers appears
+# print(indexDrive)
+
+# print(len(strVar)) #prints leangth of string
+#
+# print(strVar.replace('Extract', 'EXTRACT')) #replaces Extract with EXTRACT
+
+# print(strVar.replace('setup','SETUP')) #replaces setup with setup
+
+# index4=(strVar.find("4")) #finds in which index 4 is
+# print(index4)
+
+#indexEnter=(strVar.find("\n")) #finds first \n or first enter
+# print(indexEnter)
+
+index1=(strVar.find("1"))
+indexDot=(strVar.find(".",2))
+print(strVar[index1:indexDot+1])
