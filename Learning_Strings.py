@@ -28,34 +28,33 @@
 
 #HOMEWORK string
 
-strVar = "Here are the instructions to install Drivers\n" "1. After the download is completed go to where you saved the folder.\n""(By default everything you download from the Internet is saved to the Downloads folder)\n""2. Right click on the folder and choose ''Extract All'' and then choose ''Extract'' again.\n""3. Once all the contents have been extracted you may delete/disregard the folder with the zip icon.\n""4. Next, open and Run the SETUP file. (In most cases it is a setup.exe file OR one listed below:\n""*setup application\n""*Asussetup\n""*pnpinstal64\n""*pnputil\n""*Igxpin\n""5. Please choose to 'repair' or 'update' the existing installation (driver) IF any one of those options do appear during the set up.\n"
+mainStr = "Here are the instructions to install Drivers\n" "1. After the download is completed go to where you saved the folder.\n""(By default everything you download from the Internet is saved to the Downloads folder)\n""2. Right click on the folder and choose ''Extract All'' and then choose ''Extract'' again.\n""3. Once all the contents have been extracted you may delete/disregard the folder with the zip icon.\n""4. Next, open and Run the SETUP file. (In most cases it is a setup.exe file OR one listed below:\n""*setup application\n""*Asussetup\n""*pnpinstal64\n""*pnputil\n""*Igxpin\n""5. Please choose to 'repair' or 'update' the existing installation (driver) IF any one of those options do appear during the set up.\n"
 
-indexDrive=(strVar.find("Drivers")) #trying to find how many times the word Drivers appears
+strVar=mainStr
 word_count= 0
-len2=len("Drivers")
-len1=len(strVar)
+len2=len("the") #length of drivers
+len1=len(strVar) #length of string
 i=0
-for i in range(i,len1):
-    if indexDrive > 0:
-        word_count=word_count+1
-        i=indexDrive+len2
-    else:
-        print("Not Found")
-print(word_count)
+for i in range(i,len1): #goes from i (0) to the length of the string(searches entire string)
+    indexDrive=(strVar.find("the")) #trying to find how many times the word Drivers appears (inside loop so that is searches each time it repeats)
+    if indexDrive > 0: #if there is an index(drivers is found)
+        word_count=word_count+1 #add 1 to the word_count each time drivers is found
+        strVar=strVar[indexDrive+len2:] #re-assigns strVar (which also re-assigns length) so that it starts after drivers is found and continues until the end
+print(word_count) #once the loop is done, word_count will be printed, which should be the amount of times drivers appeared
 
 
-#print(len(strVar)) #prints length of string
+#print(len(mainStr)) #prints length of string
 #
-#print(strVar.replace('Extract', 'EXTRACT')) #replaces Extract with EXTRACT
+#print(mainStr.replace('Extract', 'EXTRACT')) #replaces Extract with EXTRACT
 
-# print(strVar.replace('setup','SETUP')) #replaces setup with setup
+# print(mainStr.replace('setup','SETUP')) #replaces setup with setup
 
-# index4=(strVar.find("4")) #finds in which index 4 is
+# index4=(mainStr.find("4")) #finds in which index 4 is
 # print(index4)
 
-#indexEnter=(strVar.find("\n")) #finds first \n or first enter
+#indexEnter=(mainStr.find("\n")) #finds first \n or first enter
 # print(indexEnter)
 
-# index1=(strVar.find("1")) #trying to print from one until the end of the statement
-# indexDot=(strVar.find("."))
-# print(strVar[index1:indexDot+1])
+# index1=(mainStr.find("1")) #trying to print from one until the end of the statement
+# indexDot=(mainStr.find("."))
+# print(mainStr[index1:indexDot+1])
