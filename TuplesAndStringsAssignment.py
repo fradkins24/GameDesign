@@ -36,4 +36,4 @@ fruits_numbers=tuple(list2) #changes back into tple
 print(fruits_numbers) #prints new tuple, now without apples
 
 #15 length of tuple
-print(len(fruits_numbers))
+print(len(fruits_numbers)) #prints length of tuple
