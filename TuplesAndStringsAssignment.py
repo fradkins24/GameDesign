@@ -26,12 +26,14 @@ else:
     print("9 not found")
 
 #11 change list to tuple
-list1=[1,2,3,4,5]
-list1=tuple(list1)
-print(type(list1))
+list1=[1,2,3,4,5] #creates list
+list1=tuple(list1) #changes list to tuple
 
 #12 remove and item from a tuple
 list2=list(fruits_numbers) # makes tuple a list so we can change things
 list2.remove("apple") #removes apple
 fruits_numbers=tuple(list2) #changes back into tple
-print(fruits_numbers) #prints new tuple, now without appls
+print(fruits_numbers) #prints new tuple, now without apples
+
+#15 length of tuple
+print(len(fruits_numbers))
