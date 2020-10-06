@@ -74,7 +74,7 @@ print(list(zip(*aList))) #prints first element of each tuple in one tuple, and s
 #(keeps in list(function(which list))
 
 #18 reverse tuple
-fruits_numbers=list(fruits_numbers)
-fruits_numbers.reverse()
-fruits_numbers=tuple(fruits_numbers)
-print(type(fruits_numbers))
+fruits_numbers=list(fruits_numbers) #converts to list
+fruits_numbers.reverse() #reverses list
+fruits_numbers=tuple(fruits_numbers) #converts back to tuple
+print(fruits_numbers) #prints new tupple that is now reversed
