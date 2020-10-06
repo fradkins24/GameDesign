@@ -78,3 +78,16 @@ fruits_numbers=list(fruits_numbers) #converts to list
 fruits_numbers.reverse() #reverses list
 fruits_numbers=tuple(fruits_numbers) #converts back to tuple
 print(fruits_numbers) #prints new tupple that is now reversed
+
+#21 replace last value of tuples in a list
+print([t[:-1]+ (100,)for t in aList]) #ask in class why this works/what thi means
+
+#22 remove empty tuple from list
+bList=[(),("j"),(4,5)] #creates list with blank
+bList.remove(()) #removes blank
+print(bList)
+
+#23 sort by float elements
+cList=[("item1",23.4),("item",96.1),("item3",87.3)]
+cList.sort()
+print(cList)
