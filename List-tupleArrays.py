@@ -41,3 +41,9 @@ print(myList)
 #myList.sort() #typecast before you sort
 myFruit.sort() #sorts it(alphabetical)
 print(myFruit)
+word="Hello"
+tuple1=("a","b")
+word=word.join(tuple1) #joins them and prints word every time there is an element in the tule
+print(word)
+indexa=tuple1.find("a")
+print(indexa)
