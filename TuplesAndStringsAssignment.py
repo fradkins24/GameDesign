@@ -79,6 +79,12 @@ fruits_numbers.reverse() #reverses list
 fruits_numbers=tuple(fruits_numbers) #converts back to tuple
 print(fruits_numbers) #prints new tupple that is now reversed
 
+#19 convert list of tuples into dictionary
+#ASK IF WE NEEDED TO DO SINCE WE DIDNT LEARN dictionary
+
+#20 print tuple in string formatting
+#DONT UNDERSTAND WHAT THIS MEANS
+
 #21 replace last value of tuples in a list
 print([t[:-1]+ (100,)for t in aList]) #ask in class why this works/what thi means
 
@@ -87,7 +93,10 @@ bList=[(),("j"),(4,5)] #creates list with blank
 bList.remove(()) #removes blank
 print(bList)
 
-#23 sort by float elements
-cList=[("item1",23.4),("item",96.1),("item3",87.3)]
+#23 sort by float elements ASK ABOUT QUESTION
+cList=[("item1",23.4),("item2",96.1),("item3",87.3)]
 cList.sort()
 print(cList)
+
+#24 count elements in list until tuple
+#ASK WHAT THIS MEANS
