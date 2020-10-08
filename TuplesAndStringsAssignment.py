@@ -82,8 +82,10 @@ print(fruits_numbers) #prints new tupple that is now reversed
 #19 convert list of tuples into dictionary
 #ASK IF WE NEEDED TO DO SINCE WE DIDNT LEARN dictionary
 
-#20 print tuple in string formatting
-#DONT UNDERSTAND WHAT THIS MEANS
+#20 print tuple in string formatting (print tuple with words (string) in front)
+tuplea=(1,2,3,4,5)
+print("this is tuplea", end =' ')
+print(tuplea)
 
 #21 replace last value of tuples in a list
 print([t[:-1]+ (100,)for t in aList]) #for every last element of the tuple in the list, change to 100
@@ -94,9 +96,15 @@ bList.remove(()) #removes blank
 print(bList)
 
 #23 sort by float elements ASK ABOUT QUESTION
-cList=[("item1",23.4),("item2",96.1),("item3",87.3)]
-cList.sort(1)
-print(cList)
+# cList=[("item1",23.4),("item2",96.1),("item3",87.3)]
+# cList.sort()
+# print(cList)
 
 #24 count elements in list until tuple
-#ASK WHAT THIS MEANS
+dList=[1,4,7,2,("a","b"),9]
+count=0 #creates counter
+for i in dList: #creates loop
+    if isinstance(i,tuple): #is n is a tuple
+        break #if it is the loop stops
+    count=count+1 # adds one to count
+print(count) #print count
