@@ -86,7 +86,7 @@ print(fruits_numbers) #prints new tupple that is now reversed
 #DONT UNDERSTAND WHAT THIS MEANS
 
 #21 replace last value of tuples in a list
-print([t[:-1]+ (100,)for t in aList]) #ask in class why this works/what thi means
+print([t[:-1]+ (100,)for t in aList]) #for every last element of the tuple in the list, change to 100
 
 #22 remove empty tuple from list
 bList=[(),("j"),(4,5)] #creates list with blank
@@ -95,7 +95,7 @@ print(bList)
 
 #23 sort by float elements ASK ABOUT QUESTION
 cList=[("item1",23.4),("item2",96.1),("item3",87.3)]
-cList.sort()
+cList.sort(1)
 print(cList)
 
 #24 count elements in list until tuple
