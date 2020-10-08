@@ -17,6 +17,6 @@ print(thisset.union(otherset)) #adds sets together
 print(thisset.intersection(anotherset)) #prints elements that both have
 
 #DICTIONARIES
-myDictionary={"Name1":"Peter", "Age1":18, "School1":"Greenhill"} #definition of name1 is peter because of:
+myDictionary={"Name1":"Peter", "Age1":18, "School1":"Greenhill"} #definition of key name1 is peter because of:
 print("The name of the student is",myDictionary["Name1"]) #prints string, then definition of name 1
 print(myDictionary.keys())
