@@ -20,3 +20,19 @@ print(thisset.intersection(anotherset)) #prints elements that both have
 myDictionary={"Name1":"Peter", "Age1":18, "School1":"Greenhill"} #definition of key name1 is peter because of:
 print("The name of the student is",myDictionary["Name1"]) #prints string, then definition of name 1
 print(myDictionary.keys())
+
+#DICTIONARY ASSIGNMENT
+
+#1 sort a dictionary (acsending and decsending) by value
+dict1={"fruit":"apple","number":1}
+#print(dict1.sort())
+
+#2 add key to dictionary
+dict1["vegatable"]="eggplant" #adds new entry/key
+print(dict1)
+
+#3 concatenate (add, link) dictionaries together
+dict2={"a":1,"b":2}
+dict3={"c":3,"d":4}
+dict2.update(dict3) #updates dict2 to make it both
+print("%s"%dict2) #ASK WHAT THI MEANS
