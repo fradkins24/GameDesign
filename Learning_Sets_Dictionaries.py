@@ -36,3 +36,34 @@ dict2={"a":1,"b":2}
 dict3={"c":3,"d":4}
 dict2.update(dict3) #updates dict2 to make it both
 print("%s"%dict2) #ASK WHAT THI MEANS
+
+#4 check if key exists
+thisdict={"name":"Sarah","age":14}
+if "name" in thisdict: #if there is a key called name
+    print("My name is",thisdict["name"]) #print this
+else: #if not
+    thisdict["name"]="Sarah" #add it
+
+#5 print dictionary using for loop
+mydict={"one":1,"two":2,"three":3}
+for x,y in mydict.items(): #for items x and y in mydict
+    print(x,y) #print the items x and y
+
+#6 squares of numbers between 1 and n
+n=3 #declare variable
+dicta={} #create empty dict
+for i in range(1,n+1): #make loop with variable i between 1 and n
+    dicta[i]=i*i #adds a key(i) and makes the value the square of i
+print(dicta) #prints resulting dict
+
+#7 numbers 1-15 squared
+dictb={} #same logic as 6
+for m in range(1,16):
+    dictb[m]=m*m
+print(dictb)
+
+#8 merge dicts
+#LOOK AT #3
+
+#9 iterate(print) using for loop
+#LOOK AT #5
