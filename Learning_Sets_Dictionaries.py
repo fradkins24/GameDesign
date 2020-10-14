@@ -21,13 +21,23 @@ myDictionary={"Name1":"Peter", "Age1":18, "School1":"Greenhill"} #definition of 
 print("The name of the student is",myDictionary["Name1"]) #prints string, then definition of name 1
 print(myDictionary.keys())
 
+
+
 #DICTIONARY ASSIGNMENT
 
 #1 sort a dictionary (acsending and decsending) by value
-dict1={"fruit":"apple","number":1}
-#print(dict1.sort())
+ages= {"Lily":6,"Talia":9,"Stacy":3,"Rachel":7}
+#ascending
+sort_ages = sorted(ages.items(), key=lambda x: x[1]) #sorts every item in ages ***ASK WHAT ISAFTER ITEMS***
+for i in sort_ages: #creates a loop to sort
+	print(i[0], i[1]) #ASK WHAT THIS MEANS
+#descending
+sort_ages = sorted(ages.items(), key=lambda x: x[1],reverse=True) #sorts every item in ages ***ASK WHAT ISAFTER ITEMS***
+for i in sort_ages: #creates a loop to sort
+	print(i[0], i[1]) #ASK WHAT THIS MEANS
 
 #2 add key to dictionary
+dict1={"fruit":"apple","number":1}
 dict1["vegatable"]="eggplant" #adds new entry/key
 print(dict1)
 
@@ -35,7 +45,7 @@ print(dict1)
 dict2={"a":1,"b":2}
 dict3={"c":3,"d":4}
 dict2.update(dict3) #updates dict2 to make it both
-print("%s"%dict2) #ASK WHAT THI MEANS
+print("%s"%dict2) #ASK WHAT THIS MEANS
 
 #4 check if key exists
 thisdict={"name":"Sarah","age":14}
@@ -67,3 +77,7 @@ print(dictb)
 
 #9 iterate(print) using for loop
 #LOOK AT #5
+
+#10 sum of items
+fruits={"apples":1,"bananas":6,"kiwis":4,"strawberries":12}
+print("We have",sum(fruits.values()),"fruits.") #prints sum of values (how many fruits)
