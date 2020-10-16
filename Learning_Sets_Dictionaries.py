@@ -26,15 +26,13 @@ print(myDictionary.keys())
 #DICTIONARY ASSIGNMENT
 
 #1 sort a dictionary (acsending and decsending) by value
-ages= {"Lily":6,"Talia":9,"Stacy":3,"Rachel":7}
+numbers= {1:6,0:9,5:3,2:7}
 #ascending
-sort_ages = sorted(ages.items(), key=lambda x: x[1]) #sorts every item in ages ***ASK WHAT ISAFTER ITEMS***
-for i in sort_ages: #creates a loop to sort
-	print(i[0], i[1]) #ASK WHAT THIS MEANS
+sort_numbers = sorted(numbers.items()) #sorts every item in numbers
+print(sort_numbers)
 #descending
-sort_ages = sorted(ages.items(), key=lambda x: x[1],reverse=True) #sorts every item in ages ***ASK WHAT ISAFTER ITEMS***
-for i in sort_ages: #creates a loop to sort
-	print(i[0], i[1]) #ASK WHAT THIS MEANS
+sort_numbers = sorted(numbers.items(),reverse=True) #sorts every item in numbers in reverse
+print(sort_numbers)
 
 #2 add key to dictionary
 dict1={"fruit":"apple","number":1}
@@ -44,8 +42,10 @@ print(dict1)
 #3 concatenate (add, link) dictionaries together
 dict2={"a":1,"b":2}
 dict3={"c":3,"d":4}
-dict2.update(dict3) #updates dict2 to make it both
-print("%s"%dict2) #ASK WHAT THIS MEANS
+dict4={} #creates empty
+for d in(dict2,dict3): #creates loop to go through dict2 and 3
+    dict4.update(d) #updates dict4 to have everything in dict 2 and 3
+print(dict4) #prints dict
 
 #4 check if key exists
 thisdict={"name":"Sarah","age":14}
