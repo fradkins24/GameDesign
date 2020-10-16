@@ -13,11 +13,6 @@ while answer == "yes": #while answer is yes, do following
     word=random.choice(gameWords) #choose a random word from gameWords
     guesses="" #this is for the guessed characters after the input
     turns=len(word)+1 #number of turns/uesses (length of word +1)
-    if "_" in word:
-        print("No more tunrs left\nGAME OVER you loose!\n")
-    else:
-        turns=0
-        print("Good job! The word was",word,"\nYOU WIN!\n")
     while turns>0: #while there are turns left
         for char in word: #for characters in the word
             if char in guesses: #if you guess a charcter in the word
