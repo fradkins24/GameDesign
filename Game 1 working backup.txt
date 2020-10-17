@@ -2,10 +2,10 @@
 import random #bring from library (software)
 import time
 
-name=input("What is your name?") #asks user to put in name
+name=input("What is your name? ") #asks user to put in name
 gameWords=["strawberry","banana","papaya","mango","watermelon","melon","orange","cherry","raspberry","blackberry","grape","grapefruit","apple","peach","pear","nectarine"] #creates list
 #use the choice method of my random function to pick a word
-answer=input("Do you want to guess a fruit?") #asks user this question
+answer=input("Do you want to guess a fruit? (yes/no) ") #asks user this question
 
 while answer == "yes": #while answer is yes, do following
     print() #prints and enter
@@ -29,9 +29,12 @@ while answer == "yes": #while answer is yes, do following
             turns=turns-1 #take away one turn
         guesses+=guess #re assigns guesses so that it includes letters already stated
     if letters_left==0: #after the loop end, if uou guessed all the letters
-        print("Good job! The word was",word,"\nYOU WIN!\n") #print that user won
+        print("Good job! The word was",word,end=''".\nYOU WIN!\n") #print that user won
     else: #if not
         print("You have 0 turns left.\nGAME OVER YOU LOOSE!\n") #print that they lost
-    answer=input("Do you want to play again?") #asks if user wants to play again and then restarts loop is "yes"
+    answer=input("Do you want to play again? (yes/no) ") #asks if user wants to play again and then restarts loop is "yes"
+
+if not answer == "yes":
+    print('Thank you for playing!')
 
 time.sleep(5) #seconds
