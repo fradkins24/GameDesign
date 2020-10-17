@@ -12,7 +12,7 @@ while answer == "yes": #while answer is yes, do following
     word=random.choice(gameWords) #choose a random word from gameWords
     letters_left=len(word) #creates variable for letters left to guess
     guesses="" #this is for the guessed characters after the input
-    turns=len(word)+2 #number of turns/uesses (length of word +1)
+    turns=len(word) #number of turns/uesses (length of word +1)
     print("You have",turns,"turns. Turns will only reduce if you guess wrong.\nGood luck", name, end = '' "!\n") #prints good luck with name and says number of turns
     while turns>0 and letters_left>0: #while there are turns left and letters to guess
         for char in word: #for characters in the word
@@ -37,4 +37,4 @@ while answer == "yes": #while answer is yes, do following
 if not answer == "yes":
     print('Thank you for playing!')
 
-time.sleep(5) #seconds
+time.sleep(3) #seconds
