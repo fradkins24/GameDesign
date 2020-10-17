@@ -23,11 +23,11 @@ while answer == "yes": #while answer is yes, do following
         print() #prints enter after pritning word or _
         guess=input("Give me a letter:") #asks user for a letter
         print() #prints enter to seperate each turn
-        count=word.count(guess) #counts how many times guess ppears in word
+        count=word.count(guess[0]) #counts how many times guess ppears in word
         letters_left=letters_left-count #sybtracts amount of count from letter left to guess
         if guess not in word: #if the guessis wrong
             turns=turns-1 #take away one turn
-        guesses+=guess #re assigns guesses so that it includes letters already stated
+        guesses+=guess[0] #re assigns guesses so that it includes letters already stated
     if letters_left==0: #after the loop end, if uou guessed all the letters
         print("Good job! The word was",word,end=''".\nYOU WIN!\n") #print that user won
     else: #if not
