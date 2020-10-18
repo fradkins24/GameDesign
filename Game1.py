@@ -26,7 +26,7 @@ while answer == "yes": #while answer is yes, do following
         count=0 #makes count 0 each time loop repeats
         if guess not in guesses: #if the guess isn't already in guesses
             count=word.count(guess[0]) #counts how many times guess appears in word
-            if guess not in word: #if the guessis wrong
+            if guess not in word: #if the guess is wrong
                 turns=turns-1 #take away one turn
         letters_left=letters_left-count #sybtracts amount of count from letter left to guess
         guesses+=guess[0] #re assigns guesses so that it includes letters already stated
