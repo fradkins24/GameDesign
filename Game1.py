@@ -9,11 +9,17 @@ answer=input("Do you want to guess a fruit? (yes/no) ") #asks user this question
 
 while answer == "yes": #while answer is yes, do following
     print() #prints and enter
+    head=(" O") #defining body parts
+    larm=(" O\n/")
+    body=(" O\n/|")
+    rarm=(" O\n/|\\")
+    lleg=(" O\n/|\\\n/")
+    rleg=(" O\n/|\\\n/ \\")
     word=random.choice(gameWords) #choose a random word from gameWords
     letters_left=len(word) #creates variable for letters left to guess
     guesses="" #this is for the guessed characters after the input
-    turns=len(word) #number of turns/uesses (length of word +1)
-    print("You have",turns,"turns. Turns will only reduce if you guess wrong.\nGood luck", name, end = '' "!\n") #prints good luck with name and says number of turns
+    turns=6 #6 turns bc 6 body parts
+    print("You have",turns,"turns. Every time you guess wrong another body part will appear and a turn will be reduced.\nOnce the entire body is printed, you loose.\nGood luck", name, end = '' "!\n") #prints good luck with name and says number of turns
     while turns>0 and letters_left>0: #while there are turns left and letters to guess
         for char in word: #for characters in the word
             if char in guesses: #if you guess a charcter in the word
@@ -24,12 +30,24 @@ while answer == "yes": #while answer is yes, do following
         guess=input("Give me a letter:") #asks user for a letter
         print() #prints enter to seperate each turn
         count=0 #makes count 0 each time loop repeats
-        if guess not in guesses: #if the guess isn't already in guesses
+        if guess[0] not in guesses: #if the guess isn't already in guesses
             count=word.count(guess[0]) #counts how many times guess appears in word
             if guess not in word: #if the guess is wrong
                 turns=turns-1 #take away one turn
+        if turns ==5: #for every amount of turns print a body part
+            print(head)
+        if turns==4:
+            print(larm)
+        if turns==3:
+            print(body)
+        if turns==2:
+            print(rarm)
+        if turns==1:
+            print(lleg)
+        if turns==0:
+            print(rleg)
         letters_left=letters_left-count #sybtracts amount of count from letter left to guess
-        guesses+=guess[0] #re assigns guesses so that it includes letters already stated
+        guesses+=guess #re assigns guesses so that it includes letters already stated
     if letters_left==0: #after the loop end, if uou guessed all the letters
         print("Good job! The word was",word,end=''".\nYOU WIN!\n") #print that user won
     else: #if not
@@ -39,4 +57,4 @@ while answer == "yes": #while answer is yes, do following
 if not answer == "yes":
     print('Thank you for playing!')
 
-time.sleep(2) #seconds
+time.sleep(1) #seconds
