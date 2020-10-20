@@ -10,8 +10,8 @@ answer=input("Do you want to guess a fruit? (yes/no) ") #asks user this question
 while answer == "yes": #while answer is yes, do following
     print() #prints and enter
     head=(" O") #defining body parts
-    larm=(" O\n/")
-    body=(" O\n/|")
+    larm=(" O\n/|")
+    body=(" O\n |")
     rarm=(" O\n/|\\")
     lleg=(" O\n/|\\\n/")
     rleg=(" O\n/|\\\n/ \\")
@@ -32,14 +32,14 @@ while answer == "yes": #while answer is yes, do following
         count=0 #makes count 0 each time loop repeats
         if guess[0] not in guesses: #if the guess isn't already in guesses
             count=word.count(guess[0]) #counts how many times guess appears in word
-            if guess not in word: #if the guess is wrong
+            if guess[0] not in word: #if the guess is wrong
                 turns=turns-1 #take away one turn
         if turns ==5: #for every amount of turns print a body part
             print(head)
         if turns==4:
-            print(larm)
-        if turns==3:
             print(body)
+        if turns==3:
+            print(larm)
         if turns==2:
             print(rarm)
         if turns==1:
@@ -47,7 +47,7 @@ while answer == "yes": #while answer is yes, do following
         if turns==0:
             print(rleg)
         letters_left=letters_left-count #sybtracts amount of count from letter left to guess
-        guesses+=guess #re assigns guesses so that it includes letters already stated
+        guesses+=guess[0] #re assigns guesses so that it includes letters already stated
     if letters_left==0: #after the loop end, if uou guessed all the letters
         print("Good job! The word was",word,end=''".\nYOU WIN!\n") #print that user won
     else: #if not
