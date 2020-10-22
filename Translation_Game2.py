@@ -44,26 +44,29 @@ def guess_number():
     main_code1()
     main_code1()
 
-# def main_code2():
-#     word2=random.choice(list(verbs))
-#     turn2=3
-#     guesses2=""
-#     print("What number is",word1,end='' "? ")
-#     while turn1>0 and str(numbers[word1]) not in str(guesses1):
-#         guess1=input()
-#         guesses1+=guess1
-#         turn1=turn1-1
-#         if str(numbers[word1]) not in str(guesses1):
-#             print("Try again.")
-#     if str(numbers[word1]) in str(guess1):
-#         turn1=0
-#         print("\nGood job!",word1,"means",numbers[word1],end='' "!\n")
-#     else:
-#         print("\nYou ran out of turns.",word1,"means",numbers[word1],end='' ". Better luck next time!\n")
+def main_code2():
+    word2=random.choice(list(verbs))
+    turn2=3
+    guesses2=""
+    print("What does",word2,"mean? ")
+    while turn2>0 and str(verbs[word2]) not in str(guesses2):
+        guess2=input()
+        guesses2+=guess2
+        turn2=turn2-1
+        if str(verb[word2]) not in str(guesses2):
+            print("Try again.")
+    if str(verb[word2]) in str(guess2):
+        turn2=0
+        print("\nGood job!",word2,"means",verb[word2],end='' "!\n")
+    else:
+        print("\nYou ran out of turns.",word2,"means",verb[word2],end='' ". Better luck next time!\n")
 
+def guess_verb():
+    print("When the word is printed, write the definition of the word in English. You have three guesses per word.")
+    main_code2()
+    main_code2()
+    main_code2()
 
-
-#
 # while type=="2":
 #
 menu()
