@@ -12,6 +12,7 @@ def menu():
     print("*    Instructions: Once you choose what type of *\n* word you want to guess, a word in Spanish will*\n* be printed and you will have to write its     *\n* meaning in English. Each time you play, you   *\n* will have three words to define.",space*12,"*")
     print("*",space*45,"*\n*",space*45,"*")
     print("*",space*18,"CHOICES",space*18,"*")
+    print("* If you want to play:", space*24,"*\n*",space,"print the number (1) to guess a number",space*4,"*\n*",space,"print the ")
 menu()
 # def guess_verb():
 #     h
