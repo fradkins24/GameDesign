@@ -1,8 +1,10 @@
 #Sarah Fradkin
 import random
 
-numbers={"cero":0,"uno":1,"dos":2,"tres":3,"cuatro":4,"cinco":5,"seis":6,"siete":7,"ocho":8,"nueve":9,"diez":10}
+numbers={"cero":0, "uno":1, "dos":2, "tres":3, "cuatro":4, "cinco":5, "seis":6, "siete":7, "ocho":8, "nueve":9, "diez":10}
 verbs={"correr":"to run","escribir":"to write","dibujar":"to draw","cantar":"to sing","hablar":"to talk","nadar":"to swim","dormir":"to sleep"}
+# word1=random.choice(list(verbs))
+# print(verbs[word1])
 
 def menu():
     space=(" ")
@@ -16,10 +18,53 @@ def menu():
     print("*",space*45,"*")
     print("* If you DO NOT want to play:",space*17,"*\n*",space*2, "print the number (3)",space*21,"*")
     print(star*25)
-menu()
-# def guess_verb():
-#     h
-#
+    print()
+    answer=input()
+
+def main_code1():
+    word1=random.choice(list(numbers))
+    turn1=2
+    guesses1=""
+    print("What number is",word1,end='' "? ")
+    while turn1>0 and str(numbers[word1]) not in str(guesses1):
+        guess1=input()
+        guesses1+=guess1
+        turn1=turn1-1
+        if str(numbers[word1]) not in str(guesses1):
+            print("Try again.")
+    if str(numbers[word1]) in str(guess1):
+        turn1=0
+        print("\nGood job!",word1,"means",numbers[word1],end='' "!\n")
+    else:
+        print("\nYou ran out of turns.",word1,"means",numbers[word1],end='' ". Better luck next time!\n")
+
+def guess_number():
+    print("When the word is printed, type in the number that coresponds to the word. You have two guesses per word.")
+    main_code1()
+    main_code1()
+    main_code1()
+
+# def main_code2():
+#     word2=random.choice(list(verbs))
+#     turn2=3
+#     guesses2=""
+#     print("What number is",word1,end='' "? ")
+#     while turn1>0 and str(numbers[word1]) not in str(guesses1):
+#         guess1=input()
+#         guesses1+=guess1
+#         turn1=turn1-1
+#         if str(numbers[word1]) not in str(guesses1):
+#             print("Try again.")
+#     if str(numbers[word1]) in str(guess1):
+#         turn1=0
+#         print("\nGood job!",word1,"means",numbers[word1],end='' "!\n")
+#     else:
+#         print("\nYou ran out of turns.",word1,"means",numbers[word1],end='' ". Better luck next time!\n")
+
+
+
 #
 # while type=="2":
 #
+menu()
+guess_number()
