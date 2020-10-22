@@ -9,7 +9,9 @@ def menu():
     star=("* ")
     print(star*25)
     print(star,space*10,"Guessing Spanish Words",space*10,star,"\n*",space*45,"*")
-    print("*    Instructions: Once you choose what type of *\n* word you want to guess, a word in Spanish will*\n* be printed and you will have to write its     *\n* meaning in English.",space*25,"*")
+    print("*    Instructions: Once you choose what type of *\n* word you want to guess, a word in Spanish will*\n* be printed and you will have to write its     *\n* meaning in English. Each time you play, you   *\n* will have three words to define.",space*12,"*")
+    print("*",space*45,"*\n*",space*45,"*")
+    print("*",space*18,"CHOICES",space*18,"*")
 menu()
 # def guess_verb():
 #     h
