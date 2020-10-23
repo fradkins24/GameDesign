@@ -6,13 +6,9 @@ verbs={"correr":"to run","escribir":"to write","dibujar":"to draw","cantar":"to 
 # word1=random.choice(list(verbs))
 # print(verbs[word1])
 
-def menu():
+def choices():
     space=(" ")
     star=("* ")
-    print(star*25)
-    print(star,space*10,"Guessing Spanish Words",space*10,star,"\n*",space*45,"*")
-    print("*    Instructions: Once you choose what type of *\n* word you want to guess, a word in Spanish will*\n* be printed and you will have to write its     *\n* meaning in English. Each time you play, you   *\n* will have three words to define.",space*12,"*")
-    print("*",space*45,"*\n*",space*45,"*")
     print("*",space*18,"CHOICES",space*18,"*")
     print("* If you want to play:", space*24,"*\n*",space*2,"print the number (1) to guess a number",space*3,"*\n*",space*19,"OR",space*22,"*\n*",space*3,"print the number (2) to guess a verb",space*4,"*")
     print("*",space*45,"*")
@@ -20,6 +16,15 @@ def menu():
     print(star*25)
     print()
     answer=input()
+
+def menu():
+    space=(" ")
+    star=("* ")
+    print(star*25)
+    print(star,space*10,"Guessing Spanish Words",space*10,star,"\n*",space*45,"*")
+    print("*    Instructions: Once you choose what type of *\n* word you want to guess, a word in Spanish will*\n* be printed and you will have to write its     *\n* meaning in English. Each time you play, you   *\n* will have three words to define.",space*12,"*")
+    print("*",space*45,"*\n*",space*45,"*")
+    choices()
 
 def main_code1():
     word1=random.choice(list(numbers))
@@ -53,13 +58,13 @@ def main_code2():
         guess2=input()
         guesses2+=guess2
         turn2=turn2-1
-        if str(verb[word2]) not in str(guesses2):
+        if str(verbs[word2]) not in str(guesses2):
             print("Try again.")
-    if str(verb[word2]) in str(guess2):
+    if str(verbs[word2]) in str(guess2):
         turn2=0
-        print("\nGood job!",word2,"means",verb[word2],end='' "!\n")
+        print("\nGood job!",word2,"means",verbs[word2],end='' "!\n")
     else:
-        print("\nYou ran out of turns.",word2,"means",verb[word2],end='' ". Better luck next time!\n")
+        print("\nYou ran out of turns.",word2,"means",verbs[word2],end='' ". Better luck next time!\n")
 
 def guess_verb():
     print("When the word is printed, write the definition of the word in English. You have three guesses per word.")
@@ -70,4 +75,13 @@ def guess_verb():
 # while type=="2":
 #
 menu()
-guess_number()
+if answer=="1":
+    guess_numbers()
+    choices()
+elif answer=="2":
+    guess_verbs()
+    choices()
+elif answer=="3":
+    print("Thank you for playing!")
+# else:
+#     print("Please type in a 1, 2, or 3.")
