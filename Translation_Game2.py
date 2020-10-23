@@ -71,27 +71,26 @@ def guess_verb():
     main_code2()
     main_code2()
 
-# while type=="2":
-#
 menu()
 answer=input()
-while answer=="1":
-    guess_number()
-    star=("* ")
-    print(star*25)
-    choices()
-    answer=input()
-while answer=="2":
-    guess_verb()
-    star=("* ")
-    print(star*25)
-    choices()
-    answer=input()
+while answer=="1" or answer=="2" or  not answer =="1" and not answer=="2" and not answer=="3":
+    while answer=="1":
+        guess_number()
+        star=("* ")
+        print(star*25,"")
+        choices()
+        answer=input()
+    while answer=="2":
+        guess_verb()
+        star=("* ")
+        print(star*25,"")
+        choices()
+        answer=input()
+    while not answer =="1" and not answer=="2" and not answer=="3":
+        print("Please type in a 1, 2, or 3.\n")
+        star=("* ")
+        print(star*25,"")
+        choices()
+        answer=input()
 if answer=="3":
     print("Thank you for playing!")
-while not answer =="1" and not answer=="2" and not answer=="3":
-    print("Please type in a 1, 2, or 3.\n")
-    star=("* ")
-    print(star*25,"")
-    choices()
-    answer=input()
