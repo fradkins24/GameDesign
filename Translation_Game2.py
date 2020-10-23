@@ -1,54 +1,52 @@
 #Sarah Fradkin
 import random
+import time
 
 numbers={"cero":0, "uno":1, "dos":2, "tres":3, "cuatro":4, "cinco":5, "seis":6, "siete":7, "ocho":8, "nueve":9, "diez":10}
 verbs={"correr":"to run","escribir":"to write","dibujar":"to draw","cantar":"to sing","hablar":"to talk","nadar":"to swim","dormir":"to sleep"}
-# word1=random.choice(list(verbs))
-# print(verbs[word1])
 
-def choices():
+def choices(): #function for telling/asking choices
     space=(" ")
     star=("* ")
     print("*",space*18,"CHOICES",space*18,"*")
-    print("* If you want to play:", space*24,"*\n*",space*2,"print the number (1) to guess a number",space*3,"*\n*",space*19,"OR",space*22,"*\n*",space*3,"print the number (2) to guess a verb",space*4,"*")
+    print("* If you want to play:", space*24,"*\n*",space*2,"print the number (1) to guess a number",space*3,"*\n*",space*19,"OR",space*22,"*\n*",space*3,"print the number (2) to guess a verb",space*4,"*") #choices if you WANT to play
     print("*",space*45,"*")
-    print("* If you DO NOT want to play:",space*17,"*\n*",space*2, "print the number (3)",space*21,"*")
+    print("* If you DO NOT want to play:",space*17,"*\n*",space*2, "print the number (3)",space*21,"*") #choice if you do not want to play
     print(star*25)
     print()
 
-def menu():
+def menu(): #instructions function
     space=(" ")
     star=("* ")
-    print(star*25)
-    print(star,space*10,"Guessing Spanish Words",space*10,star,"\n*",space*45,"*")
-    print("*    Instructions: Once you choose what type of *\n* word you want to guess, a word in Spanish will*\n* be printed and you will have to write its     *\n* meaning in English. Each time you play, you   *\n* will have three words to define.",space*12,"*")
+    print(star*25) #top border
+    print(star,space*10,"Guessing Spanish Words",space*10,star,"\n*",space*45,"*") #title
+    print("*    Instructions: Once you choose what type of *\n* word you want to guess, a word in Spanish will*\n* be printed and you will have to write its     *\n* meaning in English. Each time you play, you   *\n* will have three words to define.",space*12,"*") #game instructions
     print("*",space*45,"*\n*",space*45,"*")
     choices()
 
-def main_code1():
-    word1=random.choice(list(numbers))
-    turn1=2
-    guesses1=""
-    print("What number is",word1,end='' "? ")
-    while turn1>0 and str(numbers[word1]) not in str(guesses1):
-        guess1=input()
-        guesses1+=guess1
-        turn1=turn1-1
-        if str(numbers[word1]) not in str(guesses1) and turn1>0:
+def main_code1():#main working code for numbers
+    word1=random.choice(list(numbers)) #chooses random key in numbers
+    turn1=2 #two turns
+    guesses1="" #blank variable for while loop
+    print("What number is",word1,end='' "? ") #asks what word means
+    while turn1>0 and str(numbers[word1]) not in str(guesses1): #while there aremore than 0 turns and answer isn't in guesses
+        guess1=input() #input
+        guesses1+=guess1 #adds guess to guesses so loop can stop if needed
+        turn1=turn1-1 #subtracts turn
+        if str(numbers[word1]) not in str(guesses1) and turn1>0: #if user guesses wrog with turns left, it will print try again
             print("Try again.")
-    if str(numbers[word1]) in str(guess1):
-        turn1=0
-        print("\nGood job!",word1,"means",numbers[word1],end='' "!\n\n")
-    else:
-        print("\nYou ran out of turns.",word1,"means",numbers[word1],end='' ". Better luck next time!\n\n")
+    if str(numbers[word1]) in str(guess1): #if when the loop ends, the word is in guesses
+        print("\nGood job!",word1,"means",numbers[word1],end='' "!\n\n") #prints word and that they won
+    else: #if word not in guesses
+        print("\nYou ran out of turns.",word1,"means",numbers[word1],end='' ". Better luck next time!\n\n") #will print that they ran out of turns and tell them what word means
 
-def guess_number():
-    print("When the word is printed, type in the number that coresponds to the word. You have two guesses per word.")
-    main_code1()
+def guess_number(): #entire game code for numbers
+    print("When the word is printed, type in the number that coresponds to the word. You have two guesses per word.") #specific instructions for numbers and how many turns
+    main_code1() #prints main code three times so that three words are guessed
     main_code1()
     main_code1()
 
-def main_code2():
+def main_code2(): #main code for verbs, only difference is number of turns
     word2=random.choice(list(verbs))
     turn2=3
     guesses2=""
@@ -60,33 +58,32 @@ def main_code2():
         if str(verbs[word2]) not in str(guesses2) and turn2>0:
             print("Try again.")
     if str(verbs[word2]) in str(guess2):
-        turn2=0
         print("\nGood job!",word2,"means",verbs[word2],end='' "!\n\n")
     else:
         print("\nYou ran out of turns.",word2,"means",verbs[word2],end='' ". Better luck next time!\n\n")
 
-def guess_verb():
+def guess_verb(): #entire game codefor verbs, slightly different specific instructions
     print("When the word is printed, write the definition of the word in English. You have three guesses per word.")
     main_code2()
     main_code2()
     main_code2()
 
-menu()
-answer=input()
-while answer=="1" or answer=="2" or  not answer =="1" and not answer=="2" and not answer=="3":
-    while answer=="1":
-        guess_number()
+menu() #prints entire menu, including instructions
+answer=input() #asks for answer
+while not answer=="3": #while the answer is anything but a three...
+    while answer=="1": #if answer is one
+        guess_number() #print numbers game code
         star=("* ")
         print(star*25,"")
-        choices()
+        choices() #Then prints only choices and asks for input
         answer=input()
-    while answer=="2":
-        guess_verb()
+    while answer=="2": #while answer is 2
+        guess_verb() #prints verbs code
         star=("* ")
         print(star*25,"")
-        choices()
+        choices() #then prints only choices and aks for input
         answer=input()
-    while not answer =="1" and not answer=="2" and not answer=="3":
+    while not answer =="1" and not answer=="2": #
         print("Please type in a 1, 2, or 3.\n")
         star=("* ")
         print(star*25,"")
@@ -94,3 +91,5 @@ while answer=="1" or answer=="2" or  not answer =="1" and not answer=="2" and no
         answer=input()
 if answer=="3":
     print("Thank you for playing!")
+
+time.sleep(1)
