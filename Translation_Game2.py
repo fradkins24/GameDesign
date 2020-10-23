@@ -15,7 +15,6 @@ def choices():
     print("* If you DO NOT want to play:",space*17,"*\n*",space*2, "print the number (3)",space*21,"*")
     print(star*25)
     print()
-    answer=input()
 
 def menu():
     space=(" ")
@@ -35,13 +34,13 @@ def main_code1():
         guess1=input()
         guesses1+=guess1
         turn1=turn1-1
-        if str(numbers[word1]) not in str(guesses1):
+        if str(numbers[word1]) not in str(guesses1) and turn1>0:
             print("Try again.")
     if str(numbers[word1]) in str(guess1):
         turn1=0
-        print("\nGood job!",word1,"means",numbers[word1],end='' "!\n")
+        print("\nGood job!",word1,"means",numbers[word1],end='' "!\n\n")
     else:
-        print("\nYou ran out of turns.",word1,"means",numbers[word1],end='' ". Better luck next time!\n")
+        print("\nYou ran out of turns.",word1,"means",numbers[word1],end='' ". Better luck next time!\n\n")
 
 def guess_number():
     print("When the word is printed, type in the number that coresponds to the word. You have two guesses per word.")
@@ -58,13 +57,13 @@ def main_code2():
         guess2=input()
         guesses2+=guess2
         turn2=turn2-1
-        if str(verbs[word2]) not in str(guesses2):
+        if str(verbs[word2]) not in str(guesses2) and turn2>0:
             print("Try again.")
     if str(verbs[word2]) in str(guess2):
         turn2=0
-        print("\nGood job!",word2,"means",verbs[word2],end='' "!\n")
+        print("\nGood job!",word2,"means",verbs[word2],end='' "!\n\n")
     else:
-        print("\nYou ran out of turns.",word2,"means",verbs[word2],end='' ". Better luck next time!\n")
+        print("\nYou ran out of turns.",word2,"means",verbs[word2],end='' ". Better luck next time!\n\n")
 
 def guess_verb():
     print("When the word is printed, write the definition of the word in English. You have three guesses per word.")
@@ -75,13 +74,24 @@ def guess_verb():
 # while type=="2":
 #
 menu()
-if answer=="1":
-    guess_numbers()
+answer=input()
+while answer=="1":
+    guess_number()
+    star=("* ")
+    print(star*25)
     choices()
-elif answer=="2":
-    guess_verbs()
+    answer=input()
+while answer=="2":
+    guess_verb()
+    star=("* ")
+    print(star*25)
     choices()
-elif answer=="3":
+    answer=input()
+if answer=="3":
     print("Thank you for playing!")
-# else:
-#     print("Please type in a 1, 2, or 3.")
+while not answer =="1" and not answer=="2" and not answer=="3":
+    print("Please type in a 1, 2, or 3.\n")
+    star=("* ")
+    print(star*25,"")
+    choices()
+    answer=input()
