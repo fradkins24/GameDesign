@@ -27,21 +27,22 @@ def menu(): #instructions function
 def main_code1():#main working code for numbers
     word1=random.choice(list(numbers)) #chooses random key in numbers
     turn1=2 #two turns
+    #len1=len(str(numbers[word1])) #finds legnth of number (how many digits)
     guesses1="" #blank variable for while loop
     print("What number is",word1,end='' "? ") #asks what word means
-    while turn1>0 and str(numbers[word1]) not in str(guesses1): #while there aremore than 0 turns and answer isn't in guesses
+    while turn1>0 and not str(guesses1) ==str(numbers[word1]): #while there are more than 0 turns and answer isn't guesses
         guess1=input() #input
-        guesses1+=guess1 #adds guess to guesses so loop can stop if needed
-        turn1=turn1-1 #subtracts turn
-        if str(numbers[word1]) not in str(guesses1) and turn1>0: #if user guesses wrog with turns left, it will print try again
+        guesses1=guess1 #makes guesses=to guess to they can compare it to answer
+        turn1=turn1-1 #subtracts turn1
+        if not str(guesses1) ==str(numbers[word1]) and turn1>0: #if user guesses are wrong with turns left, it will print try again
             print("Try again.")
-    if str(numbers[word1]) in str(guess1): #if when the loop ends, the word is in guesses
+    if str(guesses1) ==str(numbers[word1]): #if when the loop ends, the word is the guesses
         print("\nGood job!",word1,"means",numbers[word1],end='' "!\n\n") #prints word and that they won
     else: #if word not in guesses
         print("\nYou ran out of turns.",word1,"means",numbers[word1],end='' ". Better luck next time!\n\n") #will print that they ran out of turns and tell them what word means
 
 def guess_number(): #entire game code for numbers
-    print("When the word is printed, type in the number that coresponds to the word. You have two guesses per word.") #specific instructions for numbers and how many turns
+    print("When the word is printed, type in the meaning of the word as a number. You have two guesses per word.") #specific instructions for numbers and how many turns
     main_code1() #prints main code three times so that three words are guessed
     main_code1()
     main_code1()
@@ -71,25 +72,25 @@ def guess_verb(): #entire game codefor verbs, slightly different specific instru
 menu() #prints entire menu, including instructions
 answer=input() #asks for answer
 while not answer=="3": #while the answer is anything but a three...
-    while answer=="1": #if answer is one
+    if answer=="1": #if answer is one
         guess_number() #print numbers game code
         star=("* ")
         print(star*25,"")
         choices() #Then prints only choices and asks for input
         answer=input()
-    while answer=="2": #while answer is 2
+    if answer=="2": #while answer is 2
         guess_verb() #prints verbs code
         star=("* ")
         print(star*25,"")
         choices() #then prints only choices and aks for input
         answer=input()
-    while not answer =="1" and not answer=="2": #
-        print("Please type in a 1, 2, or 3.\n")
+    if not answer =="1" and not answer=="2": # if answer isn't 1 2 or 3 ASK WHY I NEED TO MENTION THREE
+        print("Please type in a 1, 2, or 3.\n") #asks to type a 1 2 or 3
         star=("* ")
         print(star*25,"")
-        choices()
+        choices() #then prints only choices and aks for input
         answer=input()
-if answer=="3":
-    print("Thank you for playing!")
+if answer=="3": #if the answer is three
+    print("Thank you for playing!") #printe thank you for playing and exits game
 
-time.sleep(1)
+time.sleep(1) #sleeps on second
