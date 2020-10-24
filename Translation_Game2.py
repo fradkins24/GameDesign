@@ -47,18 +47,18 @@ def guess_number(): #entire game code for numbers
     main_code1()
     main_code1()
 
-def main_code2(): #main code for verbs, only difference is number of turns
+def main_code2(): #main code for verbs, same reasoning a numbers, only difference is number of turns
     word2=random.choice(list(verbs))
     turn2=3
     guesses2=""
     print("What does",word2,"mean? ")
-    while turn2>0 and str(verbs[word2]) not in str(guesses2):
+    while turn2>0 and not str(verbs[word2])== str(guesses2):
         guess2=input()
-        guesses2+=guess2
+        guesses2=guess2
         turn2=turn2-1
-        if str(verbs[word2]) not in str(guesses2) and turn2>0:
+        if not str(verbs[word2])== str(guesses2) and turn2>0:
             print("Try again.")
-    if str(verbs[word2]) in str(guess2):
+    if str(verbs[word2]) == str(guess2):
         print("\nGood job!",word2,"means",verbs[word2],end='' "!\n\n")
     else:
         print("\nYou ran out of turns.",word2,"means",verbs[word2],end='' ". Better luck next time!\n\n")
@@ -84,7 +84,7 @@ while not answer=="3": #while the answer is anything but a three...
         print(star*25,"")
         choices() #then prints only choices and aks for input
         answer=input()
-    if not answer =="1" and not answer=="2": # if answer isn't 1 2 or 3 ASK WHY I NEED TO MENTION THREE
+    if not answer =="1" and not answer=="2": # if answer isn't 1 or 2
         print("Please type in a 1, 2, or 3.\n") #asks to type a 1 2 or 3
         star=("* ")
         print(star*25,"")
