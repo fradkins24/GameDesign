@@ -2,8 +2,8 @@
 import random
 import time
 
-numbers={"cero":0, "uno":1, "dos":2, "tres":3, "cuatro":4, "cinco":5, "seis":6, "siete":7, "ocho":8, "nueve":9, "diez":10}
-verbs={"correr":"to run","escribir":"to write","dibujar":"to draw","cantar":"to sing","hablar":"to talk","nadar":"to swim","dormir":"to sleep"}
+numbers={"cero":0, "uno":1, "dos":2, "tres":3, "cuatro":4, "cinco":5, "seis":6, "siete":7, "ocho":8, "nueve":9, "diez":10,"once":11,"doce":12,"trece":13,"catorce":14,"quince":15}
+verbs={"correr":"to run","escribir":"to write","dibujar":"to draw","cantar":"to sing","hablar":"to talk","nadar":"to swim","dormir":"to sleep","trabajar":"to work","leer":"to read","descansar":"to rest","comer":"to eat","patinar":"to skate","beber":"to drink"}
 
 def choices(): #function for telling/asking choices
     space=(" ")
@@ -78,13 +78,13 @@ while not answer=="3": #while the answer is anything but a three...
         print(star*25,"")
         choices() #Then prints only choices and asks for input
         answer=input()
-    if answer=="2": #while answer is 2
+    if answer=="2": #if answer is 2
         guess_verb() #prints verbs code
         star=("* ")
         print(star*25,"")
         choices() #then prints only choices and aks for input
         answer=input()
-    if not answer =="1" and not answer=="2": # if answer isn't 1 or 2
+    if not answer =="1" and not answer=="2" and not =="3": # if answer isn't 1 or 2
         print("Please type in a 1, 2, or 3.\n") #asks to type a 1 2 or 3
         star=("* ")
         print(star*25,"")
@@ -93,4 +93,4 @@ while not answer=="3": #while the answer is anything but a three...
 if answer=="3": #if the answer is three
     print("Thank you for playing!") #printe thank you for playing and exits game
 
-time.sleep(1) #sleeps on second
+time.sleep(1) #sleeps one second
