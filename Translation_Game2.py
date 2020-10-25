@@ -35,7 +35,8 @@ def main_code1():#main working code for numbers
         guesses1=guess1 #makes guesses=to guess to they can compare it to answer
         turn1=turn1-1 #subtracts turn1
         if not str(guesses1) ==str(numbers[word1]) and turn1>0: #if user guesses are wrong with turns left, it will print try again
-            print("Try again.")
+            print("\nTry again.")
+            print("What number is",word1,end='' "? ") #asks what word means again
     if str(guesses1) ==str(numbers[word1]): #if when the loop ends, the word is the guesses
         print("\nGood job! \""+word1.capitalize()+ "\" means",numbers[word1],end='' "!\n\n") #prints word and that they won
     else: #if word not in guesses
@@ -51,13 +52,14 @@ def main_code2(): #main code for verbs, same reasoning a numbers, only differenc
     word2=random.choice(list(verbs))
     turn2=3
     guesses2=""
-    print(word2,"means to: ",end='')
+    print(word2,"means: to ",end='')
     while turn2>0 and not str(verbs[word2])== str(guesses2):
         guess2=input()
         guesses2=guess2
         turn2=turn2-1
         if not str(verbs[word2])== str(guesses2) and turn2>0:
-            print("Try again.")
+            print("\nTry again.")
+            print(word2,"means: to ",end='')
     if str(verbs[word2]) == str(guess2):
         print("\nGood job! \""+word2+"\" means to",verbs[word2],end='' "!\n\n")
     else:
