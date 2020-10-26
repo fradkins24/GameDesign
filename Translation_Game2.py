@@ -9,9 +9,8 @@ def choices(): #function for telling/asking choices
     space=(" ")
     star=("* ")
     print("*",space*18,"CHOICES",space*18,"*")
-    print("* If you want to play:", space*24,"*\n*",space*2,"print the number (1) to guess a number",space*3,"*\n*",space*19,"OR",space*22,"*\n*",space*3,"print the number (2) to guess a verb",space*4,"*") #choices if you WANT to play
     print("*",space*45,"*")
-    print("* If you DO NOT want to play:",space*17,"*\n*",space*2, "print the number (3)",space*21,"*") #choice if you do not want to play
+    print("*",space*5,"1) Guess a number", space*21,"*\n*",space*5,"2) Guess a verb",space*23,"*\n*",space*5,"3) Exit game",space*26,"*") #choices
     print(star*25)
     print()
 
