@@ -18,47 +18,47 @@ def choices(): #choices menu
     print("*       What do you want to do?       *")
     print("* * * * * * * * * * * * * * * * * * * *")
 
-def main(): #main code
-    answer=input()
-    while not answer =="5": #if the answer is not five
+create=input("Do you want to create a file? (yes/no) ") #asks if user wants to create a file
+while create=="yes": #if answer is yes
+    #asks to put in name of file
+    fileName=input("\nWhat do you want your file to be called? \nIf you want to edit an existing file, put that name in. ")
+    #ass if they want to write anything and warns that everything will be esared if they do
+    starting=input("\nDo you want to write something in you file? (yes/no) \n*if this is an old file and you write something, everything in it will be lost.*\n")
+    if starting=="yes": #if user wants to write something, asks what
+        thisFile=open(fileName, "w")
+        content=input("What information do you want your file to have? ") #asks what user wants to be in file
+        thisFile.write(content)
+        thisFile.close() #closes file
+    choices() #print choices
+    answer=input() #asks for choice
+    while answer =="1" or answer=="2" or answer=="3" or answer=="4" or answer=="5": #if the answer is not five
         if answer=="1": #if it's one delete file
             os.remove(fileName)
+            break
         if answer=="2": #if two asks what user wants to add
             add=input("What do you want to add to your file? ")
+            added=("\n"+add)
             thisFile=open(fileName, "a")
-            thisFile.write(add)
+            thisFile.write(added)
             thisFile.close()
+            break
         if answer=="3": #if three asks what user wants to write
             write=input("What do you want to write in your file? ")
             thisFile=open(fileName, "w")
             thisFile.write(write)
             thisFile.close()
+            break
         if answer=="4": #if four prints what is in file
             thisFile=open(fileName, "r")
-            thisFile.read()
+            print(thisFile.read())
             thisFile.close()
-        #asks user if they want to continue working on same file
-        again=input("Do you want to do anything else with your file? (yes/no) ")
+            break
+        if answer=="5": #if the answer
+            break
     #if answer not 1, 2, 3, 4, or 5 says to print one of them
-    if not answer=="1" and not answer=="2" and not answer =="3" and not answer=="4" and not answer=="5":
+    while not answer=="1" and not answer=="2" and not answer =="3" and not answer=="4" and not answer=="5":
         print("Please print a 1, 2, 3, 4, or 5. ")
         choices()
         answer=input()
-
-create=input("Do you want to create a file? (yes/no) ") #asks if user wants to create a file
-while create=="yes": #if answer is yes
-    fileName=input("What do you want your file to be called? ") #asks for nameof file
-    thisFile=open(fileName, "w")
-    content=input("What information do you want your file to have? ") #asks what user wants to be in file
-    thisFile.write(content)
-    thisFile.close() #closes file
-    choices() #print choices
-    main() #prints main code
-    if answer=="5": #if the answer
-        create=input("Do you want to make another file? (yes/no) ") #asks if user wants to make a new file
-    while again=="yes": #if the user wants to continue editing the file
-        choices() #goes over all choices again
-        answer==input()
-        main()
-    # if not again =="yes": #if they do not want to work on another file, ends
-    #     break
+    #asks if user wants to edit the file again or if they want to make another
+    create=input("If you want to continue editing your file or create a new one, type \"yes\"\nOtherwise, type \"no\"\n")
