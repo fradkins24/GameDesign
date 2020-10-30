@@ -1,0 +1,16 @@
+strawberry
+banana
+papaya
+mango
+watermelon
+melon
+orange
+cherry
+raspberry
+blackberry
+grape
+grapefruit
+apple
+peach
+pear
+nectarine
