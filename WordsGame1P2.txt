@@ -14,3 +14,10 @@ apple
 peach
 pear
 nectarine
+pineapple
+blueberry
+pomegranate
+cranberry
+lemon
+lime
+coconut
