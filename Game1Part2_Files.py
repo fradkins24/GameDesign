@@ -3,15 +3,15 @@ import random #bring from library (software)
 import time
 from datetime import date
 
-today = date.today()
+today = date.today() #date
 date=str(today.strftime("%B %d, %Y"))
 
 name=input("What is your name? ") #asks user to put in name
 wordsFile=open("WordsGame1P2.txt","w")
-wordsFile.write("strawberry\nbanana\npapaya\nmango\nwatermelon\nmelon\norange\ncherry\nraspberry\nblackberry\ngrape\ngrapefruit\napple\npeach\npear\nnectarine\npineapple\nblueberry\npomegranate\ncranberry\nlemon\nlime\ncoconut")
+wordsFile.write("strawberry\nbanana\npapaya\nmango\nwatermelon\nmelon\norange\ncherry\nraspberry\nblackberry\ngrape\ngrapefruit\napple\npeach\npear\nnectarine\npineapple\nblueberry\npomegranate\ncranberry\nlemon\nlime\ncoconut\nplum\napricot\ncantaloupe\nfig\nguava\ntangerine")
 wordsFile.close()
 wordsFile=open("WordsGame1P2.txt","r")
-gameWords=wordsFile.read().splitlines()
+gameWords=wordsFile.read().splitlines() #creates words from file into a list
 wordsFile.close()
 #gameWords=["strawberry","banana","papaya","mango","watermelon","melon","orange","cherry","raspberry","blackberry","grape","grapefruit","apple","peach","pear","nectarine"] #creates list
 #use the choice method of my random function to pick a word
@@ -19,7 +19,7 @@ answer=input("Do you want to guess a fruit? (yes/no) ") #asks user this questio
 
 while answer == "yes": #while answer is yes, do following
     score=0
-    print("\nYou will guess five words and have 6 turns per word.\nEvery time you guess wrong another body part will appear and a turn will be reduced.\nOnce the entire body is printed, you loose. For every word you guess right, you will get one point.\nGood luck", name, end = '' "!\n") #prints good luck with name and says number of turns
+    print("\nYou will guess five words and have 6 turns per word.\nEvery time you guess wrong another body part will appear and a turn will be reduced.\nOnce the entire body is printed, you loose. For every word you guess right, you will get one point.\nSome words are harder than others.\nGood luck", name, end = '' "!\n") #prints good luck with name and says number of turns
     for i in range(5):
         print() #prints and enter
         head=(" O") #defining body parts
@@ -66,18 +66,18 @@ while answer == "yes": #while answer is yes, do following
             print("Good job! The word was",word,end=''".\n") #print that user won
         else: #if not
             print("You have 0 turns left.\n") #print that they lost
-    score=str(score)
-    scoresFile=open("ScoresGame1P2.txt","a")
-    scoresFile.write(name)
+    score=str(score) #makes score a string
+    scoresFile=open("ScoresGame1P2.txt","a")#opens file to append
+    scoresFile.write(name) #had to print them all seperatly because didn't workother way
     scoresFile.write("    ")
     scoresFile.write(score)
     scoresFile.write("    ")
     scoresFile.write(date)
     scoresFile.write("\n")
     scoresFile.close()
-    print("You got "+score+"/5 words correct. Here are other people's scores who have played.\n\n")
+    print("You got "+score+"/5 words correct. Here are other people's scores who have played.\n\n") #prints your score
     scoresFile=open("ScoresGame1P2.txt","r")
-    print(scoresFile.read())
+    print(scoresFile.read()) #reads what is in file (all scores)
     scoresFile.close()
     answer=input("\n\nDo you want to play again? (yes/no) ") #asks if user wants to play again and then restarts loop is "yes"
 
