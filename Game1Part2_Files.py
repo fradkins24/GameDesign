@@ -75,7 +75,7 @@ while answer == "yes": #while answer is yes, do following
     scoresFile.write(date)
     scoresFile.write("\n")
     scoresFile.close()
-    print("You got "+score+"/5 words correct. Here are the top ten scores.\n\n") #prints your score
+    top10=input("You got "+score+"/5 words correct. do you want to see the top ten scores? (yes/no) ") #prints your score
     scoresFile=open("ScoresGame1P2.txt","r")
     lines=scoresFile.readlines()
     top=10
