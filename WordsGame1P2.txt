@@ -21,3 +21,9 @@ cranberry
 lemon
 lime
 coconut
+plum
+apricot
+cantaloupe
+fig
+guava
+tangerine

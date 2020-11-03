@@ -75,10 +75,31 @@ while answer == "yes": #while answer is yes, do following
     scoresFile.write(date)
     scoresFile.write("\n")
     scoresFile.close()
-    print("You got "+score+"/5 words correct. Here are other people's scores who have played.\n\n") #prints your score
+    print("You got "+score+"/5 words correct. Here are the top ten scores.\n\n") #prints your score
     scoresFile=open("ScoresGame1P2.txt","r")
-    print(scoresFile.read()) #reads what is in file (all scores)
+    lines = scoresFile.readlines()
+#    scoresFile=open("ScoresGame1P2.txt","r")
+    top=10
+    while top>0:
+        for line in lines:
+            if "5" in line:
+                print(line)
+                top=top-1
+        for line in lines:
+            if "4" in line:
+                print(line)
+                top=top-1
+        for line in lines:
+            if "3" in line:
+                print(line)
+                top=top-1
+        for line in lines:
+            if "2" in line:
+                print(line)
+                top=top-1
     scoresFile.close()
+#    print(scoresFile.read()) #reads what is in file (all scores)
+#    scoresFile.close()
     answer=input("\n\nDo you want to play again? (yes/no) ") #asks if user wants to play again and then restarts loop is "yes"
 
 if not answer == "yes":
