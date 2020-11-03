@@ -69,9 +69,9 @@ while answer == "yes": #while answer is yes, do following
     score=str(score) #makes score a string
     scoresFile=open("ScoresGame1P2.txt","a")#opens file to append
     scoresFile.write(name) #had to print them all seperatly because didn't workother way
-    scoresFile.write("    ")
+    scoresFile.write("  ")
     scoresFile.write(score)
-    scoresFile.write("    ")
+    scoresFile.write("  ")
     scoresFile.write(date)
     scoresFile.write("\n")
     scoresFile.close()
