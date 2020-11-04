@@ -1,6 +1,7 @@
 # Sarah Fradkin
 import pygame
 #drawing Pygame
+name=input("What is your name? ")
 ask=input("Do you want to make a colorful screen? (yes/no) ")
 while ask=="yes":
     w=input("What do you want the width of your screen to be? (maximun is 800) ")
@@ -32,7 +33,7 @@ while ask=="yes":
     white=(255,255,255)
 
     screen=pygame.display.set_mode((w,l)) #tuple
-    pygame.display.set_caption("Testing Pygame") #title
+    pygame.display.set_caption(name+"\'s Screen") #title
     run =True
     while run:
         pygame.time.delay(100) #miliseconds
@@ -43,4 +44,3 @@ while ask=="yes":
             if i.type == pygame.QUIT: #leaves game
                 run=False
                 #ask=input("Do you want to make another colorful screen? (yes/no) ")
-#    pygame.time.delay(50)
