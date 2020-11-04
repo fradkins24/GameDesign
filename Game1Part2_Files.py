@@ -13,14 +13,12 @@ wordsFile.close()
 wordsFile=open("WordsGame1P2.txt","r")
 gameWords=wordsFile.read().splitlines() #creates words from file into a list
 wordsFile.close()
-#gameWords=["strawberry","banana","papaya","mango","watermelon","melon","orange","cherry","raspberry","blackberry","grape","grapefruit","apple","peach","pear","nectarine"] #creates list
-#use the choice method of my random function to pick a word
 answer=input("Do you want to guess a fruit? (yes/no) ") #asks user this questio
 
 while answer == "yes": #while answer is yes, do following
     score=0
     print("\nYou will guess five words and have 6 turns per word.\nEvery time you guess wrong another body part will appear and a turn will be reduced.\nOnce the entire body is printed, you loose. For every word you guess right, you will get one point.\nSome words are harder than others.\nGood luck", name, end = '' "!\n") #prints good luck with name and says number of turns
-    for i in range(5):
+    for i in range(1):
         print() #prints and enter
         head=(" O") #defining body parts
         larm=(" O\n/|")
@@ -80,30 +78,28 @@ while answer == "yes": #while answer is yes, do following
     if top10=="yes":
         scoresFile=open("ScoresGame1P2.txt","r")
         lines=scoresFile.readlines()
+        scoresFile.close()
         top=10
         for line in lines:
-            if "5" in line and top>0:
+            if " 5 " in line and top>0:
                 print(line)
                 top=top-1
         for line in lines:
-            if "4" in line and top>0:
+            if " 4 " in line and top>0:
                 print(line)
                 top=top-1
         for line in lines:
-            if "3" in line and top>0:
+            if " 3 " in line and top>0:
                 print(line)
                 top=top-1
         for line in lines:
-            if "2" in line and top>0:
+            if " 2 " in line and top>0:
                 print(line)
                 top=top-1
         for line in lines:
-            if "1" in line and top>0:
+            if " 1 " in line and top>0:
                 print(line)
                 top=top-1
-        scoresFile.close()
-    # print(scoresFile.read()) #reads what is in file (all scores)
-    # scoresFile.close()
     answer=input("\nDo you want to play again? (yes/no) ") #asks if user wants to play again and then restarts loop is "yes"
 
 if not answer == "yes":
