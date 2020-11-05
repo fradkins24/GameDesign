@@ -24,7 +24,7 @@ while run:
     #we are going to move out rectangle around
     keyboardKey=pygame.key.get_pressed()
     #check what key was pressed
-    speed=1
+    speed=3
     if keyboardKey[pygame.K_LEFT] and x>0: #subtract from x
         x-=speed
         r-=speed
@@ -35,13 +35,13 @@ while run:
         y-=speed
     if keyboardKey[pygame.K_DOWN] and y+h<HIEGHT: #add to y
         y+=speed
-    if keyboardKey[pygame.K_a]:
+    if keyboardKey[pygame.K_a] and w>5:
         w-=speed
-    if keyboardKey[pygame.K_d] and w<WIDTH:
+    if keyboardKey[pygame.K_d] and x+w<WIDTH:
         w+=speed
-    if keyboardKey[pygame.K_w]:
+    if keyboardKey[pygame.K_w] and h>5:
         h-=speed
-    if keyboardKey[pygame.K_s]:
+    if keyboardKey[pygame.K_s] and y+h<HIEGHT:
         h+=speed
     screen.fill(white)
     pygame.draw.rect(screen,(10,123,10),(x,y, w,h))
