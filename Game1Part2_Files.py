@@ -18,7 +18,7 @@ answer=input("Do you want to guess a fruit? (yes/no) ") #asks user this questio
 while answer == "yes": #while answer is yes, do following
     score=0
     print("\nYou will guess five words and have 6 turns per word.\nEvery time you guess wrong another body part will appear and a turn will be reduced.\nOnce the entire body is printed, you loose. For every word you guess right, you will get one point.\nSome words are harder than others.\nGood luck", name, end = '' "!\n") #prints good luck with name and says number of turns
-    for i in range(1):
+    for i in range(5):
         print() #prints and enter
         head=(" O") #defining body parts
         larm=(" O\n/|")
