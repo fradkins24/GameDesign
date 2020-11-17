@@ -3,24 +3,22 @@ import pygame, time
 pygame.init()
 #defining variables
 run=True
-WIDTH=730
-HIEGHT=475
+WIDTH=800
+HIEGHT=800
 x=300
-y=400
+y=600
 speed=10
 t=90
 jump=False
 high=10
 clock=pygame.time.Clock()
 #defining characters
-forw=pygame.image.load("Sprites\kneeR.jpg")
-walkR=[pygame.image.load("Sprites\kneeR.jpg"),pygame.image.load("Sprites\leapR.jpg")]
-#walkR2=pygame.image.load("Sprites\leapR.jpg")
-walkL=[pygame.image.load("Sprites\kneeL.jpg"),pygame.image.load("Sprites\leapL.jpg")]
-#walkL2=pygame.image.load("Sprites\leapL.jpg")
-stand=pygame.image.load("Sprites\stand.jpg")
+forw=pygame.image.load("images\kneeR.jpg")
+walkR=[pygame.image.load("images\kneeR.jpg"),pygame.image.load("images\leapR.jpg")]
+walkL=[pygame.image.load("images\kneeL.jpg"),pygame.image.load("images\leapL.jpg")]
+stand=pygame.image.load("images\stand.jpg")
 screen=pygame.display.set_mode((WIDTH,HIEGHT)) #tuple
-background=pygame.image.load("francepic.png")
+background=pygame.image.load("images\\field2.jpg")
 
 w=forw.get_width() #width of charcater
 
