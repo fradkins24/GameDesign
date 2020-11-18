@@ -2,6 +2,9 @@
 import pygame, time
 pygame.init()
 #defining variables
+place=0
+moveR=5
+moveL=10
 run=True
 WIDTH=800
 HIEGHT=800
@@ -20,6 +23,7 @@ stand=pygame.image.load("images\stand.jpg")
 screen=pygame.display.set_mode((WIDTH,HIEGHT)) #tuple
 background=pygame.image.load("images\\field2.jpg")
 
+wb=background.get_width()
 w=forw.get_width() #width of charcater
 
 pygame.display.set_caption("Testing Characters") #title
@@ -29,10 +33,12 @@ left=False
 right=False
 #control list
 walkcount=0
+# screen.blit(background,(place,0))
+# pygame.display.update()
 def redrawWindow(): #function for re-setting background and character
     global walkcount #makes sure it's using walkcount we created
 
-    screen.blit(background,(0,0))
+    screen.blit(background,(place,0))
     pygame.display.update()
     screen.blit(stand,(x,y))
     pygame.display.update()
@@ -42,31 +48,39 @@ def redrawWindow(): #function for re-setting background and character
     if left: #three pixels per pic then change
         screen.blit(walkL[walkcount//3], (x,y))
         walkcount+=1
+        # screen.blit(background,(5,0))
+        # pygame.display.update()
     elif right:
         screen.blit(walkR[walkcount//3], (x,y))
         walkcount+=1
+        # screen.blit(background,(-5,0))
+        # pygame.display.update()
     else:
         screen.blit(stand, (x,y))
         walkcount=0
     pygame.display.update()
 while run:
     clock.tick(15)
-    # screen.blit(stand,(x,y))
-    # pygame.display.update()
     for i in pygame.event.get(): #picks up anything that happens on screen
         if i.type == pygame.QUIT: #leaves game
             run=False
 
     pressed=pygame.key.get_pressed()
     #moving left and right
-    if pressed[pygame.K_RIGHT] and x+w<WIDTH:
-        x+=speed
+    if pressed[pygame.K_RIGHT] and abs(place-x)<wb:
+        #x+=speed
         left=False
         right=True
-    elif pressed[pygame.K_LEFT] and x>0:
-        x-=speed
+        place-=moveR
+        screen.blit(background,(place,0))
+        pygame.display.update()
+    elif pressed[pygame.K_LEFT] and abs(place-x)>0:
+        #x-=speed
         left=True
         right=False
+        place+=moveL
+        screen.blit(background,(place,0))
+        pygame.display.update()
     else:
         left=False
         right=False
