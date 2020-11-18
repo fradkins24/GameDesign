@@ -3,8 +3,8 @@ import pygame, time
 pygame.init()
 #defining variables
 place=0
-moveR=5
-moveL=10
+moveR=15
+moveL=15
 run=True
 WIDTH=800
 HIEGHT=800
@@ -16,7 +16,7 @@ jump=False
 high=10
 clock=pygame.time.Clock()
 #defining characters
-forw=pygame.image.load("images\kneeR.jpg")
+forw=pygame.image.load("images\leapR.jpg")
 walkR=[pygame.image.load("images\kneeR.jpg"),pygame.image.load("images\leapR.jpg")]
 walkL=[pygame.image.load("images\kneeL.jpg"),pygame.image.load("images\leapL.jpg")]
 stand=pygame.image.load("images\stand.jpg")
@@ -25,6 +25,7 @@ background=pygame.image.load("images\\field2.jpg")
 
 wb=background.get_width()
 w=forw.get_width() #width of charcater
+wx=w+x
 
 pygame.display.set_caption("Testing Characters") #title
 pygame.display.update()
@@ -67,7 +68,7 @@ while run:
 
     pressed=pygame.key.get_pressed()
     #moving left and right
-    if pressed[pygame.K_RIGHT] and abs(place-x)<wb:
+    if pressed[pygame.K_RIGHT] and abs(place-wx)<wb:
         #x+=speed
         left=False
         right=True
