@@ -28,8 +28,9 @@ for i in range(26):
     letters.append([x, y, chr(A + i), True])
 
 # set up fonts
-INFO_FONT = pygame.font.SysFont('comicsans', 20)
-MENU_FONT = pygame.font.SysFont('comicsans', 30)
+INFO_FONT = pygame.font.SysFont('comicsansms', 21)
+MENU_FONT = pygame.font.SysFont('comicsans', 45)
+CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
 LETTER_FONT = pygame.font.SysFont('comicsans', 40)
 WORD_FONT = pygame.font.SysFont('comicsans', 60)
 TITLE_FONT = pygame.font.SysFont('comicsans', 70)
@@ -49,21 +50,58 @@ guessed = []
 # colors
 WHITE = (255,255,255)
 BLACK = (0,0,0)
+BLUE = (196, 224, 255)
+GREEN = (74, 189, 41)
+YELLOW = (231, 195, 0)
+RED = (196, 52, 41)
 
+#make menu with instructions and choice
 def menu():
-    screen.fill(WHITE)
-    a=70
-    text = INFO_FONT.render("Once you choose your level, guess the letters you think", 1, BLACK)
-    text2 = INFO_FONT.render("will be in your word. The letter will then disappear. If the", 1, BLACK)
-    text3 = INFO_FONT.render("letter you pressed was in the word, it will appear in", 1, BLACK)
-    text4 = INFO_FONT.render("place of one of the dashes. If the letter is not in", 1, BLACK)
-    screen.blit(text, (20, a))
-    screen.blit(text2, (20, a+5+text.get_height()))
-    screen.blit(text3, (20, a+10+text.get_height()*2))
-    screen.blit(text4, (20, a+15+text.get_height()*3))
+    screen.fill(BLUE)
+    text = TITLE_FONT.render("LET'S PLAY HANGMAN!", 1, BLACK)
+    screen.blit(text, (WIDTH/2 - text.get_width()/2, 20))
+    a=90
+    b=20
+    left=200
+    down=400
+    #instructions
+    text = INFO_FONT.render("Once you choose your level, guess the letters you think will be in your word.", 1, BLACK)
+    text2 = INFO_FONT.render("The letter will then disappear. If the letter you pressed was in the word,", 1, BLACK)
+    text3 = INFO_FONT.render("it will appear in place of one of the dashes. If the letter was not in the word,", 1, BLACK)
+    text4 = INFO_FONT.render("then a body part will appear. If the entire body appears, you lose. If you guess", 1, BLACK)
+    text5 = INFO_FONT.render("the entire word, you win.",1,BLACK)
+    screen.blit(text, (b, a))
+    screen.blit(text2, (b, a+5+text.get_height()))
+    screen.blit(text3, (b, a+10+text.get_height()*2))
+    screen.blit(text4, (b, a+15+text.get_height()*3))
+    screen.blit(text5, (b, a+20+text.get_height()*4))
+
+    choice = CHOICE_FONT.render("CHOICES:",1,BLACK)
+    screen.blit(choice,(b+50, a+80+text.get_height()*5))
+    #3 circles
+    pygame.draw.circle(screen, BLACK, (left, down), RADIUS, 3)
+    pygame.draw.circle(screen, BLACK, (left, down+RADIUS*2+20), RADIUS, 3)
+    pygame.draw.circle(screen, BLACK, (left, down+RADIUS*4+40), RADIUS, 3)
+
+    #choice 1
+    one=MENU_FONT.render("1",1,GREEN)
+    screen.blit(one,(left-8,down-12))
+    choice1=MENU_FONT.render("Easy",1,GREEN)
+    screen.blit(choice1,(235,385))
+
+    #choice2
+    two=MENU_FONT.render("2",1,YELLOW)
+    screen.blit(two,(left-8,down+RADIUS*2+6))
+    choice2=MENU_FONT.render("Meduim",1,YELLOW)
+    screen.blit(choice2,(235,445))
+
+    #choice 3
+    three=MENU_FONT.render("3",1,RED)
+    screen.blit(three,(left-8,down+RADIUS*4+25))
+    choice3=MENU_FONT.render("Hard",1,RED)
+    screen.blit(choice3,(235,505))
+
     pygame.display.update()
-    clock = pygame.time.Clock()
-    clock.tick(10000)
 
 def draw():
     screen.fill(WHITE)
