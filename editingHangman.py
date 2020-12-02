@@ -6,6 +6,7 @@
 #game code depends on what player chooses
 #give user choice to play again
 #window only closes if player closes it
+
 import pygame
 import math
 import random
@@ -23,6 +24,10 @@ letters = []
 startx = round((WIDTH - (RADIUS * 2 + GAP) * 13) / 2)
 starty = 400
 A = 65
+a=90
+b=20
+left=200
+down=400
 for i in range(26):
     x = startx + GAP * 2 + ((RADIUS * 2 + GAP) * (i % 13))
     y = starty + ((i // 13) * (GAP + RADIUS * 2))
@@ -62,10 +67,7 @@ def menu():
     screen.fill(BLUE)
     text = TITLE_FONT.render("LET'S PLAY HANGMAN!", 1, BLACK)
     screen.blit(text, (WIDTH/2 - text.get_width()/2, 20))
-    a=90
-    b=20
-    left=200
-    down=400
+
     #instructions
     text = INFO_FONT.render("Once you choose your level, guess the letters you think will be in your word.", 1, BLACK)
     text2 = INFO_FONT.render("The letter will then disappear. If the letter you pressed was in the word,", 1, BLACK)
@@ -85,6 +87,7 @@ def menu():
     pygame.draw.circle(screen, BLACK, (left, down+RADIUS*2+20), RADIUS, 3)
     pygame.draw.circle(screen, BLACK, (left, down+RADIUS*4+40), RADIUS, 3)
     pygame.draw.circle(screen, BLACK, (left, down+RADIUS*6+60), RADIUS, 3)
+
     #choice 1
     one=MENU_FONT.render("1",1,GREEN)
     screen.blit(one,(left-8,down-12))
@@ -109,19 +112,19 @@ def menu():
     choice4=MENU_FONT.render("EXIT",1,BLACK)
     screen.blit(choice4,(235,down+165))
 
-    if event.type == pygame.MOUSEBUTTONDOWN:
-        m_x, m_y = pygame.mouse.get_pos()
-        if m_x==left and m_y==down+RADIUS*2+20:
-            word=random.choice(words1)
-        elif m_x==left and m_y==down+RADIUS*4+40:
-            word=random.choice(words2)
-        elif m_x==left and m_y==down+RADIUS*6+60:
-            word=random.choice(words3)
+    # if event.type == pygame.MOUSEBUTTONDOWN:
+    #     m_x, m_y = pygame.mouse.get_pos()
+    #     if m_x==left and m_y==down+RADIUS*2+20:
+    #         word=random.choice(words1)
+    #     elif m_x==left and m_y==down+RADIUS*4+40:
+    #         word=random.choice(words2)
+    #     elif m_x==left and m_y==down+RADIUS*6+60:
+    #         word=random.choice(words3)
 
     pygame.display.update()
 
-def draw():
-    global word
+def draw(i):
+    word=random.choice(i)
     screen.fill(WHITE)
 
     # draw title
@@ -149,7 +152,7 @@ def draw():
     screen.blit(images[hangman_status], (150, 100))
     pygame.display.update()
 
-
+#display whether player won or lost
 def display_message(message):
     pygame.time.delay(1000)
     screen.fill(WHITE)
@@ -158,16 +161,17 @@ def display_message(message):
     pygame.display.update()
     pygame.time.delay(3000)
 
-def main():
+#mains code for game
+def main(i):
     global hangman_status
-    global word
+    word=random.choice(i)
 
     FPS = 60
     clock = pygame.time.Clock()
     run = True
     while run:
         clock.tick(FPS)
-
+        #checks what user pressed
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -183,8 +187,7 @@ def main():
                             if ltr not in word:
                                 hangman_status += 1
 
-        #menu()
-        draw()
+        draw(i)
 
         won = True
         for letter in word:
@@ -200,4 +203,20 @@ def main():
             display_message("You LOST!")
             break
 
-main()
+menu()
+run=True
+while run:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run=False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            m_x, m_y = pygame.mouse.get_pos()
+            if m_x==left and m_y==down+RADIUS*2+20:
+                main(words1)
+            elif m_x==left and m_y==down+RADIUS*4+40:
+                main(words2)
+            elif m_x==left and m_y==down+RADIUS*6+60:
+                main(words3)
+            elif m_x==left and m_y==down+RADIUS*6+60:
+                run = False
+            menu()
