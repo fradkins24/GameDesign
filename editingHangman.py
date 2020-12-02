@@ -3,6 +3,7 @@
 #what to fix:
 #in the while run, I need to put that if the user wants to exit, run becoms false, and the window closes
 #make menu
+#game code depends on what player chooses
 #give user choice to play again
 #window only closes if player closes it
 import pygame
@@ -43,7 +44,9 @@ for i in range(7):
 
 # game variables
 hangman_status = 0
-words = ["CHERRY","BERRY"] # make it longer
+words1 = ["CHERRY","BERRY","GRAPE","LIME","APPLE","BANANA","PEAR"] # make it longer
+words2 = ["STRAWBERRY","ORANGE","MANGO","MELON","PAPAYA","LEMON","PINEAPPLE"]
+words3= ["GRAPEFRUIT","CRANBERRY","RASPBERRY","POMEGRANATE","WATERMELON","CANTALOUPE"]
 word = random.choice(words)
 guessed = []
 
@@ -87,25 +90,25 @@ def menu():
     one=MENU_FONT.render("1",1,GREEN)
     screen.blit(one,(left-8,down-12))
     choice1=MENU_FONT.render("Easy",1,GREEN)
-    screen.blit(choice1,(235,385))
+    screen.blit(choice1,(235,down-15))
 
     #choice2
     two=MENU_FONT.render("2",1,YELLOW)
     screen.blit(two,(left-8,down+RADIUS*2+6))
     choice2=MENU_FONT.render("Meduim",1,YELLOW)
-    screen.blit(choice2,(235,445))
+    screen.blit(choice2,(235,down+45))
 
     #choice 3
     three=MENU_FONT.render("3",1,RED)
     screen.blit(three,(left-8,down+RADIUS*4+25))
     choice3=MENU_FONT.render("Hard",1,RED)
-    screen.blit(choice3,(235,505))
+    screen.blit(choice3,(235,down+105))
 
     #choice 4
     four=MENU_FONT.render("4",1,BLACK)
     screen.blit(four,(left-8,down+RADIUS*6+45))
     choice4=MENU_FONT.render("EXIT",1,BLACK)
-    screen.blit(choice4,(235,565))
+    screen.blit(choice4,(235,down+165))
 
     pygame.display.update()
 
@@ -152,7 +155,6 @@ def main():
     FPS = 60
     clock = pygame.time.Clock()
     run = True
-
     while run:
         clock.tick(FPS)
 
@@ -171,8 +173,8 @@ def main():
                             if ltr not in word:
                                 hangman_status += 1
 
-        menu()
-        #draw()
+        #menu()
+        draw()
 
         won = True
         for letter in word:
