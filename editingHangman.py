@@ -47,7 +47,6 @@ hangman_status = 0
 words1 = ["CHERRY","BERRY","GRAPE","LIME","APPLE","BANANA","PEAR"] # make it longer
 words2 = ["STRAWBERRY","ORANGE","MANGO","MELON","PAPAYA","LEMON","PINEAPPLE"]
 words3= ["GRAPEFRUIT","CRANBERRY","RASPBERRY","POMEGRANATE","WATERMELON","CANTALOUPE"]
-word = random.choice(words)
 guessed = []
 
 # colors
@@ -72,7 +71,7 @@ def menu():
     text2 = INFO_FONT.render("The letter will then disappear. If the letter you pressed was in the word,", 1, BLACK)
     text3 = INFO_FONT.render("it will appear in place of one of the dashes. If the letter was not in the word,", 1, BLACK)
     text4 = INFO_FONT.render("then a body part will appear. If the entire body appears, you lose. If you guess", 1, BLACK)
-    text5 = INFO_FONT.render("the entire word, you win.",1,BLACK)
+    text5 = INFO_FONT.render("the entire word, you win. All the words are fruits. Good luck!",1,BLACK)
     screen.blit(text, (b, a))
     screen.blit(text2, (b, a+5+text.get_height()))
     screen.blit(text3, (b, a+10+text.get_height()*2))
@@ -110,9 +109,19 @@ def menu():
     choice4=MENU_FONT.render("EXIT",1,BLACK)
     screen.blit(choice4,(235,down+165))
 
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        m_x, m_y = pygame.mouse.get_pos()
+        if m_x==left and m_y==down+RADIUS*2+20:
+            word=random.choice(words1)
+        elif m_x==left and m_y==down+RADIUS*4+40:
+            word=random.choice(words2)
+        elif m_x==left and m_y==down+RADIUS*6+60:
+            word=random.choice(words3)
+
     pygame.display.update()
 
 def draw():
+    global word
     screen.fill(WHITE)
 
     # draw title
@@ -151,6 +160,7 @@ def display_message(message):
 
 def main():
     global hangman_status
+    global word
 
     FPS = 60
     clock = pygame.time.Clock()
@@ -189,7 +199,5 @@ def main():
         if hangman_status == 6:
             display_message("You LOST!")
             break
-
-#while True:
 
 main()
