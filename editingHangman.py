@@ -77,12 +77,12 @@ def menu():
     screen.blit(text5, (b, a+20+text.get_height()*4))
 
     choice = CHOICE_FONT.render("CHOICES:",1,BLACK)
-    screen.blit(choice,(b+50, a+80+text.get_height()*5))
+    screen.blit(choice,(b+50, a+70+text.get_height()*5))
     #3 circles
     pygame.draw.circle(screen, BLACK, (left, down), RADIUS, 3)
     pygame.draw.circle(screen, BLACK, (left, down+RADIUS*2+20), RADIUS, 3)
     pygame.draw.circle(screen, BLACK, (left, down+RADIUS*4+40), RADIUS, 3)
-
+    pygame.draw.circle(screen, BLACK, (left, down+RADIUS*6+60), RADIUS, 3)
     #choice 1
     one=MENU_FONT.render("1",1,GREEN)
     screen.blit(one,(left-8,down-12))
@@ -100,6 +100,12 @@ def menu():
     screen.blit(three,(left-8,down+RADIUS*4+25))
     choice3=MENU_FONT.render("Hard",1,RED)
     screen.blit(choice3,(235,505))
+
+    #choice 4
+    four=MENU_FONT.render("4",1,BLACK)
+    screen.blit(four,(left-8,down+RADIUS*6+45))
+    choice4=MENU_FONT.render("EXIT",1,BLACK)
+    screen.blit(choice4,(235,565))
 
     pygame.display.update()
 
