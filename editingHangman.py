@@ -211,12 +211,26 @@ while run:
             run=False
         if event.type == pygame.MOUSEBUTTONDOWN:
             m_x, m_y = pygame.mouse.get_pos()
-            if m_x==left and m_y==down+RADIUS*2+20:
+            dis = math.sqrt((left - m_x)**2 + (down - m_y)**2)
+            if dis<RADIUS:
+            #if left>m_x>left+RADIUS and down>m_y>down+RADIUS:
                 main(words1)
-            elif m_x==left and m_y==down+RADIUS*4+40:
-                main(words2)
-            elif m_x==left and m_y==down+RADIUS*6+60:
-                main(words3)
-            elif m_x==left and m_y==down+RADIUS*6+60:
-                run = False
+            else:
+                dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*2+20) - m_y)**2)
+                if dis<RADIUS:
+                    main(words2)
+                else:
+                    dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*4+40) - m_y)**2)
+                    if dis<RADIUS:
+                        main(words3)
+                    else:
+                        dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*6+60) - m_y)**2)
+                        if dis<RADIUS:
+                            run = False
+            # elif m_x==left and m_y==down+RADIUS*2+20:
+            #     main(words2)
+            # elif m_x==left and m_y==down+RADIUS*4+40:
+            #     main(words3)
+            # elif m_x==left and m_y==down+RADIUS*6+60:
+            #     run = False
             menu()
