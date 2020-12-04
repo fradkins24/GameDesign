@@ -33,7 +33,22 @@ for i in range(26):
     y = starty + ((i // 13) * (GAP + RADIUS * 2))
     letters.append([x, y, chr(A + i), True])
 
+#open files for scores that start with 0
+#easy file
+file1= open("easyHMScores.txt", "w")
+file1.write("0")
+file1.close()
+#medium file
+file2=open("mediumHMScores.txt", "w")
+file2.write("0")
+file2.close()
+#hard file
+file3=open("hardHMScores.txt", "w")
+file3.write("0")
+file3.close()
+
 # set up fonts
+SCORES_FONT = pygame.font.SysFont('comicsansms', 50)
 INFO_FONT = pygame.font.SysFont('comicsansms', 21)
 MENU_FONT = pygame.font.SysFont('comicsans', 45)
 CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
@@ -49,7 +64,7 @@ for i in range(7):
 
 # game variables
 hangman_status = 0
-words1 = ["CHERRY","BERRY","GRAPE","LIME","APPLE","BANANA","PEAR"] # make it longer
+words1 = ["CHERRY"]#,"BERRY","GRAPE","LIME","APPLE","BANANA","PEAR"] # make it longer
 words2 = ["STRAWBERRY","ORANGE","MANGO","MELON","PAPAYA","LEMON","PINEAPPLE"]
 words3= ["GRAPEFRUIT","CRANBERRY","RASPBERRY","POMEGRANATE","WATERMELON","CANTALOUPE"]
 guessed = []
@@ -83,10 +98,10 @@ def draw(i):
     # draw buttons
     for letter in letters:
         x, y, ltr, visible = letter
-        if visible:
-            pygame.draw.circle(screen, BLACK, (x, y), RADIUS, 3)
-            text = LETTER_FONT.render(ltr, 1, BLACK)
-            screen.blit(text, (x - text.get_width()/2, y - text.get_height()/2))
+        #if visible:
+        pygame.draw.circle(screen, BLACK, (x, y), RADIUS, 3)
+        text = LETTER_FONT.render(ltr, 1, BLACK)
+        screen.blit(text, (x - text.get_width()/2, y - text.get_height()/2))
 
     screen.blit(images[hangman_status], (150, 100))
     pygame.display.update()
@@ -105,6 +120,8 @@ def main(i):
     FPS = 60
     clock = pygame.time.Clock()
     global hangman_status
+    hangman_status=0
+    # guessed = []
     word=random.choice(i)
     FPS = 60
     clock = pygame.time.Clock()
@@ -117,13 +134,13 @@ def main(i):
                     m_x, m_y = pygame.mouse.get_pos()
                     for letter in letters:
                         x, y, ltr, visible = letter
-                        if visible:
-                            dis = math.sqrt((x - m_x)**2 + (y - m_y)**2)
-                            if dis < RADIUS:
-                                letter[3] = False
-                                guessed.append(ltr)
-                                if ltr not in word:
-                                    hangman_status += 1
+                        #if visible:
+                        dis = math.sqrt((x - m_x)**2 + (y - m_y)**2)
+                        if dis < RADIUS:
+                            letter[3] = False
+                            guessed.append(ltr)
+                            if ltr not in word:
+                                hangman_status += 1
             draw(i)
 
             won = True
@@ -134,12 +151,44 @@ def main(i):
 
             if won:
                 display_message("You WON!")
-                #break
-                menu()
+                break
             if hangman_status == 6:
                 display_message("You LOST!")
-                menu()
                 break
+            #if easy setting
+            if i==words1:
+                score=str(6-hangman_status)
+                file1 = open("easyHMScores.txt", "r")
+                for line in file1:
+                    #if line < score :
+                    if str(line.split()) <score:
+                        file1.close()
+                        file1=open("easyHMScores.txt","w")
+                        file1.write(score)
+                        file1.close()
+                file1.close()
+            #if medium setting
+            if i==words2:
+                score=str((6-hangman_status)*2)
+                file2 = open("mediumHMScores.txt", "r")
+                for line in file2:
+                    if str(line.split()) <score:
+                        file2.close()
+                        file2=open("mediumHMScores.txt","w")
+                        file2.write(score)
+                        file2.close()
+                file2.close()
+            #if hard setting
+            if i==words3:
+                score=str((6-hangman_status)*3)
+                file3 = open("hardHMScores.txt", "r")
+                for line in file3:
+                    if str(line.split()) <score:
+                        file3.close()
+                        file3=open("hardHMScores.txt","w")
+                        file3.write(score)
+                file3.close()
+
     # word=random.choice(i)
     # clock.tick(FPS)
     # #checks what user pressed
@@ -173,6 +222,18 @@ def main(i):
     #     display_message("You LOST!")
     #     #break
 
+def best_scores():
+    screen.fill(BLUE)
+    text = TITLE_FONT.render("BEST SCORES FOR:", 1, BLACK)
+    screen.blit(text, (WIDTH/2 - text.get_width()/2, 20))
+    #easy scores
+    file1=open("easyHMScores.txt","r")
+    score=file1.read()
+    easy = SCORES_FONT.render("Easy:  "+score,1,GREEN)
+    file1.close()
+    screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 250))
+
+    pygame.display.update()
 
 #make menu with instructions and choice
 def menu():
@@ -248,11 +309,12 @@ def menu():
     pygame.display.update()
 
 
-# FPS = 60
-# clock = pygame.time.Clock()
+FPS = 60
+clock = pygame.time.Clock()
 menu()
 run=True
 while run:
+    guessed = []
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run=False
