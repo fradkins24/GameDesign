@@ -231,10 +231,16 @@ def best_scores():
     score=file1.read()
     easy = SCORES_FONT.render("Easy:  "+score,1,GREEN)
     file1.close()
-    screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 250))
+    screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 300))
+    #mediu scores
+    file2=open("mediumHMScores.txt","r")
+    score2=file2.read()
+    medium = SCORES_FONT.render("Medium:  "+score,1,YELLOW)
+    file2.close()
+    screen.blit(medium,(WIDTH/2 - medium.get_width()/2, 400))
 
     pygame.display.update()
-
+best_scores()
 #make menu with instructions and choice
 def menu():
 
