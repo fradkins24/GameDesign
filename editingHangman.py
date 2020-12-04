@@ -48,8 +48,9 @@ file3.write("0")
 file3.close()
 
 # set up fonts
-SCORES_FONT = pygame.font.SysFont('comicsansms', 50)
+SCORES_FONT = pygame.font.SysFont('comicsansms', 55)
 INFO_FONT = pygame.font.SysFont('comicsansms', 21)
+STAR_FONT = pygame.font.SysFont('comicsansms', 18)
 MENU_FONT = pygame.font.SysFont('comicsans', 45)
 CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
 LETTER_FONT = pygame.font.SysFont('comicsans', 40)
@@ -76,6 +77,7 @@ BLUE = (196, 224, 255)
 GREEN = (74, 189, 41)
 YELLOW = (231, 195, 0)
 RED = (196, 52, 41)
+PURPLE = (158, 98, 170)
 
 def draw(i):
     word=random.choice(i)
@@ -125,102 +127,105 @@ def main(i):
     word=random.choice(i)
     FPS = 60
     clock = pygame.time.Clock()
-    run = True
-    while run:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    run = False
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    m_x, m_y = pygame.mouse.get_pos()
-                    for letter in letters:
-                        x, y, ltr, visible = letter
-                        #if visible:
-                        dis = math.sqrt((x - m_x)**2 + (y - m_y)**2)
-                        if dis < RADIUS:
-                            letter[3] = False
-                            guessed.append(ltr)
-                            if ltr not in word:
-                                hangman_status += 1
-            draw(i)
-
-            won = True
-            for letter in word:
-                if letter not in guessed:
-                    won = False
-                    break
-
-            if won:
-                display_message("You WON!")
-                break
-            if hangman_status == 6:
-                display_message("You LOST!")
-                break
-            #if easy setting
-            if i==words1:
-                score=str(6-hangman_status)
-                file1 = open("easyHMScores.txt", "r")
-                for line in file1:
-                    #if line < score :
-                    if str(line.split()) <score:
-                        file1.close()
-                        file1=open("easyHMScores.txt","w")
-                        file1.write(score)
-                        file1.close()
-                file1.close()
-            #if medium setting
-            if i==words2:
-                score=str((6-hangman_status)*2)
-                file2 = open("mediumHMScores.txt", "r")
-                for line in file2:
-                    if str(line.split()) <score:
-                        file2.close()
-                        file2=open("mediumHMScores.txt","w")
-                        file2.write(score)
-                        file2.close()
-                file2.close()
-            #if hard setting
-            if i==words3:
-                score=str((6-hangman_status)*3)
-                file3 = open("hardHMScores.txt", "r")
-                for line in file3:
-                    if str(line.split()) <score:
-                        file3.close()
-                        file3=open("hardHMScores.txt","w")
-                        file3.write(score)
-                file3.close()
-
-    # word=random.choice(i)
-    # clock.tick(FPS)
-    # #checks what user pressed
-    # for event in pygame.event.get():
-    #     if event.type == pygame.QUIT:
-    #         run = False
-    #     if event.type == pygame.MOUSEBUTTONDOWN:
-    #         m_x, m_y = pygame.mouse.get_pos()
-    #         for letter in letters:
-    #             x, y, ltr, visible = letter
-    #             if visible:
-    #                 dis = math.sqrt((x - m_x)**2 + (y - m_y)**2)
-    #                 if dis < RADIUS:
-    #                     letter[3] = False
-    #                     guessed.append(ltr)
-    #                     if ltr not in word:
-    #                         hangman_status += 1
-    # draw(i)
+    # run = True
+    # while run:
+    #         for event in pygame.event.get():
+    #             if event.type == pygame.QUIT:
+    #                 run = False
+    #             if event.type == pygame.MOUSEBUTTONDOWN:
+    #                 m_x, m_y = pygame.mouse.get_pos()
+    #                 for letter in letters:
+    #                     x, y, ltr, visible = letter
+    #                     #if visible:
+    #                     dis = math.sqrt((x - m_x)**2 + (y - m_y)**2)
+    #                     if dis < RADIUS:
+    #                         letter[3] = False
+    #                         guessed.append(ltr)
+    #                         if ltr not in word:
+    #                             hangman_status += 1
+    #         draw(i)
     #
-    # won = True
-    # for letter in word:
-    #     if letter not in guessed:
-    #         won = False
-    #         break
+    #         won = True
+    #         for letter in word:
+    #             if letter not in guessed:
+    #                 won = False
+    #                 break
     #
-    # if won:
-    #     display_message("You WON!")
-    #     #break
-    #
-    # if hangman_status == 6:
-    #     display_message("You LOST!")
-    #     #break
+    #         if won:
+    #             display_message("You WON!")
+    #             break
+    #         if hangman_status == 6:
+    #             display_message("You LOST!")
+    #             break
+
+
+
+    #         #if easy setting
+    #         if i==words1:
+    #             score=str(6-hangman_status)
+    #             file1 = open("easyHMScores.txt", "r")
+    #             for line in file1:
+    #                 #if line < score :
+    #                 if str(line.split()) <score:
+    #                     file1.close()
+    #                     file1=open("easyHMScores.txt","w")
+    #                     file1.write(score)
+    #                     file1.close()
+    #             file1.close()
+    #         #if medium setting
+    #         if i==words2:
+    #             score=str((6-hangman_status)*2)
+    #             file2 = open("mediumHMScores.txt", "r")
+    #             for line in file2:
+    #                 if str(line.split()) <score:
+    #                     file2.close()
+    #                     file2=open("mediumHMScores.txt","w")
+    #                     file2.write(score)
+    #                     file2.close()
+    #             file2.close()
+    #         #if hard setting
+    #         if i==words3:
+    #             score=str((6-hangman_status)*3)
+    #             file3 = open("hardHMScores.txt", "r")
+    #             for line in file3:
+    #                 if str(line.split()) <score:
+    #                     file3.close()
+    #                     file3=open("hardHMScores.txt","w")
+    #                     file3.write(score)
+    #             file3.close()
+
+    word=random.choice(i)
+    clock.tick(FPS)
+    #checks what user pressed
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            m_x, m_y = pygame.mouse.get_pos()
+            for letter in letters:
+                x, y, ltr, visible = letter
+                if visible:
+                    dis = math.sqrt((x - m_x)**2 + (y - m_y)**2)
+                    if dis < RADIUS:
+                        letter[3] = False
+                        guessed.append(ltr)
+                        if ltr not in word:
+                            hangman_status += 1
+    draw(i)
+
+    won = True
+    for letter in word:
+        if letter not in guessed:
+            won = False
+            break
+
+    if won:
+        display_message("You WON!")
+        #break
+
+    if hangman_status == 6:
+        display_message("You LOST!")
+        #break
 
 def best_scores():
     screen.fill(BLUE)
@@ -231,22 +236,28 @@ def best_scores():
     score=file1.read()
     easy = SCORES_FONT.render("Easy:  "+score,1,GREEN)
     file1.close()
-    screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 300))
-    #mediu scores
+    screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 200))
+    #medium scores
     file2=open("mediumHMScores.txt","r")
     score2=file2.read()
     medium = SCORES_FONT.render("Medium:  "+score,1,YELLOW)
     file2.close()
-    screen.blit(medium,(WIDTH/2 - medium.get_width()/2, 400))
-
+    screen.blit(medium,(WIDTH/2 - medium.get_width()/2, 350))
+    #hard scores
+    file3=open("hardHMScores.txt","r")
+    score3=file3.read()
+    hard = SCORES_FONT.render("Hard:  "+score,1,RED)
+    file3.close()
+    screen.blit(hard,(WIDTH/2 - hard.get_width()/2, 500))
     pygame.display.update()
-best_scores()
+    pygame.time.delay(3000)
+
 #make menu with instructions and choice
 def menu():
 
     screen.fill(BLUE)
     text = TITLE_FONT.render("LET'S PLAY HANGMAN!", 1, BLACK)
-    screen.blit(text, (100, 20))#WIDTH/2 - text.get_width()
+    screen.blit(text, (100, 20))
 
     #instructions
     text = INFO_FONT.render("Once you choose your level, guess the letters you think will be in your word.", 1, BLACK)
@@ -267,6 +278,7 @@ def menu():
     pygame.draw.circle(screen, BLACK, (left, down+RADIUS*2+20), RADIUS, 3)
     pygame.draw.circle(screen, BLACK, (left, down+RADIUS*4+40), RADIUS, 3)
     pygame.draw.circle(screen, BLACK, (left, down+RADIUS*6+60), RADIUS, 3)
+    pygame.draw.circle(screen, BLACK, (left, down+RADIUS*8+80), RADIUS, 3)
 
     #choice 1
     one=MENU_FONT.render("1",1,GREEN)
@@ -287,48 +299,28 @@ def menu():
     screen.blit(choice3,(235,down+105))
 
     #choice 4
-    four=MENU_FONT.render("4",1,BLACK)
+    four=MENU_FONT.render("4",1,PURPLE)
     screen.blit(four,(left-8,down+RADIUS*6+45))
-    choice4=MENU_FONT.render("EXIT",1,BLACK)
+    choice4=MENU_FONT.render("Best Scores*",1,PURPLE)
     screen.blit(choice4,(235,down+165))
 
-    # for event in pygame.event.get():
-    #     if event.type == pygame.MOUSEBUTTONDOWN:
-    #         m_x, m_y = pygame.mouse.get_pos()
-    #         dis = math.sqrt((left - m_x)**2 + (down - m_y)**2)
-    #         if dis<RADIUS:
-    #         #if left>m_x>left+RADIUS and down>m_y>down+RADIUS:
-    #             main(words1)
-    #         else:
-    #             dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*2+20) - m_y)**2)
-    #             if dis<RADIUS:
-    #                 main(words2)
-    #             else:
-    #                 dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*4+40) - m_y)**2)
-    #                 if dis<RADIUS:
-    #                     main(words3)
-    #                 else:
-    #                     dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*6+60) - m_y)**2)
-    #                     if dis<RADIUS:
-    #                         run = False
+    #choice 5
+    five=MENU_FONT.render("5",1,BLACK)
+    screen.blit(five,(left-8,down+RADIUS*8+65))
+    choice5=MENU_FONT.render("EXIT",1,BLACK)
+    screen.blit(choice5,(235,down+225))
 
-    pygame.display.update()
+    #how to calculate scores
+    star=STAR_FONT.render("*Scores are calcualted by multiplying the turns (or body parts not shown) left when the word", 1, PURPLE)
+    star2=STAR_FONT.render("is guessed by the difficulty (1,2,3).*",1,PURPLE)
+    screen.blit(star,(20,700))
+    screen.blit(star2,(20,star.get_height()+705))
 
-
-FPS = 60
-clock = pygame.time.Clock()
-menu()
-run=True
-while run:
-    guessed = []
     for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            run=False
         if event.type == pygame.MOUSEBUTTONDOWN:
             m_x, m_y = pygame.mouse.get_pos()
             dis = math.sqrt((left - m_x)**2 + (down - m_y)**2)
             if dis<RADIUS:
-            #if left>m_x>left+RADIUS and down>m_y>down+RADIUS:
                 main(words1)
             else:
                 dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*2+20) - m_y)**2)
@@ -341,11 +333,44 @@ while run:
                     else:
                         dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*6+60) - m_y)**2)
                         if dis<RADIUS:
-                            run = False
-            # elif m_x==left and m_y==down+RADIUS*2+20:
-            #     main(words2)
-            # elif m_x==left and m_y==down+RADIUS*4+40:
-            #     main(words3)
-            # elif m_x==left and m_y==down+RADIUS*6+60:
-            #     run = False
-            menu()
+                            best_scores()
+                        else:
+                            dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*8+80) - m_y)**2)
+                            if dis<RADIUS:
+                                run=False
+
+
+    pygame.display.update()
+
+
+menu() #IF LIKE THIS, IT DOESNT STAY OPEN, IT WITH RUN, DOESNT CLOSE WHEN PLAYING GAME
+
+# run=True
+# while run:
+#     guessed = []
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             run=False
+#         if event.type == pygame.MOUSEBUTTONDOWN:
+#             m_x, m_y = pygame.mouse.get_pos()
+#             dis = math.sqrt((left - m_x)**2 + (down - m_y)**2)
+#             if dis<RADIUS:
+#                 main(words1)
+#             else:
+#                 dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*2+20) - m_y)**2)
+#                 if dis<RADIUS:
+#                     main(words2)
+#                 else:
+#                     dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*4+40) - m_y)**2)
+#                     if dis<RADIUS:
+#                         main(words3)
+#                     else:
+#                         dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*6+60) - m_y)**2)
+#                         if dis<RADIUS:
+#                             best_scores()
+#                         else:
+#                             dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*8+80) - m_y)**2)
+#                             if dis<RADIUS:
+#                                 run=False
+#
+#             menu()
