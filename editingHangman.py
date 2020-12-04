@@ -227,6 +227,40 @@ def main(i):
         display_message("You LOST!")
         #break
 
+    #if easy setting
+    if i==words1:
+        score=str(6-hangman_status)
+        file1 = open("easyHMScores.txt", "r")
+        for line in file1:
+            #if line < score :
+            if str(line.split()) <score:
+                file1.close()
+                file1=open("easyHMScores.txt","w")
+                file1.write(score)
+                file1.close()
+        file1.close()
+    #if medium setting
+    if i==words2:
+        score=str((6-hangman_status)*2)
+        file2 = open("mediumHMScores.txt", "r")
+        for line in file2:
+            if str(line.split()) <score:
+                file2.close()
+                file2=open("mediumHMScores.txt","w")
+                file2.write(score)
+                file2.close()
+        file2.close()
+    #if hard setting
+    if i==words3:
+        score=str((6-hangman_status)*3)
+        file3 = open("hardHMScores.txt", "r")
+        for line in file3:
+            if str(line.split()) <score:
+                file3.close()
+                file3=open("hardHMScores.txt","w")
+                file3.write(score)
+        file3.close()
+
 def best_scores():
     screen.fill(BLUE)
     text = TITLE_FONT.render("BEST SCORES FOR:", 1, BLACK)
