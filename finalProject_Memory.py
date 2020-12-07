@@ -83,13 +83,14 @@ def draw():
     global score, square
     #score=str(0)
     screen.fill(black)
-    for column in range(0,400,size+margin):
-        column=int(column)
-        for row in range(0,300,size+margin):
-            row=int(row)
-            square1=pygame.image.load("images\\backofCard.jpg")
-            square=pygame.transform.scale(square1,(size,size))
-            screen.blit(square,(column+20,row+239))
+    square1=pygame.transform.scale(pygame.image.load("images\\backofCard.jpg")(size,size))
+    # for column in range(0,400,size+margin):
+    #     column=int(column)
+    #     for row in range(0,300,size+margin):
+    #         row=int(row)
+    #         square1=pygame.image.load("images\\backofCard.jpg")
+    #         square=pygame.transform.scale(square1,(size,size))
+    #         screen.blit(square,(column+20,row+239))
             #square=pygame.draw.rect(screen,(white),(column+20,row+239,size,size))
     text=SCORE_FONT.render("Score: "+score,1,white)
     screen.blit(text,(550,380))
@@ -105,10 +106,7 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-                # Set the x, y postions of the mouse click
-                if pygame.mouse.get_pressed():
-                    pos=pygame.mouse.get_pos()
-                    print(pos)
+
                 # x, y = event.pos
                 # if square.get_rect().collidepoint(column+20,row+239):
                 #     screen.fill(white)
@@ -206,4 +204,4 @@ def menu():
 
 
         pygame.display.update()
-menu()
+main()
