@@ -10,7 +10,7 @@
 #function that draws screen with cards that knows when not to show cards
 #main function: tracks click, flips over to main side if no match, takes away cards it they do math, calculates turns/score, adds scores to file at the end, goes to menu when done
 #run game
-import pygame, time, random
+import pygame, time, random, math
 
 #setup
 WIDTH=800
@@ -22,13 +22,29 @@ pygame.display.set_caption("Memory Game!")
 #variables
 size=100
 margin=12
+RADIUS = 20
+a=90
+b=20
+left=200
+down=400
 
 #colors
 white=(255,255,255)
 black=(0,0,0)
+blue = (196, 224, 255)
+green = (74, 189, 41)
+yellow = (231, 195, 0)
+red = (196, 52, 41)
+purple = (158, 98, 170)
 
 #fonts
 SCORE_FONT = pygame.font.SysFont('comicsans', 60)
+INFO_FONT = pygame.font.SysFont('comicsansms', 21)
+STAR_FONT = pygame.font.SysFont('comicsansms', 18)
+MENU_FONT = pygame.font.SysFont('comicsans', 45)
+CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
+TITLE_FONT = pygame.font.SysFont('comicsans', 70)
+
 
 #image lists
 #easy
@@ -97,4 +113,97 @@ def main():
                 # if square.get_rect().collidepoint(column+20,row+239):
                 #     screen.fill(white)
         draw()
-main()
+
+#menu
+def menu():
+    runMenu=True
+    while runMenu:
+        screen.fill(blue)
+        text = TITLE_FONT.render("LET'S PLAY A MEMORY GAME!", 1, black)
+        screen.blit(text, (40, 20))
+
+        #instructions
+        text = INFO_FONT.render("Once you choose your level, that number of cards will appear face down. You", 1, black)
+        text2 = INFO_FONT.render("will click on two cards at a time, and those cards will flip over showing an image.", 1, black)
+        text3 = INFO_FONT.render("If the two images match, they will disappear. If they do not, they will flip back", 1, black)
+        text4 = INFO_FONT.render("over and you will choose two more. This cycle will continue until all the cards", 1, black)
+        text5 = INFO_FONT.render("are gone. Good luck!",1,black)
+        screen.blit(text, (b, a))
+        screen.blit(text2, (b, a+5+text.get_height()))
+        screen.blit(text3, (b, a+10+text.get_height()*2))
+        screen.blit(text4, (b, a+15+text.get_height()*3))
+        screen.blit(text5, (b, a+20+text.get_height()*4))
+
+        choice = CHOICE_FONT.render("CHOICES:",1,black)
+        screen.blit(choice,(b+50, a+70+text.get_height()*5))
+        #3 circles
+        pygame.draw.circle(screen, black, (left, down), RADIUS, 3)
+        pygame.draw.circle(screen, black, (left, down+RADIUS*2+20), RADIUS, 3)
+        pygame.draw.circle(screen, black, (left, down+RADIUS*4+40), RADIUS, 3)
+        pygame.draw.circle(screen, black, (left, down+RADIUS*6+60), RADIUS, 3)
+        pygame.draw.circle(screen, black, (left, down+RADIUS*8+80), RADIUS, 3)
+
+        #choice 1
+        one=MENU_FONT.render("1",1,green)
+        screen.blit(one,(left-8,down-12))
+        choice1=MENU_FONT.render("Easy (12)",1,green)
+        screen.blit(choice1,(235,down-15))
+
+        #choice2
+        two=MENU_FONT.render("2",1,yellow)
+        screen.blit(two,(left-8,down+RADIUS*2+6))
+        choice2=MENU_FONT.render("Meduim (20)",1,yellow)
+        screen.blit(choice2,(235,down+45))
+
+        #choice 3
+        three=MENU_FONT.render("3",1,red)
+        screen.blit(three,(left-8,down+RADIUS*4+25))
+        choice3=MENU_FONT.render("Hard (28)",1,red)
+        screen.blit(choice3,(235,down+105))
+
+        #choice 4
+        four=MENU_FONT.render("4",1,purple)
+        screen.blit(four,(left-8,down+RADIUS*6+45))
+        choice4=MENU_FONT.render("Best Scores*",1,purple)
+        screen.blit(choice4,(235,down+165))
+
+        #choice 5
+        five=MENU_FONT.render("5",1,black)
+        screen.blit(five,(left-8,down+RADIUS*8+65))
+        choice5=MENU_FONT.render("EXIT",1,black)
+        screen.blit(choice5,(235,down+225))
+
+        #how to calculate scores
+        star=STAR_FONT.render("*Your score is the number of turns it takes you to guess all the matches, so the lower the", 1, purple)
+        star2=STAR_FONT.render("score the better.*",1,purple)
+        screen.blit(star,(20,700))
+        screen.blit(star2,(20,star.get_height()+705))
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                runMenu=False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                m_x, m_y = pygame.mouse.get_pos()
+                dis = math.sqrt((left - m_x)**2 + (down - m_y)**2)
+                if dis<RADIUS:
+                    runMenu=False
+                else:
+                    dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*2+20) - m_y)**2)
+                    if dis<RADIUS:
+                        runMenu=False
+                    else:
+                        dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*4+40) - m_y)**2)
+                        if dis<RADIUS:
+                            runMenu=False
+                        else:
+                            dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*6+60) - m_y)**2)
+                            if dis<RADIUS:
+                                runMenu=False
+                            else:
+                                dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*8+80) - m_y)**2)
+                                if dis<RADIUS:
+                                    runMenu=False
+
+
+        pygame.display.update()
+menu()
