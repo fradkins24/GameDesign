@@ -27,8 +27,8 @@ infoy=90
 infox=20
 left=200
 down=400
-x=20
-y=20
+x=12
+y=12
 
 #colors
 white=(255,255,255)
@@ -82,55 +82,74 @@ for number in range(28):
 
 #draw screen/grid
 def draw():
-    global score, square
+    global score, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
     screen.fill(black)
-    square1=pygame.image.load("images\\backofCard.jpg")
-    square1=pygame.transform.scale(square1,(size,size))
-    screen.blit(square1,(x,y))
+    #for hard
+    # square1=pygame.image.load("images\\backofCard.jpg")
+    # square1=pygame.transform.scale(square1,(size,size))
+    # screen.blit(square1,(x,y))
+    # square2=pygame.image.load("images\\backofCard.jpg")
+    # square2=pygame.transform.scale(square2,(size,size))
+    # screen.blit(square2,(x+margin,y))
+    # square3=pygame.image.load("images\\backofCard.jpg")
+    # square3=pygame.transform.scale(square3,(size,size))
+    # screen.blit(square3,(x+margin*2,y))
+    # square4=pygame.image.load("images\\backofCard.jpg")
+    # square4=pygame.transform.scale(square4,(size,size))
+    # screen.blit(square4,(x+margin*3,y))
+    #
+    # square5=pygame.image.load("images\\backofCard.jpg")
+    # square5=pygame.transform.scale(square5,(size,size))
+    # screen.blit(square5,(x,y+margin))
+    # square6=pygame.image.load("images\\backofCard.jpg")
+    # square6=pygame.transform.scale(square6,(size,size))
+    # screen.blit(square6,(x+margin,y+margin))
+    # square7=pygame.image.load("images\\backofCard.jpg")
+    # square7=pygame.transform.scale(square7,(size,size))
+    # screen.blit(square7,(x+margin*2,y+margin))
+    # square8=pygame.image.load("images\\backofCard.jpg")
+    # square8=pygame.transform.scale(square8,(size,size))
+    # screen.blit(square8,(x+margin*3,y+margin))
 
-    square2=pygame.image.load("images\\backofCard.jpg")
-    square2=pygame.transform.scale(square2,(size,size))
-    screen.blit(square2,(x+margin,y))
+    square9=pygame.image.load("images\\backofCard.jpg")
+    square9=pygame.transform.scale(square9,(size,size))
+    screen.blit(square9,(x,y+margin*2))
+    square10=pygame.image.load("images\\backofCard.jpg")
+    square10=pygame.transform.scale(square10,(size,size))
+    screen.blit(square10,(x+margin,y+margin*2))
+    square11=pygame.image.load("images\\backofCard.jpg")
+    square11=pygame.transform.scale(square11,(size,size))
+    screen.blit(square11,(x+margin*2,y+margin*2))
+    square12=pygame.image.load("images\\backofCard.jpg")
+    square12=pygame.transform.scale(square12,(size,size))
+    screen.blit(square12,(x+margin*3,y+margin*2))
 
-    square3=pygame.image.load("images\\backofCard.jpg")
-    square3=pygame.transform.scale(square3,(size,size))
-    screen.blit(square3,(x+margin*2,y))
+    square13=pygame.image.load("images\\backofCard.jpg")
+    square13=pygame.transform.scale(square13,(size,size))
+    screen.blit(square13,(x,y+margin*3))
+    square14=pygame.image.load("images\\backofCard.jpg")
+    square14=pygame.transform.scale(square14,(size,size))
+    screen.blit(square14,(x+margin,y+margin*3))
+    square15=pygame.image.load("images\\backofCard.jpg")
+    square15=pygame.transform.scale(square15,(size,size))
+    screen.blit(square15,(x+margin*2,y+margin*3))
+    square16=pygame.image.load("images\\backofCard.jpg")
+    square16=pygame.transform.scale(square16,(size,size))
+    screen.blit(square16,(x+margin*3,y+margin*3))
 
-    square4=pygame.image.load("images\\backofCard.jpg")
-    square4=pygame.transform.scale(square4,(size,size))
-    screen.blit(square1,(x,y+margin*3))
+    square17=pygame.image.load("images\\backofCard.jpg")
+    square17=pygame.transform.scale(square17,(size,size))
+    screen.blit(square17,(x,y+margin*4))
+    square18=pygame.image.load("images\\backofCard.jpg")
+    square18=pygame.transform.scale(square18,(size,size))
+    screen.blit(square18,(x+margin,y+margin*4))
+    square19=pygame.image.load("images\\backofCard.jpg")
+    square19=pygame.transform.scale(square19,(size,size))
+    screen.blit(square19,(x+margin*2,y+margin*4))
+    square20=pygame.image.load("images\\backofCard.jpg")
+    square20=pygame.transform.scale(square20,(size,size))
+    screen.blit(square20,(x+margin*3,y+margin*4))
 
-    square5=pygame.image.load("images\\backofCard.jpg")
-    square5=pygame.transform.scale(square5,(size,size))
-    screen.blit(square5,(x+margin,y))
-
-    square1=pygame.image.load("images\\backofCard.jpg")
-    square1=pygame.transform.scale(square1,(size,size))
-    screen.blit(square1,(x,y))
-
-    square1=pygame.image.load("images\\backofCard.jpg")
-    square1=pygame.transform.scale(square1,(size,size))
-    screen.blit(square1,(x,y))
-
-    square1=pygame.image.load("images\\backofCard.jpg")
-    square1=pygame.transform.scale(square1,(size,size))
-    screen.blit(square1,(x,y))
-
-    square1=pygame.image.load("images\\backofCard.jpg")
-    square1=pygame.transform.scale(square1,(size,size))
-    screen.blit(square1,(x,y))
-
-    square1=pygame.image.load("images\\backofCard.jpg")
-    square1=pygame.transform.scale(square1,(size,size))
-    screen.blit(square1,(x,y))
-
-    square1=pygame.image.load("images\\backofCard.jpg")
-    square1=pygame.transform.scale(square1,(size,size))
-    screen.blit(square1,(x,y))
-
-    square1=pygame.image.load("images\\backofCard.jpg")
-    square1=pygame.transform.scale(square1,(size,size))
-    screen.blit(square1,(x,y))
     # for column in range(0,400,size+margin):
     #     column=int(column)
     #     for row in range(0,300,size+margin):
@@ -145,18 +164,19 @@ def draw():
 
 #main code
 def main():
-    global score, square
+    global score, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
     score=str(0)
     run=True
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-            #if event.type == pygame.MOUSEBUTTONDOWN:
-
-                # x, y = event.pos
-                # if square.get_rect().collidepoint(column+20,row+239):
-                #     screen.fill(white)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if pygame.mouse.get_pressed():
+                    pos=pygame.mouse.get_pos()
+                    pos=pos[0]//(size+x),pos[1]//(size+y)
+                    if pos[0]==0 and pos[1]==2:
+                        print("yes!")
         draw()
 
 #menu
