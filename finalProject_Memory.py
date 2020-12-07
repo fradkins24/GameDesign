@@ -21,12 +21,14 @@ pygame.display.set_caption("Memory Game!")
 
 #variables
 size=100
-margin=12
+margin=size+12
 RADIUS = 20
-a=90
-b=20
+infoy=90
+infox=20
 left=200
 down=400
+x=20
+y=20
 
 #colors
 white=(255,255,255)
@@ -81,9 +83,54 @@ for number in range(28):
 #draw screen/grid
 def draw():
     global score, square
-    #score=str(0)
     screen.fill(black)
-    square1=pygame.transform.scale(pygame.image.load("images\\backofCard.jpg")(size,size))
+    square1=pygame.image.load("images\\backofCard.jpg")
+    square1=pygame.transform.scale(square1,(size,size))
+    screen.blit(square1,(x,y))
+
+    square2=pygame.image.load("images\\backofCard.jpg")
+    square2=pygame.transform.scale(square2,(size,size))
+    screen.blit(square2,(x+margin,y))
+
+    square3=pygame.image.load("images\\backofCard.jpg")
+    square3=pygame.transform.scale(square3,(size,size))
+    screen.blit(square3,(x+margin*2,y))
+
+    square4=pygame.image.load("images\\backofCard.jpg")
+    square4=pygame.transform.scale(square4,(size,size))
+    screen.blit(square1,(x,y+margin*3))
+
+    square5=pygame.image.load("images\\backofCard.jpg")
+    square5=pygame.transform.scale(square5,(size,size))
+    screen.blit(square5,(x+margin,y))
+
+    square1=pygame.image.load("images\\backofCard.jpg")
+    square1=pygame.transform.scale(square1,(size,size))
+    screen.blit(square1,(x,y))
+
+    square1=pygame.image.load("images\\backofCard.jpg")
+    square1=pygame.transform.scale(square1,(size,size))
+    screen.blit(square1,(x,y))
+
+    square1=pygame.image.load("images\\backofCard.jpg")
+    square1=pygame.transform.scale(square1,(size,size))
+    screen.blit(square1,(x,y))
+
+    square1=pygame.image.load("images\\backofCard.jpg")
+    square1=pygame.transform.scale(square1,(size,size))
+    screen.blit(square1,(x,y))
+
+    square1=pygame.image.load("images\\backofCard.jpg")
+    square1=pygame.transform.scale(square1,(size,size))
+    screen.blit(square1,(x,y))
+
+    square1=pygame.image.load("images\\backofCard.jpg")
+    square1=pygame.transform.scale(square1,(size,size))
+    screen.blit(square1,(x,y))
+
+    square1=pygame.image.load("images\\backofCard.jpg")
+    square1=pygame.transform.scale(square1,(size,size))
+    screen.blit(square1,(x,y))
     # for column in range(0,400,size+margin):
     #     column=int(column)
     #     for row in range(0,300,size+margin):
@@ -105,7 +152,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            #if event.type == pygame.MOUSEBUTTONDOWN:
 
                 # x, y = event.pos
                 # if square.get_rect().collidepoint(column+20,row+239):
@@ -126,14 +173,14 @@ def menu():
         text3 = INFO_FONT.render("If the two images match, they will disappear. If they do not, they will flip back", 1, black)
         text4 = INFO_FONT.render("over and you will choose two more. This cycle will continue until all the cards", 1, black)
         text5 = INFO_FONT.render("are gone. Good luck!",1,black)
-        screen.blit(text, (b, a))
-        screen.blit(text2, (b, a+5+text.get_height()))
-        screen.blit(text3, (b, a+10+text.get_height()*2))
-        screen.blit(text4, (b, a+15+text.get_height()*3))
-        screen.blit(text5, (b, a+20+text.get_height()*4))
+        screen.blit(text, (infox, infoy))
+        screen.blit(text2, (infox, infoy+5+text.get_height()))
+        screen.blit(text3, (infox, infoy+10+text.get_height()*2))
+        screen.blit(text4, (infox, infoy+15+text.get_height()*3))
+        screen.blit(text5, (infox, infoy+20+text.get_height()*4))
 
         choice = CHOICE_FONT.render("CHOICES:",1,black)
-        screen.blit(choice,(b+50, a+70+text.get_height()*5))
+        screen.blit(choice,(infox+50, infoy+70+text.get_height()*5))
         #3 circles
         pygame.draw.circle(screen, black, (left, down), RADIUS, 3)
         pygame.draw.circle(screen, black, (left, down+RADIUS*2+20), RADIUS, 3)
