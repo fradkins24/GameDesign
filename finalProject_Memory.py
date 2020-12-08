@@ -165,8 +165,8 @@ def draw():
     # screen.blit(square7,(x+margin*2,y+margin))
     # screen.blit(square8,(x+margin*3,y+margin))
 
-    while up9:
-        screen.blit(square9,(x,y+margin*2))
+    #while up9:
+    screen.blit(square9,(x,y+margin*2))
     screen.blit(square10,(x+margin,y+margin*2))
     screen.blit(square11,(x+margin*2,y+margin*2))
     screen.blit(square12,(x+margin*3,y+margin*2))
@@ -210,63 +210,63 @@ def main(dict):
                         pic0=pygame.transform.scale(dict["b0"],(size,size))
                         screen.blit(pic0,(x,y+margin*2))
                         #up9=False
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
+                        pygame.display.update()
+                        pygame.time.delay(1000)
                     if pos[0]==1 and pos[1]==2:
                         pic1=pygame.transform.scale(dict["b1"],(size,size))
-                        screen.blit(pic1,(x+margin,y+margin*3))
+                        screen.blit(pic1,(x+margin,y+margin*2))
                         pygame.display.update()
                         pygame.time.delay(1000)
                     if pos[0]==2 and pos[1]==2:
                         pic2=pygame.transform.scale(dict["b2"],(size,size))
-                        screen.blit(pic2,(x+margin*2,y+margin*3))
+                        screen.blit(pic2,(x+margin*2,y+margin*2))
                         pygame.display.update()
                         pygame.time.delay(1000)
                     if pos[0]==3 and pos[1]==2:
                         pic3=pygame.transform.scale(dict["b3"],(size,size))
-                        screen.blit(pic3,(x+margin*3,y+margin*3))
+                        screen.blit(pic3,(x+margin*3,y+margin*2))
                         pygame.display.update()
                         pygame.time.delay(1000)
 
                     if pos[0]==0 and pos[1]==3:
                         pic4=pygame.transform.scale(dict["b4"],(size,size))
-                        screen.blit(pic4,(x,y+margin*4))
+                        screen.blit(pic4,(x,y+margin*3))
                         pygame.display.update()
                         pygame.time.delay(1000)
                     if pos[0]==1 and pos[1]==3:
                         pic5=pygame.transform.scale(dict["b5"],(size,size))
-                        screen.blit(pic5,(x+margin,y+margin*4))
+                        screen.blit(pic5,(x+margin,y+margin*3))
                         pygame.display.update()
                         pygame.time.delay(1000)
                     if pos[0]==2 and pos[1]==3:
                         pic6=pygame.transform.scale(dict["b6"],(size,size))
-                        screen.blit(pic6,(x+margin*2,y+margin*4))
+                        screen.blit(pic6,(x+margin*2,y+margin*3))
                         pygame.display.update()
                         pygame.time.delay(1000)
                     if pos[0]==3 and pos[1]==3:
                         pic7=pygame.transform.scale(dict["b7"],(size,size))
-                        screen.blit(pic7,(x+margin*3,y+margin*4))
+                        screen.blit(pic7,(x+margin*3,y+margin*3))
                         pygame.display.update()
                         pygame.time.delay(1000)
 
                     if pos[0]==0 and pos[1]==4:
                         pic8=pygame.transform.scale(dict["b8"],(size,size))
-                        screen.blit(pic8,(x,y+margin*5))
+                        screen.blit(pic8,(x,y+margin*4))
                         pygame.display.update()
                         pygame.time.delay(1000)
                     if pos[0]==1 and pos[1]==4:
                         pic9=pygame.transform.scale(dict["b9"],(size,size))
-                        screen.blit(pic9,(x+margin,y+margin*5))
+                        screen.blit(pic9,(x+margin,y+margin*4))
                         pygame.display.update()
                         pygame.time.delay(1000)
                     if pos[0]==2 and pos[1]==4:
                         pic10=pygame.transform.scale(dict["b10"],(size,size))
-                        screen.blit(pic10,(x+margin*2,y+margin*5))
+                        screen.blit(pic10,(x+margin*2,y+margin*4))
                         pygame.display.update()
                         pygame.time.delay(1000)
                     if pos[0]==3 and pos[1]==4:
                         pic11=pygame.transform.scale(dict["b11"],(size,size))
-                        screen.blit(pic11,(x+margin*3,y+margin*5))
+                        screen.blit(pic11,(x+margin*3,y+margin*4))
                         pygame.display.update()
                         pygame.time.delay(1000)
         draw()
