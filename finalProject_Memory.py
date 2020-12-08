@@ -115,10 +115,15 @@ MENU_FONT = pygame.font.SysFont('comicsans', 45)
 CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
 TITLE_FONT = pygame.font.SysFont('comicsans', 70)
 
-
+#defining images
+panda=pygame.image.load("images\\panda.jpg")
+bat=pygame.image.load("images\\bat.jpg")
+elephant=pygame.image.load("images\\elephant.jpg")
+giraffe=pygame.image.load("images\\giraffe.jpg")
+hippo=pygame.image.load("images\\hippo.jpg")
 #image lists
 #easy
-matches1=[pygame.image.load("images\\panda.jpg"),pygame.image.load("images\\panda.jpg"),pygame.image.load("images\\bat.jpg"),pygame.image.load("images\\bat.jpg"),pygame.image.load("images\\elephant.jpg"),pygame.image.load("images\\elephant.jpg"),pygame.image.load("images\\giraffe.jpg"),pygame.image.load("images\\giraffe.jpg"),pygame.image.load("images\\hippo.jpg"),pygame.image.load("images\\hippo.jpg"),pygame.image.load("images\\lion.jpg"),pygame.image.load("images\\lion.jpg")]
+matches1=[panda,panda,bat,bat,elephant,elephant,giraffe,giraffe,hippo,hippo,pygame.image.load("images\\lion.jpg"),pygame.image.load("images\\lion.jpg")]
 random.shuffle(matches1)
 define1={}
 for number in range(12):
@@ -187,15 +192,47 @@ def draw(dict):
         pic3=pygame.transform.scale(dict["b3"],(size,size))
         screen.blit(pic3,(x+margin*3,y+margin*2))
 
-    screen.blit(square13,(x,y+margin*3))
-    screen.blit(square14,(x+margin,y+margin*3))
-    screen.blit(square15,(x+margin*2,y+margin*3))
-    screen.blit(square16,(x+margin*3,y+margin*3))
+    if up13==True:
+        screen.blit(square13,(x,y+margin*3))
+    else:
+        pic4=pygame.transform.scale(dict["b4"],(size,size))
+        screen.blit(pic4,(x,y+margin*3))
+    if up14==True:
+        screen.blit(square14,(x+margin,y+margin*3))
+    else:
+        pic5=pygame.transform.scale(dict["b5"],(size,size))
+        screen.blit(pic5,(x+margin,y+margin*3))
+    if up15==True:
+        screen.blit(square15,(x+margin*2,y+margin*3))
+    else:
+        pic6=pygame.transform.scale(dict["b6"],(size,size))
+        screen.blit(pic6,(x+margin*2,y+margin*3))
+    if up16==True:
+        screen.blit(square16,(x+margin*3,y+margin*3))
+    else:
+        pic7=pygame.transform.scale(dict["b7"],(size,size))
+        screen.blit(pic7,(x+margin*3,y+margin*3))
 
-    screen.blit(square17,(x,y+margin*4))
-    screen.blit(square18,(x+margin,y+margin*4))
-    screen.blit(square19,(x+margin*2,y+margin*4))
-    screen.blit(square20,(x+margin*3,y+margin*4))
+    if up17==True:
+        screen.blit(square17,(x,y+margin*4))
+    else:
+        pic8=pygame.transform.scale(dict["b8"],(size,size))
+        screen.blit(pic8,(x,y+margin*4))
+    if up18==True:
+        screen.blit(square18,(x+margin,y+margin*4))
+    else:
+        pic9=pygame.transform.scale(dict["b9"],(size,size))
+        screen.blit(pic9,(x+margin,y+margin*4))
+    if up19==True:
+        screen.blit(square19,(x+margin*2,y+margin*4))
+    else:
+        pic10=pygame.transform.scale(dict["b10"],(size,size))
+        screen.blit(pic10,(x+margin*2,y+margin*4))
+    if up20==True:
+        screen.blit(square20,(x+margin*3,y+margin*4))
+    else:
+        pic11=pygame.transform.scale(dict["b11"],(size,size))
+        screen.blit(pic11,(x+margin*3,y+margin*4))
 
     # for column in range(0,400,size+margin):
     #     column=int(column)
@@ -213,6 +250,7 @@ def draw(dict):
 def main(dict):
     global score, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
     global up1, up2, up3, up4, up5, up6, up7, up8, up9, up10, up11, up12, up13, up14, up15, up16, up17, up18, up19, up20, up21, up22, up23, up24, up25, up26, up27, up28
+    clicked=[]
     up1=True
     up2=True
     up3=True
@@ -257,9 +295,9 @@ def main(dict):
                     if pos[0]==0 and pos[1]==2:
                         # pic0=pygame.transform.scale(dict["b0"],(size,size))
                         # screen.blit(pic0,(x,y+margin*2))
-                        #up9=False
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b0"])
                         count+=1
                         up9=False
                     if pos[0]==1 and pos[1]==2:
@@ -267,6 +305,7 @@ def main(dict):
                         # screen.blit(pic1,(x+margin,y+margin*2))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b1"])
                         count+=1
                         up10=False
                     if pos[0]==2 and pos[1]==2:
@@ -274,6 +313,7 @@ def main(dict):
                         # screen.blit(pic2,(x+margin*2,y+margin*2))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b2"])
                         count+=1
                         up11=False
                     if pos[0]==3 and pos[1]==2:
@@ -281,58 +321,87 @@ def main(dict):
                         # screen.blit(pic3,(x+margin*3,y+margin*2))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b3"])
                         count+=1
                         up12=False
 
                     if pos[0]==0 and pos[1]==3:
-                        pic4=pygame.transform.scale(dict["b4"],(size,size))
-                        screen.blit(pic4,(x,y+margin*3))
+                        # pic4=pygame.transform.scale(dict["b4"],(size,size))
+                        # screen.blit(pic4,(x,y+margin*3))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b4"])
                         count+=1
+                        up13=False
                     if pos[0]==1 and pos[1]==3:
-                        pic5=pygame.transform.scale(dict["b5"],(size,size))
-                        screen.blit(pic5,(x+margin,y+margin*3))
+                        # pic5=pygame.transform.scale(dict["b5"],(size,size))
+                        # screen.blit(pic5,(x+margin,y+margin*3))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b5"])
                         count+=1
+                        up14=False
                     if pos[0]==2 and pos[1]==3:
-                        pic6=pygame.transform.scale(dict["b6"],(size,size))
-                        screen.blit(pic6,(x+margin*2,y+margin*3))
+                        # pic6=pygame.transform.scale(dict["b6"],(size,size))
+                        # screen.blit(pic6,(x+margin*2,y+margin*3))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b6"])
                         count+=1
+                        up15=False
                     if pos[0]==3 and pos[1]==3:
-                        pic7=pygame.transform.scale(dict["b7"],(size,size))
-                        screen.blit(pic7,(x+margin*3,y+margin*3))
+                        # pic7=pygame.transform.scale(dict["b7"],(size,size))
+                        # screen.blit(pic7,(x+margin*3,y+margin*3))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b7"])
                         count+=1
+                        up16=False
 
                     if pos[0]==0 and pos[1]==4:
-                        pic8=pygame.transform.scale(dict["b8"],(size,size))
-                        screen.blit(pic8,(x,y+margin*4))
+                        # pic8=pygame.transform.scale(dict["b8"],(size,size))
+                        # screen.blit(pic8,(x,y+margin*4))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b8"])
                         count+=1
+                        up17=False
                     if pos[0]==1 and pos[1]==4:
-                        pic9=pygame.transform.scale(dict["b9"],(size,size))
-                        screen.blit(pic9,(x+margin,y+margin*4))
+                        # pic9=pygame.transform.scale(dict["b9"],(size,size))
+                        # screen.blit(pic9,(x+margin,y+margin*4))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b9"])
                         count+=1
+                        up18=False
                     if pos[0]==2 and pos[1]==4:
-                        pic10=pygame.transform.scale(dict["b10"],(size,size))
-                        screen.blit(pic10,(x+margin*2,y+margin*4))
+                        # pic10=pygame.transform.scale(dict["b10"],(size,size))
+                        # screen.blit(pic10,(x+margin*2,y+margin*4))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b10"])
                         count+=1
+                        up19=False
                     if pos[0]==3 and pos[1]==4:
-                        pic11=pygame.transform.scale(dict["b11"],(size,size))
-                        screen.blit(pic11,(x+margin*3,y+margin*4))
+                        # pic11=pygame.transform.scale(dict["b11"],(size,size))
+                        # screen.blit(pic11,(x+margin*3,y+margin*4))
                         # pygame.display.update()
                         # pygame.time.delay(1000)
+                        clicked.append(dict["b11"])
                         count+=1
+                        up20=False
+                    if count==2:
+                        if clicked[0]==clicked[1]:
+                            print("yes")
+                            clicked=[]
+                            count=0
+                        else:
+                            print("no")
+                            clicked=[]
+                            count=0
+                            up9==True
+                            up10==True
+
                     pygame.display.update()
         draw(dict)
                     # pygame.display.update()
