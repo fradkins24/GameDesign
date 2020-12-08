@@ -198,79 +198,93 @@ def main(dict):
     global score, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
     score=str(0)
     run=True
+    draw()
+    count=0
     while run:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if pygame.mouse.get_pressed():
+                if pygame.mouse.get_pressed() and count<2:
                     pos=pygame.mouse.get_pos()
                     pos=pos[0]//(size+x),pos[1]//(size+y)
                     if pos[0]==0 and pos[1]==2:
                         pic0=pygame.transform.scale(dict["b0"],(size,size))
                         screen.blit(pic0,(x,y+margin*2))
                         #up9=False
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
                     if pos[0]==1 and pos[1]==2:
                         pic1=pygame.transform.scale(dict["b1"],(size,size))
                         screen.blit(pic1,(x+margin,y+margin*2))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
                     if pos[0]==2 and pos[1]==2:
                         pic2=pygame.transform.scale(dict["b2"],(size,size))
                         screen.blit(pic2,(x+margin*2,y+margin*2))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
                     if pos[0]==3 and pos[1]==2:
                         pic3=pygame.transform.scale(dict["b3"],(size,size))
                         screen.blit(pic3,(x+margin*3,y+margin*2))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
 
                     if pos[0]==0 and pos[1]==3:
                         pic4=pygame.transform.scale(dict["b4"],(size,size))
                         screen.blit(pic4,(x,y+margin*3))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
                     if pos[0]==1 and pos[1]==3:
                         pic5=pygame.transform.scale(dict["b5"],(size,size))
                         screen.blit(pic5,(x+margin,y+margin*3))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
                     if pos[0]==2 and pos[1]==3:
                         pic6=pygame.transform.scale(dict["b6"],(size,size))
                         screen.blit(pic6,(x+margin*2,y+margin*3))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
                     if pos[0]==3 and pos[1]==3:
                         pic7=pygame.transform.scale(dict["b7"],(size,size))
                         screen.blit(pic7,(x+margin*3,y+margin*3))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
 
                     if pos[0]==0 and pos[1]==4:
                         pic8=pygame.transform.scale(dict["b8"],(size,size))
                         screen.blit(pic8,(x,y+margin*4))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
                     if pos[0]==1 and pos[1]==4:
                         pic9=pygame.transform.scale(dict["b9"],(size,size))
                         screen.blit(pic9,(x+margin,y+margin*4))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
                     if pos[0]==2 and pos[1]==4:
                         pic10=pygame.transform.scale(dict["b10"],(size,size))
                         screen.blit(pic10,(x+margin*2,y+margin*4))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
                     if pos[0]==3 and pos[1]==4:
                         pic11=pygame.transform.scale(dict["b11"],(size,size))
                         screen.blit(pic11,(x+margin*3,y+margin*4))
-                        pygame.display.update()
-                        pygame.time.delay(1000)
-        draw()
-    pygame.display.update()
+                        # pygame.display.update()
+                        # pygame.time.delay(1000)
+                        count+=1
+        # draw()
+                    pygame.display.update()
 #menu
 def menu():
     runMenu=True
