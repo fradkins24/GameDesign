@@ -165,8 +165,7 @@ for number in range(28):
 
 #draw screen/grid
 def draw(dict):
-    global score, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
-    global up1, up2, up3, up4, up5, up6, up7, up8, up9, up10, up11, up12, up13, up14, up15, up16, up17, up18, up19, up20, up21, up22, up23, up24, up25, up26, up27, up28
+    global score, card_statis, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
     screen.fill(black)
     # up9=True
     #for hard
@@ -181,64 +180,64 @@ def draw(dict):
     # screen.blit(square7,(x+margin*2,y+margin))
     # screen.blit(square8,(x+margin*3,y+margin))
 
-    if up9==True:
+    if card_statis[2][0]==0:
         screen.blit(square9,(x,y+margin*2))
     else:
         pic0=pygame.transform.scale(dict["b0"],(size,size))
         screen.blit(pic0,(x,y+margin*2))
-    if up10==True:
+    if card_statis[2][1]==0:
         screen.blit(square10,(x+margin,y+margin*2))
     else:
         pic1=pygame.transform.scale(dict["b1"],(size,size))
         screen.blit(pic1,(x+margin,y+margin*2))
-    if up11==True:
+    if card_statis[2][2]==0:
         screen.blit(square11,(x+margin*2,y+margin*2))
     else:
         pic2=pygame.transform.scale(dict["b2"],(size,size))
         screen.blit(pic2,(x+margin*2,y+margin*2))
-    if up12==True:
+    if card_statis[2][3]==0:
         screen.blit(square12,(x+margin*3,y+margin*2))
     else:
         pic3=pygame.transform.scale(dict["b3"],(size,size))
         screen.blit(pic3,(x+margin*3,y+margin*2))
 
-    if up13==True:
+    if card_statis[3][0]==0:
         screen.blit(square13,(x,y+margin*3))
     else:
         pic4=pygame.transform.scale(dict["b4"],(size,size))
         screen.blit(pic4,(x,y+margin*3))
-    if up14==True:
+    if card_statis[3][1]==0:
         screen.blit(square14,(x+margin,y+margin*3))
     else:
         pic5=pygame.transform.scale(dict["b5"],(size,size))
         screen.blit(pic5,(x+margin,y+margin*3))
-    if up15==True:
+    if card_statis[3][2]==0:
         screen.blit(square15,(x+margin*2,y+margin*3))
     else:
         pic6=pygame.transform.scale(dict["b6"],(size,size))
         screen.blit(pic6,(x+margin*2,y+margin*3))
-    if up16==True:
+    if card_statis[3][3]==0:
         screen.blit(square16,(x+margin*3,y+margin*3))
     else:
         pic7=pygame.transform.scale(dict["b7"],(size,size))
         screen.blit(pic7,(x+margin*3,y+margin*3))
 
-    if up17==True:
+    if card_statis[4][0]==0:
         screen.blit(square17,(x,y+margin*4))
     else:
         pic8=pygame.transform.scale(dict["b8"],(size,size))
         screen.blit(pic8,(x,y+margin*4))
-    if up18==True:
+    if card_statis[4][1]==0:
         screen.blit(square18,(x+margin,y+margin*4))
     else:
         pic9=pygame.transform.scale(dict["b9"],(size,size))
         screen.blit(pic9,(x+margin,y+margin*4))
-    if up19==True:
+    if card_statis[4][2]==0:
         screen.blit(square19,(x+margin*2,y+margin*4))
     else:
         pic10=pygame.transform.scale(dict["b10"],(size,size))
         screen.blit(pic10,(x+margin*2,y+margin*4))
-    if up20==True:
+    if card_statis[4][3]==0:
         screen.blit(square20,(x+margin*3,y+margin*4))
     else:
         pic11=pygame.transform.scale(dict["b11"],(size,size))
@@ -258,40 +257,16 @@ def draw(dict):
 
 #main code
 def main(dict):
-    global score, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
-    global up1, up2, up3, up4, up5, up6, up7, up8, up9, up10, up11, up12, up13, up14, up15, up16, up17, up18, up19, up20, up21, up22, up23, up24, up25, up26, up27, up28
+    global score, card_statis, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
     clicked=[]
-    up=[]
-    for i in range(1,29):
-        up[i]=True
-    # up1=True
-    # up2=True
-    # up3=True
-    # up4=True
-    # up5=True
-    # up6=True
-    # up7=True
-    # up8=True
-    # up9=True
-    # up10=True
-    # up11=True
-    # up12=True
-    # up13=True
-    # up14=True
-    # up15=True
-    # up16=True
-    # up17=True
-    # up18=True
-    # up19=True
-    # up20=True
-    # up21=True
-    # up22=True
-    # up23=True
-    # up24=True
-    # up25=True
-    # up26=True
-    # up27=True
-    # up28=True
+    tracking=[]
+    card_statis=[[0,0,0,0],
+                [0,0,0,0],
+                [0,0,0,0],
+                [0,0,0,0],
+                [0,0,0,0],
+                [0,0,0,0],
+                [0,0,0,0]]
 
     score=str(0)
     run=True
@@ -312,7 +287,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b0"])
                         count+=1
-                        up9=False
+                        card_statis[2][0]=1
+                        tracking.append(2)
+                        tracking.append(0)
                     if pos[0]==1 and pos[1]==2:
                         # pic1=pygame.transform.scale(dict["b1"],(size,size))
                         # screen.blit(pic1,(x+margin,y+margin*2))
@@ -320,7 +297,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b1"])
                         count+=1
-                        up10=False
+                        card_statis[2][1]=1
+                        tracking.append(2)
+                        tracking.append(1)
                     if pos[0]==2 and pos[1]==2:
                         # pic2=pygame.transform.scale(dict["b2"],(size,size))
                         # screen.blit(pic2,(x+margin*2,y+margin*2))
@@ -328,7 +307,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b2"])
                         count+=1
-                        up11=False
+                        card_statis[2][2]=1
+                        tracking.append(2)
+                        tracking.append(2)
                     if pos[0]==3 and pos[1]==2:
                         # pic3=pygame.transform.scale(dict["b3"],(size,size))
                         # screen.blit(pic3,(x+margin*3,y+margin*2))
@@ -336,7 +317,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b3"])
                         count+=1
-                        up12=False
+                        card_statis[2][3]=1
+                        tracking.append(2)
+                        tracking.append(3)
 
                     if pos[0]==0 and pos[1]==3:
                         # pic4=pygame.transform.scale(dict["b4"],(size,size))
@@ -345,7 +328,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b4"])
                         count+=1
-                        up13=False
+                        card_statis[3][0]=1
+                        tracking.append(3)
+                        tracking.append(0)
                     if pos[0]==1 and pos[1]==3:
                         # pic5=pygame.transform.scale(dict["b5"],(size,size))
                         # screen.blit(pic5,(x+margin,y+margin*3))
@@ -353,7 +338,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b5"])
                         count+=1
-                        up14=False
+                        card_statis[3][1]=1
+                        tracking.append(3)
+                        tracking.append(1)
                     if pos[0]==2 and pos[1]==3:
                         # pic6=pygame.transform.scale(dict["b6"],(size,size))
                         # screen.blit(pic6,(x+margin*2,y+margin*3))
@@ -361,7 +348,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b6"])
                         count+=1
-                        up15=False
+                        card_statis[3][2]=1
+                        tracking.append(3)
+                        tracking.append(2)
                     if pos[0]==3 and pos[1]==3:
                         # pic7=pygame.transform.scale(dict["b7"],(size,size))
                         # screen.blit(pic7,(x+margin*3,y+margin*3))
@@ -369,7 +358,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b7"])
                         count+=1
-                        up16=False
+                        card_statis[3][3]=1
+                        tracking.append(3)
+                        tracking.append(3)
 
                     if pos[0]==0 and pos[1]==4:
                         # pic8=pygame.transform.scale(dict["b8"],(size,size))
@@ -378,7 +369,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b8"])
                         count+=1
-                        up17=False
+                        card_statis[4][0]=1
+                        tracking.append(4)
+                        tracking.append(0)
                     if pos[0]==1 and pos[1]==4:
                         # pic9=pygame.transform.scale(dict["b9"],(size,size))
                         # screen.blit(pic9,(x+margin,y+margin*4))
@@ -386,7 +379,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b9"])
                         count+=1
-                        up18=False
+                        card_statis[4][1]=1
+                        tracking.append(4)
+                        tracking.append(1)
                     if pos[0]==2 and pos[1]==4:
                         # pic10=pygame.transform.scale(dict["b10"],(size,size))
                         # screen.blit(pic10,(x+margin*2,y+margin*4))
@@ -394,7 +389,9 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b10"])
                         count+=1
-                        up19=False
+                        card_statis[4][2]=1
+                        tracking.append(4)
+                        tracking.append(2)
                     if pos[0]==3 and pos[1]==4:
                         # pic11=pygame.transform.scale(dict["b11"],(size,size))
                         # screen.blit(pic11,(x+margin*3,y+margin*4))
@@ -402,18 +399,29 @@ def main(dict):
                         # pygame.time.delay(1000)
                         clicked.append(dict["b11"])
                         count+=1
-                        up20=False
+                        card_statis[4][3]=1
+                        tracking.append(4)
+                        tracking.append(3)
+
                     if count==2:
                         if clicked[0]==clicked[1]:
                             print("yes")
                             clicked=[]
                             count=0
+                            tracking=[]
                         else:
                             print("no")
                             clicked=[]
                             count=0
-                            up9==True
-                            up10==True
+                            pygame.time.delay(1000)
+                            track1=tracking[0]
+                            track2=tracking[1]
+                            track3=tracking[2]
+                            track4=tracking[3]
+                            card_statis[track1][track2]=0
+                            card_statis[track3][track4]=0
+                            tracking=[]
+
 
                     draw(dict)
                     pygame.display.update()
@@ -429,9 +437,9 @@ def menu():
         #instructions
         text = INFO_FONT.render("Once you choose your level, that number of cards will appear face down. You", 1, black)
         text2 = INFO_FONT.render("will click on two cards at a time, and those cards will flip over showing an image.", 1, black)
-        text3 = INFO_FONT.render("If the two images match, they will disappear. If they do not, they will flip back", 1, black)
-        text4 = INFO_FONT.render("over and you will choose two more. This cycle will continue until all the cards", 1, black)
-        text5 = INFO_FONT.render("are gone. Good luck!",1,black)
+        text3 = INFO_FONT.render("If the two images match, they will stay face up. If they do not, they will flip", 1, black)
+        text4 = INFO_FONT.render("back over and you will choose two more. This cycle will continue until all the", 1, black)
+        text5 = INFO_FONT.render("cards are face up. Good luck!",1,black)
         screen.blit(text, (infox, infoy))
         screen.blit(text2, (infox, infoy+5+text.get_height()))
         screen.blit(text3, (infox, infoy+10+text.get_height()*2))
