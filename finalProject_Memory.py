@@ -121,23 +121,33 @@ bat=pygame.image.load("images\\bat.jpg")
 elephant=pygame.image.load("images\\elephant.jpg")
 giraffe=pygame.image.load("images\\giraffe.jpg")
 hippo=pygame.image.load("images\\hippo.jpg")
+lion=pygame.image.load("images\\lion.jpg")
+monkey=pygame.image.load("images\\monkey.jpg")
+snake=monkey,pygame.image.load("images\\snake.jpg")
+turtle=pygame.image.load("images\\turtle.jpg")
+zebra=pygame.image.load("images\\zebra.jpg")
+bee=pygame.image.load("images\\bee.jpg")
+ladybug=pygame.image.load("images\\ladybug.jpg")
+crab=pygame.image.load("images\\crab.jpg")
+starfish=pygame.image.load("images\\starfish.jpg")
+
 #image lists
 #easy
-matches1=[panda,panda,bat,bat,elephant,elephant,giraffe,giraffe,hippo,hippo,pygame.image.load("images\\lion.jpg"),pygame.image.load("images\\lion.jpg")]
+matches1=[panda,panda,bat,bat,elephant,elephant,giraffe,giraffe,hippo,hippo,lion,lion]
 random.shuffle(matches1)
 define1={}
 for number in range(12):
     define1["b{0}".format(number)]=matches1[number]
 
 #medium
-matches2=[pygame.image.load("images\\panda.jpg"),pygame.image.load("images\\panda.jpg"),pygame.image.load("images\\bat.jpg"),pygame.image.load("images\\bat.jpg"),pygame.image.load("images\\elephant.jpg"),pygame.image.load("images\\elephant.jpg"),pygame.image.load("images\\giraffe.jpg"),pygame.image.load("images\\giraffe.jpg"),pygame.image.load("images\\hippo.jpg"),pygame.image.load("images\\hippo.jpg"),pygame.image.load("images\\lion.jpg"),pygame.image.load("images\\lion.jpg"),pygame.image.load("images\\monkey.jpg"),pygame.image.load("images\\monkey.jpg"),pygame.image.load("images\\snake.jpg"),pygame.image.load("images\\snake.jpg"),pygame.image.load("images\\turtle.jpg"),pygame.image.load("images\\turtle.jpg"),pygame.image.load("images\\zebra.jpg"),pygame.image.load("images\\zebra.jpg")]
+matches2=[panda,panda,bat,bat,elephant,elephant,giraffe,giraffe,hippo,hippo,lion,lion,monkey,monkey,snake,snake,turtle,turtle,zebra,zebra]
 random.shuffle(matches2)
 define2={}
 for number in range(20):
     define2["b{0}".format(number)]=matches2[number]
 
 #hard
-matches3=[pygame.image.load("images\\panda.jpg"),pygame.image.load("images\\panda.jpg"),pygame.image.load("images\\bat.jpg"),pygame.image.load("images\\bat.jpg"),pygame.image.load("images\\elephant.jpg"),pygame.image.load("images\\elephant.jpg"),pygame.image.load("images\\giraffe.jpg"),pygame.image.load("images\\giraffe.jpg"),pygame.image.load("images\\hippo.jpg"),pygame.image.load("images\\hippo.jpg"),pygame.image.load("images\\lion.jpg"),pygame.image.load("images\\lion.jpg"),pygame.image.load("images\\monkey.jpg"),pygame.image.load("images\\monkey.jpg"),pygame.image.load("images\\snake.jpg"),pygame.image.load("images\\snake.jpg"),pygame.image.load("images\\turtle.jpg"),pygame.image.load("images\\turtle.jpg"),pygame.image.load("images\\zebra.jpg"),pygame.image.load("images\\zebra.jpg"),pygame.image.load("images\\bee.jpg"),pygame.image.load("images\\bee.jpg"),pygame.image.load("images\\ladybug.jpg"),pygame.image.load("images\\ladybug.jpg"),pygame.image.load("images\\crab.jpg"),pygame.image.load("images\\crab.jpg"),pygame.image.load("images\\starfish.jpg"),pygame.image.load("images\\starfish.jpg"),]
+matches3=[panda,panda,bat,bat,elephant,elephant,giraffe,giraffe,hippo,hippo,lion,lion,monkey,monkey,snake,snake,turtle,turtle,zebra,zebra,bee,bee,ladybug,ladybug,crab,crab,starfish,starfish]
 random.shuffle(matches3)
 define3={}
 for number in range(28):
@@ -251,38 +261,41 @@ def main(dict):
     global score, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
     global up1, up2, up3, up4, up5, up6, up7, up8, up9, up10, up11, up12, up13, up14, up15, up16, up17, up18, up19, up20, up21, up22, up23, up24, up25, up26, up27, up28
     clicked=[]
-    up1=True
-    up2=True
-    up3=True
-    up4=True
-    up5=True
-    up6=True
-    up7=True
-    up8=True
-    up9=True
-    up10=True
-    up11=True
-    up12=True
-    up13=True
-    up14=True
-    up15=True
-    up16=True
-    up17=True
-    up18=True
-    up19=True
-    up20=True
-    up21=True
-    up22=True
-    up23=True
-    up24=True
-    up25=True
-    up26=True
-    up27=True
-    up28=True
+    up=[]
+    for i in range(1,29):
+        up[i]=True
+    # up1=True
+    # up2=True
+    # up3=True
+    # up4=True
+    # up5=True
+    # up6=True
+    # up7=True
+    # up8=True
+    # up9=True
+    # up10=True
+    # up11=True
+    # up12=True
+    # up13=True
+    # up14=True
+    # up15=True
+    # up16=True
+    # up17=True
+    # up18=True
+    # up19=True
+    # up20=True
+    # up21=True
+    # up22=True
+    # up23=True
+    # up24=True
+    # up25=True
+    # up26=True
+    # up27=True
+    # up28=True
 
     score=str(0)
     run=True
-    # draw()
+    draw(dict)
     count=0
     while run:
         for event in pygame.event.get():
@@ -402,8 +415,8 @@ def main(dict):
                             up9==True
                             up10==True
 
+                    draw(dict)
                     pygame.display.update()
-        draw(dict)
                     # pygame.display.update()
 #menu
 def menu():
