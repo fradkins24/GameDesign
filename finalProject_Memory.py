@@ -310,29 +310,29 @@ def main(dict):
                             tracking.append(1)
                             tracking.append(3)
 
-                        if pos[0]==0 and pos[1]==6:
+                        if pos[0]==0 and pos[1]==5:
                             clicked.append(dict["b15"])
                             count+=1
-                            card_statis[6][0]=1
-                            tracking.append(6)
+                            card_statis[5][0]=1
+                            tracking.append(5)
                             tracking.append(0)
-                        if pos[0]==1 and pos[1]==6:
+                        if pos[0]==1 and pos[1]==5:
                             clicked.append(dict["b16"])
                             count+=1
-                            card_statis[6][1]=1
-                            tracking.append(6)
+                            card_statis[5][1]=1
+                            tracking.append(5)
                             tracking.append(1)
-                        if pos[0]==2 and pos[1]==6:
+                        if pos[0]==2 and pos[1]==5:
                             clicked.append(dict["b17"])
                             count+=1
-                            card_statis[6][2]=1
-                            tracking.append(6)
+                            card_statis[5][2]=1
+                            tracking.append(5)
                             tracking.append(2)
-                        if pos[0]==3 and pos[1]==6:
+                        if pos[0]==3 and pos[1]==5:
                             clicked.append(dict["b18"])
                             count+=1
-                            card_statis[6][3]=1
-                            tracking.append(6)
+                            card_statis[5][3]=1
+                            tracking.append(5)
                             tracking.append(3)
 
 
