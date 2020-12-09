@@ -30,72 +30,8 @@ x=12
 y=12
 
 #defining back of card
-square1=pygame.image.load("images\\backofCard.jpg")
-square1=pygame.transform.scale(square1,(size,size))
-square2=pygame.image.load("images\\backofCard.jpg")
-square2=pygame.transform.scale(square2,(size,size))
-square3=pygame.image.load("images\\backofCard.jpg")
-square3=pygame.transform.scale(square3,(size,size))
-square4=pygame.image.load("images\\backofCard.jpg")
-square4=pygame.transform.scale(square4,(size,size))
-
-
-square5=pygame.image.load("images\\backofCard.jpg")
-square5=pygame.transform.scale(square5,(size,size))
-square6=pygame.image.load("images\\backofCard.jpg")
-square6=pygame.transform.scale(square6,(size,size))
-square7=pygame.image.load("images\\backofCard.jpg")
-square7=pygame.transform.scale(square7,(size,size))
-square8=pygame.image.load("images\\backofCard.jpg")
-square8=pygame.transform.scale(square8,(size,size))
-
-
-square9=pygame.image.load("images\\backofCard.jpg")
-square9=pygame.transform.scale(square9,(size,size))
-square10=pygame.image.load("images\\backofCard.jpg")
-square10=pygame.transform.scale(square10,(size,size))
-square11=pygame.image.load("images\\backofCard.jpg")
-square11=pygame.transform.scale(square11,(size,size))
-square12=pygame.image.load("images\\backofCard.jpg")
-square12=pygame.transform.scale(square12,(size,size))
-
-
-square13=pygame.image.load("images\\backofCard.jpg")
-square13=pygame.transform.scale(square13,(size,size))
-square14=pygame.image.load("images\\backofCard.jpg")
-square14=pygame.transform.scale(square14,(size,size))
-square15=pygame.image.load("images\\backofCard.jpg")
-square15=pygame.transform.scale(square15,(size,size))
-square16=pygame.image.load("images\\backofCard.jpg")
-square16=pygame.transform.scale(square16,(size,size))
-
-
-square17=pygame.image.load("images\\backofCard.jpg")
-square17=pygame.transform.scale(square17,(size,size))
-square18=pygame.image.load("images\\backofCard.jpg")
-square18=pygame.transform.scale(square18,(size,size))
-square19=pygame.image.load("images\\backofCard.jpg")
-square19=pygame.transform.scale(square19,(size,size))
-square20=pygame.image.load("images\\backofCard.jpg")
-square20=pygame.transform.scale(square20,(size,size))
-
-square21=pygame.image.load("images\\backofCard.jpg")
-square21=pygame.transform.scale(square21,(size,size))
-square22=pygame.image.load("images\\backofCard.jpg")
-square22=pygame.transform.scale(square22,(size,size))
-square23=pygame.image.load("images\\backofCard.jpg")
-square23=pygame.transform.scale(square23,(size,size))
-square24=pygame.image.load("images\\backofCard.jpg")
-square24=pygame.transform.scale(square24,(size,size))
-
-square25=pygame.image.load("images\\backofCard.jpg")
-square25=pygame.transform.scale(square25,(size,size))
-square26=pygame.image.load("images\\backofCard.jpg")
-square26=pygame.transform.scale(square26,(size,size))
-square27=pygame.image.load("images\\backofCard.jpg")
-square27=pygame.transform.scale(square27,(size,size))
-square28=pygame.image.load("images\\backofCard.jpg")
-square28=pygame.transform.scale(square28,(size,size))
+square=pygame.image.load("images\\backofCard.jpg")
+square=pygame.transform.scale(square,(size,size))
 
 
 #colors
@@ -165,99 +101,166 @@ for number in range(28):
 
 #draw screen/grid
 def draw(dict):
-    global score, card_statis, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
+    global score, card_statis, square
     screen.fill(black)
-    # up9=True
-    #for hard
+    #cards to print based on difficulty
 
-    # screen.blit(square1,(x,y))
-    # screen.blit(square2,(x+margin,y))
-    # screen.blit(square3,(x+margin*2,y))
-    # screen.blit(square4,(x+margin*3,y))
+    if dict==define3:
+        if card_statis[0][0]==0:
+            screen.blit(square,(x,y))
+        else:
+            pic20=pygame.transform.scale(dict["b20"],(size,size))
+            screen.blit(pic20,(x,y))
+        if card_statis[0][1]==0:
+            screen.blit(square,(x+margin,y))
+        else:
+            pic21=pygame.transform.scale(dict["b21"],(size,size))
+            screen.blit(pic21,(x+margin,y))
+        if card_statis[0][2]==0:
+            screen.blit(square,(x+margin*2,y))
+        else:
+            pic22=pygame.transform.scale(dict["b22"],(size,size))
+            screen.blit(pic22,(x+margin*2,y))
+        if card_statis[0][3]==0:
+            screen.blit(square,(x+margin*3,y))
+        else:
+            pic23=pygame.transform.scale(dict["b23"],(size,size))
+            screen.blit(pic23,(x+margin*3,y))
 
-    # screen.blit(square5,(x,y+margin))
-    # screen.blit(square6,(x+margin,y+margin))
-    # screen.blit(square7,(x+margin*2,y+margin))
-    # screen.blit(square8,(x+margin*3,y+margin))
+        if card_statis[6][0]==0:
+            screen.blit(square,(x,y+margin*6))
+        else:
+            pic24=pygame.transform.scale(dict["b24"],(size,size))
+            screen.blit(pic23,(x,y+margin*6))
+        if card_statis[6][1]==0:
+            screen.blit(square,(x+margin,y+margin*6))
+        else:
+            pic25=pygame.transform.scale(dict["b25"],(size,size))
+            screen.blit(pic25,(x+margin,y+margin*6))
+        if card_statis[6][2]==0:
+            screen.blit(square,(x+margin*2,y+margin*6))
+        else:
+            pic26=pygame.transform.scale(dict["b26"],(size,size))
+            screen.blit(pic26,(x+margin*2,y+margin*6))
+        if card_statis[6][3]==0:
+            screen.blit(square,(x+margin*3,y+margin*6))
+        else:
+            pic27=pygame.transform.scale(dict["b27"],(size,size))
+            screen.blit(pic27,(x+margin*3,y+margin*6))
+
+    if dict==define2 or dict==define3:
+        if card_statis[1][0]==0:
+            screen.blit(square,(x,y+margin))
+        else:
+            pic12=pygame.transform.scale(dict["b12"],(size,size))
+            screen.blit(pic12,(x,y+margin))
+        if card_statis[1][1]==0:
+            screen.blit(square,(x+margin,y+margin))
+        else:
+            pic13=pygame.transform.scale(dict["b13"],(size,size))
+            screen.blit(pic13,(x+margin,y+margin))
+        if card_statis[1][2]==0:
+            screen.blit(square,(x+margin*2,y+margin))
+        else:
+            pic14=pygame.transform.scale(dict["b14"],(size,size))
+            screen.blit(pic14,(x+margin*2,y+margin))
+        if card_statis[1][3]==0:
+            screen.blit(square,(x+margin*3,y+margin))
+        else:
+            pic15=pygame.transform.scale(dict["b15"],(size,size))
+            screen.blit(pic15,(x+margin*3,y+margin))
+
+        if card_statis[5][0]==0:
+            screen.blit(square,(x,y+margin*5))
+        else:
+            pic16=pygame.transform.scale(dict["b16"],(size,size))
+            screen.blit(pic16,(x,y+margin*5))
+        if card_statis[5][1]==0:
+            screen.blit(square,(x+margin,y+margin*5))
+        else:
+            pic17=pygame.transform.scale(dict["b17"],(size,size))
+            screen.blit(pic17,(x+margin,y+margin*5))
+        if card_statis[5][2]==0:
+            screen.blit(square,(x+margin*2,y+margin*5))
+        else:
+            pic18=pygame.transform.scale(dict["b18"],(size,size))
+            screen.blit(pic18,(x+margin*2,y+margin*5))
+        if card_statis[5][3]==0:
+            screen.blit(square,(x+margin*3,y+margin*5))
+        else:
+            pic19=pygame.transform.scale(dict["b19"],(size,size))
+            screen.blit(pic19,(x+margin*3,y+margin*5))
 
     if card_statis[2][0]==0:
-        screen.blit(square9,(x,y+margin*2))
+        screen.blit(square,(x,y+margin*2))
     else:
         pic0=pygame.transform.scale(dict["b0"],(size,size))
         screen.blit(pic0,(x,y+margin*2))
     if card_statis[2][1]==0:
-        screen.blit(square10,(x+margin,y+margin*2))
+        screen.blit(square,(x+margin,y+margin*2))
     else:
         pic1=pygame.transform.scale(dict["b1"],(size,size))
         screen.blit(pic1,(x+margin,y+margin*2))
     if card_statis[2][2]==0:
-        screen.blit(square11,(x+margin*2,y+margin*2))
+        screen.blit(square,(x+margin*2,y+margin*2))
     else:
         pic2=pygame.transform.scale(dict["b2"],(size,size))
         screen.blit(pic2,(x+margin*2,y+margin*2))
     if card_statis[2][3]==0:
-        screen.blit(square12,(x+margin*3,y+margin*2))
+        screen.blit(square,(x+margin*3,y+margin*2))
     else:
         pic3=pygame.transform.scale(dict["b3"],(size,size))
         screen.blit(pic3,(x+margin*3,y+margin*2))
 
     if card_statis[3][0]==0:
-        screen.blit(square13,(x,y+margin*3))
+        screen.blit(square,(x,y+margin*3))
     else:
         pic4=pygame.transform.scale(dict["b4"],(size,size))
         screen.blit(pic4,(x,y+margin*3))
     if card_statis[3][1]==0:
-        screen.blit(square14,(x+margin,y+margin*3))
+        screen.blit(square,(x+margin,y+margin*3))
     else:
         pic5=pygame.transform.scale(dict["b5"],(size,size))
         screen.blit(pic5,(x+margin,y+margin*3))
     if card_statis[3][2]==0:
-        screen.blit(square15,(x+margin*2,y+margin*3))
+        screen.blit(square,(x+margin*2,y+margin*3))
     else:
         pic6=pygame.transform.scale(dict["b6"],(size,size))
         screen.blit(pic6,(x+margin*2,y+margin*3))
     if card_statis[3][3]==0:
-        screen.blit(square16,(x+margin*3,y+margin*3))
+        screen.blit(square,(x+margin*3,y+margin*3))
     else:
         pic7=pygame.transform.scale(dict["b7"],(size,size))
         screen.blit(pic7,(x+margin*3,y+margin*3))
 
     if card_statis[4][0]==0:
-        screen.blit(square17,(x,y+margin*4))
+        screen.blit(square,(x,y+margin*4))
     else:
         pic8=pygame.transform.scale(dict["b8"],(size,size))
         screen.blit(pic8,(x,y+margin*4))
     if card_statis[4][1]==0:
-        screen.blit(square18,(x+margin,y+margin*4))
+        screen.blit(square,(x+margin,y+margin*4))
     else:
         pic9=pygame.transform.scale(dict["b9"],(size,size))
         screen.blit(pic9,(x+margin,y+margin*4))
     if card_statis[4][2]==0:
-        screen.blit(square19,(x+margin*2,y+margin*4))
+        screen.blit(square,(x+margin*2,y+margin*4))
     else:
         pic10=pygame.transform.scale(dict["b10"],(size,size))
         screen.blit(pic10,(x+margin*2,y+margin*4))
     if card_statis[4][3]==0:
-        screen.blit(square20,(x+margin*3,y+margin*4))
+        screen.blit(square,(x+margin*3,y+margin*4))
     else:
         pic11=pygame.transform.scale(dict["b11"],(size,size))
         screen.blit(pic11,(x+margin*3,y+margin*4))
 
-    # for column in range(0,400,size+margin):
-    #     column=int(column)
-    #     for row in range(0,300,size+margin):
-    #         row=int(row)
-    #         square1=pygame.image.load("images\\backofCard.jpg")
-    #         square=pygame.transform.scale(square1,(size,size))
-    #         screen.blit(square,(column+20,row+239))
-            #square=pygame.draw.rect(screen,(white),(column+20,row+239,size,size))
-    text=SCORE_FONT.render("Score: "+score,1,white)
+    text=SCORE_FONT.render("Score: "+str(score),1,white)
     screen.blit(text,(550,380))
     pygame.display.update()
 
 #main code
 def main(dict):
-    global score, card_statis, square1, square2, square3, square4, square5, square6, square7, square8, square9, square10, square11, square12, square13, square14, square15, square16, square17, square18, square19, square20, square21, square22, square23, square24, square25, square26, square27, square28
+    global score, card_statis, square
     clicked=[]
     tracking=[]
     card_statis=[[0,0,0,0],
@@ -268,7 +271,7 @@ def main(dict):
                 [0,0,0,0],
                 [0,0,0,0]]
 
-    score=str(0)
+    score=0
     run=True
     draw(dict)
     count=0
@@ -280,41 +283,78 @@ def main(dict):
                 if pygame.mouse.get_pressed() and count<2:
                     pos=pygame.mouse.get_pos()
                     pos=pos[0]//(size+x),pos[1]//(size+y)
+
+                    if dict==define2 or dict==define3:
+                        if pos[0]==0 and pos[1]==1:
+                            clicked.append(dict["b11"])
+                            count+=1
+                            card_statis[1][0]=1
+                            tracking.append(1)
+                            tracking.append(0)
+                        if pos[0]==1 and pos[1]==1:
+                            clicked.append(dict["b12"])
+                            count+=1
+                            card_statis[1][1]=1
+                            tracking.append(1)
+                            tracking.append(1)
+                        if pos[0]==2 and pos[1]==1:
+                            clicked.append(dict["b13"])
+                            count+=1
+                            card_statis[1][2]=1
+                            tracking.append(1)
+                            tracking.append(2)
+                        if pos[0]==3 and pos[1]==1:
+                            clicked.append(dict["b14"])
+                            count+=1
+                            card_statis[1][3]=1
+                            tracking.append(1)
+                            tracking.append(3)
+
+                        if pos[0]==0 and pos[1]==6:
+                            clicked.append(dict["b15"])
+                            count+=1
+                            card_statis[6][0]=1
+                            tracking.append(6)
+                            tracking.append(0)
+                        if pos[0]==1 and pos[1]==6:
+                            clicked.append(dict["b16"])
+                            count+=1
+                            card_statis[6][1]=1
+                            tracking.append(6)
+                            tracking.append(1)
+                        if pos[0]==2 and pos[1]==6:
+                            clicked.append(dict["b17"])
+                            count+=1
+                            card_statis[6][2]=1
+                            tracking.append(6)
+                            tracking.append(2)
+                        if pos[0]==3 and pos[1]==6:
+                            clicked.append(dict["b18"])
+                            count+=1
+                            card_statis[6][3]=1
+                            tracking.append(6)
+                            tracking.append(3)
+
+
                     if pos[0]==0 and pos[1]==2:
-                        # pic0=pygame.transform.scale(dict["b0"],(size,size))
-                        # screen.blit(pic0,(x,y+margin*2))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b0"])
                         count+=1
                         card_statis[2][0]=1
                         tracking.append(2)
                         tracking.append(0)
                     if pos[0]==1 and pos[1]==2:
-                        # pic1=pygame.transform.scale(dict["b1"],(size,size))
-                        # screen.blit(pic1,(x+margin,y+margin*2))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b1"])
                         count+=1
                         card_statis[2][1]=1
                         tracking.append(2)
                         tracking.append(1)
                     if pos[0]==2 and pos[1]==2:
-                        # pic2=pygame.transform.scale(dict["b2"],(size,size))
-                        # screen.blit(pic2,(x+margin*2,y+margin*2))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b2"])
                         count+=1
                         card_statis[2][2]=1
                         tracking.append(2)
                         tracking.append(2)
                     if pos[0]==3 and pos[1]==2:
-                        # pic3=pygame.transform.scale(dict["b3"],(size,size))
-                        # screen.blit(pic3,(x+margin*3,y+margin*2))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b3"])
                         count+=1
                         card_statis[2][3]=1
@@ -322,88 +362,57 @@ def main(dict):
                         tracking.append(3)
 
                     if pos[0]==0 and pos[1]==3:
-                        # pic4=pygame.transform.scale(dict["b4"],(size,size))
-                        # screen.blit(pic4,(x,y+margin*3))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b4"])
                         count+=1
                         card_statis[3][0]=1
                         tracking.append(3)
                         tracking.append(0)
                     if pos[0]==1 and pos[1]==3:
-                        # pic5=pygame.transform.scale(dict["b5"],(size,size))
-                        # screen.blit(pic5,(x+margin,y+margin*3))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b5"])
                         count+=1
                         card_statis[3][1]=1
                         tracking.append(3)
                         tracking.append(1)
                     if pos[0]==2 and pos[1]==3:
-                        # pic6=pygame.transform.scale(dict["b6"],(size,size))
-                        # screen.blit(pic6,(x+margin*2,y+margin*3))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b6"])
                         count+=1
                         card_statis[3][2]=1
                         tracking.append(3)
                         tracking.append(2)
                     if pos[0]==3 and pos[1]==3:
-                        # pic7=pygame.transform.scale(dict["b7"],(size,size))
-                        # screen.blit(pic7,(x+margin*3,y+margin*3))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b7"])
                         count+=1
                         card_statis[3][3]=1
                         tracking.append(3)
                         tracking.append(3)
-
                     if pos[0]==0 and pos[1]==4:
-                        # pic8=pygame.transform.scale(dict["b8"],(size,size))
-                        # screen.blit(pic8,(x,y+margin*4))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b8"])
                         count+=1
                         card_statis[4][0]=1
                         tracking.append(4)
                         tracking.append(0)
                     if pos[0]==1 and pos[1]==4:
-                        # pic9=pygame.transform.scale(dict["b9"],(size,size))
-                        # screen.blit(pic9,(x+margin,y+margin*4))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b9"])
                         count+=1
                         card_statis[4][1]=1
                         tracking.append(4)
                         tracking.append(1)
                     if pos[0]==2 and pos[1]==4:
-                        # pic10=pygame.transform.scale(dict["b10"],(size,size))
-                        # screen.blit(pic10,(x+margin*2,y+margin*4))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b10"])
                         count+=1
                         card_statis[4][2]=1
                         tracking.append(4)
                         tracking.append(2)
                     if pos[0]==3 and pos[1]==4:
-                        # pic11=pygame.transform.scale(dict["b11"],(size,size))
-                        # screen.blit(pic11,(x+margin*3,y+margin*4))
-                        # pygame.display.update()
-                        # pygame.time.delay(1000)
                         clicked.append(dict["b11"])
                         count+=1
                         card_statis[4][3]=1
                         tracking.append(4)
                         tracking.append(3)
+                    draw(dict)
 
                     if count==2:
+                        score+=1
                         if clicked[0]==clicked[1]:
                             print("yes")
                             clicked=[]
@@ -413,7 +422,7 @@ def main(dict):
                             print("no")
                             clicked=[]
                             count=0
-                            pygame.time.delay(1000)
+                            pygame.time.delay(800)
                             track1=tracking[0]
                             track2=tracking[1]
                             track3=tracking[2]
@@ -518,4 +527,4 @@ def menu():
 
 
         pygame.display.update()
-main(define1)
+main(define2)
