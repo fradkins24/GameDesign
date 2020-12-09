@@ -414,12 +414,12 @@ def main(dict):
                     if count==2:
                         score+=1
                         if clicked[0]==clicked[1]:
-                            print("yes")
+                            #print("yes")
                             clicked=[]
                             count=0
                             tracking=[]
                         else:
-                            print("no")
+                            #print("no")
                             clicked=[]
                             count=0
                             pygame.time.delay(800)
