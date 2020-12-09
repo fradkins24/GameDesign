@@ -335,7 +335,6 @@ def main(dict):
                             tracking.append(5)
                             tracking.append(3)
 
-
                     if pos[0]==0 and pos[1]==2:
                         clicked.append(dict["b0"])
                         count+=1
