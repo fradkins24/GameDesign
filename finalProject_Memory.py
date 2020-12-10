@@ -29,29 +29,9 @@ down=400
 x=12
 y=12
 
-#defining back of card
+#defining images
 square=pygame.image.load("images\\backofCard.jpg")
 square=pygame.transform.scale(square,(size,size))
-
-
-#colors
-white=(255,255,255)
-black=(0,0,0)
-blue = (196, 224, 255)
-green = (74, 189, 41)
-yellow = (231, 195, 0)
-red = (196, 52, 41)
-purple = (158, 98, 170)
-
-#fonts
-SCORE_FONT = pygame.font.SysFont('comicsans', 60)
-INFO_FONT = pygame.font.SysFont('comicsansms', 21)
-STAR_FONT = pygame.font.SysFont('comicsansms', 18)
-MENU_FONT = pygame.font.SysFont('comicsans', 45)
-CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
-TITLE_FONT = pygame.font.SysFont('comicsans', 70)
-
-#defining images
 panda=pygame.image.load("images\\panda.jpg")
 bat=pygame.image.load("images\\bat.jpg")
 elephant=pygame.image.load("images\\elephant.jpg")
@@ -66,6 +46,26 @@ bee=pygame.image.load("images\\bee.jpg")
 ladybug=pygame.image.load("images\\ladybug.jpg")
 crab=pygame.image.load("images\\crab.jpg")
 starfish=pygame.image.load("images\\starfish.jpg")
+fireworks=pygame.image.load("images\\Fireworks.jpg")
+fireworks=pygame.transform.scale(fireworks,(WIDTH,HEIGHT))
+
+#colors
+white=(255,255,255)
+black=(0,0,0)
+blue = (196, 224, 255)
+green = (74, 189, 41)
+yellow = (231, 195, 0)
+red = (196, 52, 41)
+purple = (158, 98, 170)
+
+#fonts
+SCORE_FONT = pygame.font.SysFont('comicsans', 60)
+INFO_FONT = pygame.font.SysFont('comicsansms', 21)
+WIN_FONT = pygame.font.SysFont('comicsansms', 45)
+STAR_FONT = pygame.font.SysFont('comicsansms', 18)
+MENU_FONT = pygame.font.SysFont('comicsans', 45)
+CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
+TITLE_FONT = pygame.font.SysFont('comicsans', 70)
 
 #image lists
 #easy
@@ -471,7 +471,7 @@ def main(dict):
                         else:
                             clicked=[]
                             count=0
-                            pygame.time.delay(950)
+                            pygame.time.delay(900)
                             track1=tracking[0]
                             track2=tracking[1]
                             track3=tracking[2]
@@ -479,9 +479,26 @@ def main(dict):
                             card_statis[track1][track2]=0
                             card_statis[track3][track4]=0
                             tracking=[]
-
-
                     draw(dict)
+                    #how to know if user won
+                    if dict==define1 and card_statis==[[0,0,0,0],[0,0,0,0],[1,1,1,1],[1,1,1,1],[1,1,1,1],[0,0,0,0],[0,0,0,0]]:
+                        pygame.time.delay(700)
+                        screen.blit(fireworks,(0,0))
+                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
+                        screen.blit(win,(100,350))
+                    if dict==define2 and card_statis==[[0,0,0,0],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[0,0,0,0]]:
+                        pygame.time.delay(700)
+                        screen.blit(fireworks,(0,0))
+                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
+                        screen.blit(win,(100,350))
+                    if dict==define3 and card_statis==[[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1]]:
+                        pygame.time.delay(700)
+                        screen.blit(fireworks,(0,0))
+                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
+                        screen.blit(win,(100,350))
+
+
+                    #draw(dict)
                     pygame.display.update()
 
 #menu
@@ -556,14 +573,17 @@ def menu():
                 m_x, m_y = pygame.mouse.get_pos()
                 dis = math.sqrt((left - m_x)**2 + (down - m_y)**2)
                 if dis<RADIUS:
+                    main(define1)
                     runMenu=False
                 else:
                     dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*2+20) - m_y)**2)
                     if dis<RADIUS:
+                        main(define2)
                         runMenu=False
                     else:
                         dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*4+40) - m_y)**2)
                         if dis<RADIUS:
+                            main(define3)
                             runMenu=False
                         else:
                             dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*6+60) - m_y)**2)
@@ -576,4 +596,5 @@ def menu():
 
 
         pygame.display.update()
-main(define3)
+
+menu()
