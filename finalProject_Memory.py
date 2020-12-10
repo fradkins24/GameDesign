@@ -131,7 +131,7 @@ def draw(dict):
             screen.blit(square,(x,y+margin*6))
         else:
             pic24=pygame.transform.scale(dict["b24"],(size,size))
-            screen.blit(pic23,(x,y+margin*6))
+            screen.blit(pic24,(x,y+margin*6))
         if card_statis[6][1]==0:
             screen.blit(square,(x+margin,y+margin*6))
         else:
@@ -284,125 +284,177 @@ def main(dict):
                     pos=pygame.mouse.get_pos()
                     pos=pos[0]//(size+x),pos[1]//(size+y)
 
-                    if dict==define2 or dict==define3:
+                    if dict==define3:
+                        if pos[0]==0 and pos[1]==0 and card_statis[0][0]==0:
+                            clicked.append(dict["b20"])
+                            count+=1
+                            card_statis[0][0]=1
+                            tracking.append(0)
+                            tracking.append(0)
+                        if pos[0]==1 and pos[1]==0 and card_statis[0][1]==0:
+                            clicked.append(dict["b21"])
+                            count+=1
+                            card_statis[0][1]=1
+                            tracking.append(0)
+                            tracking.append(1)
+                        if pos[0]==2 and pos[1]==0 and card_statis[0][2]==0:
+                            clicked.append(dict["b22"])
+                            count+=1
+                            card_statis[0][2]=1
+                            tracking.append(0)
+                            tracking.append(2)
+                        if pos[0]==3 and pos[1]==0 and card_statis[0][3]==0:
+                            clicked.append(dict["b23"])
+                            count+=1
+                            card_statis[0][3]=1
+                            tracking.append(0)
+                            tracking.append(3)
+
+                        if pos[0]==0 and pos[1]==6 and card_statis[6][0]==0:
+                            clicked.append(dict["b24"])
+                            count+=1
+                            card_statis[6][0]=1
+                            tracking.append(6)
+                            tracking.append(0)
+                        if pos[0]==1 and pos[1]==6 and card_statis[6][1]==0:
+                            clicked.append(dict["b25"])
+                            count+=1
+                            card_statis[6][1]=1
+                            tracking.append(6)
+                            tracking.append(1)
+                        if pos[0]==2 and pos[1]==6 and card_statis[6][2]==0:
+                            clicked.append(dict["b26"])
+                            count+=1
+                            card_statis[6][2]=1
+                            tracking.append(6)
+                            tracking.append(2)
+                        if pos[0]==3 and pos[1]==6 and card_statis[6][3]==0:
+                            clicked.append(dict["b27"])
+                            count+=1
+                            card_statis[6][3]=1
+                            tracking.append(6)
+                            tracking.append(3)
+
+                    if dict==define2 or dict==define3 and card_statis[1][0]==0:
                         if pos[0]==0 and pos[1]==1:
-                            clicked.append(dict["b11"])
+                            clicked.append(dict["b12"])
                             count+=1
                             card_statis[1][0]=1
                             tracking.append(1)
                             tracking.append(0)
-                        if pos[0]==1 and pos[1]==1:
-                            clicked.append(dict["b12"])
+                        if pos[0]==1 and pos[1]==1 and card_statis[1][1]==0:
+                            clicked.append(dict["b13"])
                             count+=1
                             card_statis[1][1]=1
                             tracking.append(1)
                             tracking.append(1)
-                        if pos[0]==2 and pos[1]==1:
-                            clicked.append(dict["b13"])
+                        if pos[0]==2 and pos[1]==1 and card_statis[1][2]==0:
+                            clicked.append(dict["b14"])
                             count+=1
                             card_statis[1][2]=1
                             tracking.append(1)
                             tracking.append(2)
-                        if pos[0]==3 and pos[1]==1:
-                            clicked.append(dict["b14"])
+                        if pos[0]==3 and pos[1]==1 and card_statis[1][3]==0:
+                            clicked.append(dict["b15"])
                             count+=1
                             card_statis[1][3]=1
                             tracking.append(1)
                             tracking.append(3)
 
-                        if pos[0]==0 and pos[1]==5:
-                            clicked.append(dict["b15"])
+                        if pos[0]==0 and pos[1]==5 and card_statis[5][0]==0:
+                            clicked.append(dict["b16"])
                             count+=1
                             card_statis[5][0]=1
                             tracking.append(5)
                             tracking.append(0)
-                        if pos[0]==1 and pos[1]==5:
-                            clicked.append(dict["b16"])
+                        if pos[0]==1 and pos[1]==5 and card_statis[5][1]==0:
+                            clicked.append(dict["b17"])
                             count+=1
                             card_statis[5][1]=1
                             tracking.append(5)
                             tracking.append(1)
-                        if pos[0]==2 and pos[1]==5:
-                            clicked.append(dict["b17"])
+                        if pos[0]==2 and pos[1]==5 and card_statis[5][2]==0:
+                            clicked.append(dict["b18"])
                             count+=1
                             card_statis[5][2]=1
                             tracking.append(5)
                             tracking.append(2)
-                        if pos[0]==3 and pos[1]==5:
-                            clicked.append(dict["b18"])
+                        if pos[0]==3 and pos[1]==5 and card_statis[5][3]==0:
+                            clicked.append(dict["b19"])
                             count+=1
                             card_statis[5][3]=1
                             tracking.append(5)
                             tracking.append(3)
 
-                    if pos[0]==0 and pos[1]==2:
+                    if pos[0]==0 and pos[1]==2 and card_statis[2][0]==0:
                         clicked.append(dict["b0"])
                         count+=1
                         card_statis[2][0]=1
                         tracking.append(2)
                         tracking.append(0)
-                    if pos[0]==1 and pos[1]==2:
+                    if pos[0]==1 and pos[1]==2 and card_statis[2][1]==0:
                         clicked.append(dict["b1"])
                         count+=1
                         card_statis[2][1]=1
                         tracking.append(2)
                         tracking.append(1)
-                    if pos[0]==2 and pos[1]==2:
+                    if pos[0]==2 and pos[1]==2 and card_statis[2][2]==0:
                         clicked.append(dict["b2"])
                         count+=1
                         card_statis[2][2]=1
                         tracking.append(2)
                         tracking.append(2)
-                    if pos[0]==3 and pos[1]==2:
+                    if pos[0]==3 and pos[1]==2 and card_statis[2][3]==0:
                         clicked.append(dict["b3"])
                         count+=1
                         card_statis[2][3]=1
                         tracking.append(2)
                         tracking.append(3)
 
-                    if pos[0]==0 and pos[1]==3:
+                    if pos[0]==0 and pos[1]==3 and card_statis[3][0]==0:
                         clicked.append(dict["b4"])
                         count+=1
                         card_statis[3][0]=1
                         tracking.append(3)
                         tracking.append(0)
-                    if pos[0]==1 and pos[1]==3:
+                    if pos[0]==1 and pos[1]==3 and card_statis[3][1]==0:
                         clicked.append(dict["b5"])
                         count+=1
                         card_statis[3][1]=1
                         tracking.append(3)
                         tracking.append(1)
-                    if pos[0]==2 and pos[1]==3:
+                    if pos[0]==2 and pos[1]==3 and card_statis[3][2]==0:
                         clicked.append(dict["b6"])
                         count+=1
                         card_statis[3][2]=1
                         tracking.append(3)
                         tracking.append(2)
-                    if pos[0]==3 and pos[1]==3:
+                    if pos[0]==3 and pos[1]==3 and card_statis[3][3]==0:
                         clicked.append(dict["b7"])
                         count+=1
                         card_statis[3][3]=1
                         tracking.append(3)
                         tracking.append(3)
-                    if pos[0]==0 and pos[1]==4:
+
+                    if pos[0]==0 and pos[1]==4 and card_statis[4][0]==0:
                         clicked.append(dict["b8"])
                         count+=1
                         card_statis[4][0]=1
                         tracking.append(4)
                         tracking.append(0)
-                    if pos[0]==1 and pos[1]==4:
+                    if pos[0]==1 and pos[1]==4 and card_statis[4][1]==0:
                         clicked.append(dict["b9"])
                         count+=1
                         card_statis[4][1]=1
                         tracking.append(4)
                         tracking.append(1)
-                    if pos[0]==2 and pos[1]==4:
+                    if pos[0]==2 and pos[1]==4 and card_statis[4][2]==0:
                         clicked.append(dict["b10"])
                         count+=1
                         card_statis[4][2]=1
                         tracking.append(4)
                         tracking.append(2)
-                    if pos[0]==3 and pos[1]==4:
+                    if pos[0]==3 and pos[1]==4 and card_statis[4][3]==0:
                         clicked.append(dict["b11"])
                         count+=1
                         card_statis[4][3]=1
@@ -526,4 +578,4 @@ def menu():
 
 
         pygame.display.update()
-main(define2)
+main(define3)
