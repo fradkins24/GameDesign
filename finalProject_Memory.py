@@ -283,13 +283,13 @@ def main(dict):
                 if pygame.mouse.get_pressed() and count<2:
                     pos=pygame.mouse.get_pos()
                     pos=pos[0]//(size+x),pos[1]//(size+y)
-
-                    if dict==define3:
-                        if pos[0]==0 and pos[1]==0 and card_statis[0][0]==0:
-                            clicked.append(dict["b20"])
-                            count+=1
-                            card_statis[0][0]=1
-                            tracking.append(0)
+                    #additional rows only for hard
+                    if dict==define3: #following descriptions apply to all position/image statements
+                        if pos[0]==0 and pos[1]==0 and card_statis[0][0]==0: #can't click same card if up
+                            clicked.append(dict["b20"]) #add card to list to check if two are the same
+                            count+=1 #add a count to know how many cards are up
+                            card_statis[0][0]=1 #makes card flip over
+                            tracking.append(0) #adds place in card_statis to list, so if not a match, if will be 0 again and go to back of card
                             tracking.append(0)
                         if pos[0]==1 and pos[1]==0 and card_statis[0][1]==0:
                             clicked.append(dict["b21"])
@@ -334,9 +334,9 @@ def main(dict):
                             card_statis[6][3]=1
                             tracking.append(6)
                             tracking.append(3)
-
-                    if dict==define2 or dict==define3 and card_statis[1][0]==0:
-                        if pos[0]==0 and pos[1]==1:
+                    #additional rows for medium or hard
+                    if dict==define2 or dict==define3:
+                        if pos[0]==0 and pos[1]==1 and card_statis[1][0]==0:
                             clicked.append(dict["b12"])
                             count+=1
                             card_statis[1][0]=1
@@ -385,7 +385,7 @@ def main(dict):
                             card_statis[5][3]=1
                             tracking.append(5)
                             tracking.append(3)
-
+                    #middle cards to always print
                     if pos[0]==0 and pos[1]==2 and card_statis[2][0]==0:
                         clicked.append(dict["b0"])
                         count+=1
@@ -465,15 +465,13 @@ def main(dict):
                     if count==2:
                         score+=1
                         if clicked[0]==clicked[1]:
-                            print(clicked)
                             clicked=[]
                             count=0
                             tracking=[]
                         else:
-                            print(clicked)
                             clicked=[]
                             count=0
-                            pygame.time.delay(800)
+                            pygame.time.delay(950)
                             track1=tracking[0]
                             track2=tracking[1]
                             track3=tracking[2]
@@ -485,7 +483,7 @@ def main(dict):
 
                     draw(dict)
                     pygame.display.update()
-                    # pygame.display.update()
+
 #menu
 def menu():
     runMenu=True
