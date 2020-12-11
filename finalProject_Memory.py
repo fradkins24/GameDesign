@@ -5,10 +5,10 @@
 #define variables
 #make image lists and variables for randomizing them
 #make scores files
-#function for menu with three choices(easy, medium, hard, scores, exit) that go to where user pressed/chose
+#function for menu with five choices(easy, medium, hard, scores, exit) that go to where user pressed/chose
 #function for scores screen (score=how many turns before wining)
 #function that draws screen with cards that knows when not to show cards
-#main function: tracks click, flips over to main side if no match, takes away cards it they do math, calculates turns/score, adds scores to file at the end, goes to menu when done
+#main function: tracks click, flips over to main side if no match, keeps cards up if they do math, calculates turns/score, adds scores to file at the end, goes to menu when done
 #run game
 import pygame, time, random, math
 
@@ -66,6 +66,7 @@ STAR_FONT = pygame.font.SysFont('comicsansms', 18)
 MENU_FONT = pygame.font.SysFont('comicsans', 45)
 CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
 TITLE_FONT = pygame.font.SysFont('comicsans', 70)
+SCORES_FONT = pygame.font.SysFont('comicsansms', 60)
 
 #image lists
 #easy
@@ -89,15 +90,32 @@ define3={}
 for number in range(28):
     define3["b{0}".format(number)]=matches3[number]
 
-# pics0=pygame.transform.scale(define1["e0"],(110,110))
-# pics1=pygame.transform.scale(define1["e1"],(110,110))
-# pics2=pygame.transform.scale(define1["e2"],(110,110))
-# screen.fill((0,0,0))
-# screen.blit(pics0,(0,5))
-# screen.blit(pics1,(0,110+10))
-# screen.blit(pics0,(0,110*2+15))
-# screen.blit(pics1,(0,110*3+20))
-# screen.blit(pics2,(0,110*4+25))
+#best scores
+def best_scores():
+    screen.fill(blue)
+    text = TITLE_FONT.render("BEST SCORES FOR:", 1, black)
+    screen.blit(text, (WIDTH/2 - text.get_width()/2, 20))
+    #easy scores
+    file1=open("memoryEasy.txt","r")
+    score1=file1.read()
+    easy = SCORES_FONT.render("Easy:  "+score1,1,green)
+    file1.close()
+    screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 200))
+    #medium scores
+    file2=open("memoryMedium.txt","r")
+    score2=file2.read()
+    medium = SCORES_FONT.render("Medium:  "+score2,1,yellow)
+    file2.close()
+    screen.blit(medium,(WIDTH/2 - medium.get_width()/2, 350))
+    #hard scores
+    file3=open("memoryHard.txt","r")
+    score3=file3.read()
+    hard = SCORES_FONT.render("Hard:  "+score3,1,red)
+    file3.close()
+    screen.blit(hard,(WIDTH/2 - hard.get_width()/2, 500))
+    pygame.display.update()
+    pygame.time.delay(2000)
+    menu()
 
 #draw screen/grid
 def draw(dict):
@@ -487,6 +505,14 @@ def main(dict):
                         screen.blit(fireworks,(0,0))
                         win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
                         screen.blit(win,(100,350))
+                        file1 = open("memoryEasy.txt", "r")
+                        if int(file1.read())>score:
+                            file1.close()
+                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,white)
+                            screen.blit(best,(150,450))
+                            file1=open("memoryEasy.txt","w")
+                            file1.write(str(score))
+                        file1.close()
                         pygame.display.update()
                         pygame.time.delay(3000)
                         menu()
@@ -495,6 +521,14 @@ def main(dict):
                         screen.blit(fireworks,(0,0))
                         win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
                         screen.blit(win,(100,350))
+                        file2 = open("memoryMedium.txt", "r")
+                        if int(file2.read())>score:
+                            file2.close()
+                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,white)
+                            screen.blit(best,(150,450))
+                            file2=open("memoryMedium.txt","w")
+                            file2.write(str(score))
+                        file2.close()
                         pygame.display.update()
                         pygame.time.delay(3000)
                         menu()
@@ -503,6 +537,14 @@ def main(dict):
                         screen.blit(fireworks,(0,0))
                         win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
                         screen.blit(win,(100,350))
+                        file3 = open("memoryHard.txt", "r")
+                        if int(file3.read())>score:
+                            file3.close()
+                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,white)
+                            screen.blit(best,(150,450))
+                            file3=open("memoryHard.txt","w")
+                            file3.write(str(score))
+                        file3.close()
                         pygame.display.update()
                         pygame.time.delay(3000)
                         menu()
@@ -600,6 +642,7 @@ def menu():
                         else:
                             dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*6+60) - m_y)**2)
                             if dis<RADIUS:
+                                best_scores()
                                 runMenu=False
                             else:
                                 dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*8+80) - m_y)**2)
