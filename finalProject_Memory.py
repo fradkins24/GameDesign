@@ -48,6 +48,8 @@ crab=pygame.image.load("images\\crab.jpg")
 starfish=pygame.image.load("images\\starfish.jpg")
 fireworks=pygame.image.load("images\\Fireworks.jpg")
 fireworks=pygame.transform.scale(fireworks,(WIDTH,HEIGHT))
+forest=pygame.image.load("images\\forest.jpg")
+forest=pygame.transform.scale(forest,(WIDTH, HEIGHT))
 
 #colors
 white=(255,255,255)
@@ -66,7 +68,7 @@ STAR_FONT = pygame.font.SysFont('comicsansms', 18)
 MENU_FONT = pygame.font.SysFont('comicsans', 45)
 CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
 TITLE_FONT = pygame.font.SysFont('comicsans', 70)
-SCORES_FONT = pygame.font.SysFont('comicsansms', 60)
+BESTSCORES_FONT = pygame.font.SysFont('comicsansms', 60)
 
 #image lists
 #easy
@@ -101,19 +103,19 @@ def best_scores():
     #easy scores
     file1=open("memoryEasy.txt","r")
     score1=file1.read()
-    easy = SCORES_FONT.render("Easy:  "+score1,1,green)
+    easy = BESTSCORES_FONT.render("Easy:  "+score1,1,green)
     file1.close()
     screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 200))
     #medium scores
     file2=open("memoryMedium.txt","r")
     score2=file2.read()
-    medium = SCORES_FONT.render("Medium:  "+score2,1,yellow)
+    medium = BESTSCORES_FONT.render("Medium:  "+score2,1,yellow)
     file2.close()
     screen.blit(medium,(WIDTH/2 - medium.get_width()/2, 350))
     #hard scores
     file3=open("memoryHard.txt","r")
     score3=file3.read()
-    hard = SCORES_FONT.render("Hard:  "+score3,1,red)
+    hard = BESTSCORES_FONT.render("Hard:  "+score3,1,red)
     file3.close()
     screen.blit(hard,(WIDTH/2 - hard.get_width()/2, 500))
     pygame.display.update()
@@ -126,7 +128,7 @@ def best_scores():
 #draw screen/grid
 def draw(dict):
     global score, card_statis, square
-    screen.fill(black)
+    screen.blit(forest,(0,0))
     #cards to print based on difficulty
 
     if dict==define3:
@@ -278,8 +280,14 @@ def draw(dict):
         pic11=pygame.transform.scale(dict["b11"],(size,size))
         screen.blit(pic11,(x+margin*3,y+margin*4))
 
-    text=SCORE_FONT.render("Score: "+str(score),1,white)
-    screen.blit(text,(550,380))
+    text=SCORE_FONT.render("Score: "+str(score),1,black)
+    screen.blit(text,(570,400))
+    game=BESTSCORES_FONT.render("Animal",1,black)
+    screen.blit(game,(565,80))
+    game=BESTSCORES_FONT.render("Memory",1,black)
+    screen.blit(game,(540,150))
+    game=BESTSCORES_FONT.render("Game!",1,black)
+    screen.blit(game,(570,220))
     pygame.display.update()
 
 #main code
