@@ -260,7 +260,7 @@ def draw(dict):
 
 #main code
 def main(dict):
-    global score, card_statis, square
+    global score, card_statis, square, run, runMenu
     clicked=[]
     tracking=[]
     card_statis=[[0,0,0,0],
@@ -279,6 +279,7 @@ def main(dict):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
+                runMenu=False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if pygame.mouse.get_pressed() and count<2:
                     pos=pygame.mouse.get_pos()
@@ -486,16 +487,25 @@ def main(dict):
                         screen.blit(fireworks,(0,0))
                         win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
                         screen.blit(win,(100,350))
+                        pygame.display.update()
+                        pygame.time.delay(3000)
+                        menu()
                     if dict==define2 and card_statis==[[0,0,0,0],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[0,0,0,0]]:
                         pygame.time.delay(700)
                         screen.blit(fireworks,(0,0))
                         win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
                         screen.blit(win,(100,350))
+                        pygame.display.update()
+                        pygame.time.delay(3000)
+                        menu()
                     if dict==define3 and card_statis==[[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1],[1,1,1,1]]:
                         pygame.time.delay(700)
                         screen.blit(fireworks,(0,0))
                         win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
                         screen.blit(win,(100,350))
+                        pygame.display.update()
+                        pygame.time.delay(3000)
+                        menu()
 
 
                     #draw(dict)
@@ -503,6 +513,7 @@ def main(dict):
 
 #menu
 def menu():
+    global run, runMenu
     runMenu=True
     while runMenu:
         screen.fill(blue)
@@ -569,6 +580,7 @@ def menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 runMenu=False
+                run=False
             if event.type == pygame.MOUSEBUTTONDOWN:
                 m_x, m_y = pygame.mouse.get_pos()
                 dis = math.sqrt((left - m_x)**2 + (down - m_y)**2)
@@ -593,6 +605,7 @@ def menu():
                                 dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*8+80) - m_y)**2)
                                 if dis<RADIUS:
                                     runMenu=False
+                                    run=False
 
 
         pygame.display.update()
