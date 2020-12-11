@@ -92,6 +92,9 @@ for number in range(28):
 
 #best scores
 def best_scores():
+    # runBest=True
+    # while runBest:
+    pressed=pygame.key.get_pressed()
     screen.fill(blue)
     text = TITLE_FONT.render("BEST SCORES FOR:", 1, black)
     screen.blit(text, (WIDTH/2 - text.get_width()/2, 20))
@@ -114,8 +117,11 @@ def best_scores():
     file3.close()
     screen.blit(hard,(WIDTH/2 - hard.get_width()/2, 500))
     pygame.display.update()
-    pygame.time.delay(2000)
+    pygame.time.delay(4000)
     menu()
+        # if pressed[pygame.K_LEFT]:
+        #     runBest=False
+        #     menu()
 
 #draw screen/grid
 def draw(dict):
