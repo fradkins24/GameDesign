@@ -3,15 +3,16 @@
 #Pseudo code
 
 #define variables
-#make image lists and variables for randomizing them
-#make scores files
-#function for menu with five choices(easy, medium, hard, scores, exit) that go to where user pressed/chose
-#function for scores screen (score=how many turns before wining)
-#function that draws screen with cards that knows when not to show cards
-#main function: tracks click, flips over to main side if no match, keeps cards up if they do math, calculates turns/score, adds scores to file at the end, goes to menu when done
+#define images, make image lists and randomize them
+#make scores files manually(not in code)
+#function for menu with instructions, five choices(easy, medium, hard, scores, exit) that go to where user pressed/chose
+#function for scores screen (score=how many turns before wining), with best score for each level
+#function that draws screen with cards (number of cards is based on what user pressed in menu) that knows when not to show cards and always shows user's score
+#main function: tracks click, flips over to back side if no match, keeps cards up if they do match, calculates turns/score, adds scores to file and prints user's score at the end, and goes to menu when done
 #run game
 import pygame, time, random, math
 
+#setup
 WIDTH=800
 HEIGHT=800
 pygame.init()
@@ -94,43 +95,48 @@ for number in range(28):
 
 #best scores
 def best_scores():
-    # runBest=True
-    # while runBest:
-    pressed=pygame.key.get_pressed()
-    screen.fill(blue)
-    text = TITLE_FONT.render("BEST SCORES FOR:", 1, black)
-    screen.blit(text, (WIDTH/2 - text.get_width()/2, 20))
-    #easy scores
-    file1=open("memoryEasy.txt","r")
-    score1=file1.read()
-    easy = BESTSCORES_FONT.render("Easy:  "+score1,1,green)
-    file1.close()
-    screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 200))
-    #medium scores
-    file2=open("memoryMedium.txt","r")
-    score2=file2.read()
-    medium = BESTSCORES_FONT.render("Medium:  "+score2,1,yellow)
-    file2.close()
-    screen.blit(medium,(WIDTH/2 - medium.get_width()/2, 350))
-    #hard scores
-    file3=open("memoryHard.txt","r")
-    score3=file3.read()
-    hard = BESTSCORES_FONT.render("Hard:  "+score3,1,red)
-    file3.close()
-    screen.blit(hard,(WIDTH/2 - hard.get_width()/2, 500))
-    pygame.display.update()
-    pygame.time.delay(4000)
-    menu()
-        # if pressed[pygame.K_LEFT]:
-        #     runBest=False
-        #     menu()
+    runBest=True
+    #screen continues showing while true
+    while runBest:
+        pressed=pygame.key.get_pressed()
+        screen.fill(blue)
+        text = TITLE_FONT.render("BEST SCORES FOR:", 1, black)
+        screen.blit(text, (WIDTH/2 - text.get_width()/2, 20))
+        #easy scores
+        file1=open("memoryEasy.txt","r")
+        score1=file1.read()
+        easy = BESTSCORES_FONT.render("Easy:  "+score1,1,green)
+        file1.close()
+        screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 200))
+        #medium scores
+        file2=open("memoryMedium.txt","r")
+        score2=file2.read()
+        medium = BESTSCORES_FONT.render("Medium:  "+score2,1,yellow)
+        file2.close()
+        screen.blit(medium,(WIDTH/2 - medium.get_width()/2, 350))
+        #hard scores
+        file3=open("memoryHard.txt","r")
+        score3=file3.read()
+        hard = BESTSCORES_FONT.render("Hard:  "+score3,1,red)
+        file3.close()
+        screen.blit(hard,(WIDTH/2 - hard.get_width()/2, 500))
+        #press anywhere
+        text=STAR_FONT.render("Press anywhere to go back to menu.",1,black)
+        screen.blit(text,(250,700))
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                runBest=False #window closes if "x" button is pressed
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                runBest=False #if user pressed the mouse anywhere, screen goes to menu
+                menu()
 
 #draw screen/grid
 def draw(dict):
     global score, card_statis, square
-    screen.blit(forest,(0,0))
+    screen.blit(forest,(0,0)) #background for all levels
     #cards to print based on difficulty
-
+    #only if hard
     if dict==define3:
         if card_statis[0][0]==0:
             screen.blit(square,(x,y))
@@ -173,7 +179,7 @@ def draw(dict):
         else:
             pic27=pygame.transform.scale(dict["b27"],(size,size))
             screen.blit(pic27,(x+margin*3,y+margin*6))
-
+    #if hard or medium
     if dict==define2 or dict==define3:
         if card_statis[1][0]==0:
             screen.blit(square,(x,y+margin))
@@ -216,7 +222,7 @@ def draw(dict):
         else:
             pic19=pygame.transform.scale(dict["b19"],(size,size))
             screen.blit(pic19,(x+margin*3,y+margin*5))
-
+    #always print no matter what level
     if card_statis[2][0]==0:
         screen.blit(square,(x,y+margin*2))
     else:
@@ -280,6 +286,7 @@ def draw(dict):
         pic11=pygame.transform.scale(dict["b11"],(size,size))
         screen.blit(pic11,(x+margin*3,y+margin*4))
 
+    #title and score
     text=SCORE_FONT.render("Score: "+str(score),1,black)
     screen.blit(text,(570,400))
     game=BESTSCORES_FONT.render("Animal",1,black)
@@ -293,8 +300,8 @@ def draw(dict):
 #main code
 def main(dict):
     global score, card_statis, square, run, runMenu
-    clicked=[]
-    tracking=[]
+    clicked=[] #list for images(to know if they are the same)
+    tracking=[] #list for tracking place in card_statis, so if not match, cards = 0 and go to back of card
     card_statis=[[0,0,0,0],
                 [0,0,0,0],
                 [0,0,0,0],
@@ -318,7 +325,7 @@ def main(dict):
                     pos=pos[0]//(size+x),pos[1]//(size+y)
                     #additional rows only for hard
                     if dict==define3: #following descriptions apply to all position/image statements
-                        if pos[0]==0 and pos[1]==0 and card_statis[0][0]==0: #can't click same card if up
+                        if pos[0]==0 and pos[1]==0 and card_statis[0][0]==0: #finds osition of card and can't click same card if up
                             clicked.append(dict["b20"]) #add card to list to check if two are the same
                             count+=1 #add a count to know how many cards are up
                             card_statis[0][0]=1 #makes card flip over
@@ -418,7 +425,7 @@ def main(dict):
                             card_statis[5][3]=1
                             tracking.append(5)
                             tracking.append(3)
-                    #middle cards to always print
+                    #cards to always print
                     if pos[0]==0 and pos[1]==2 and card_statis[2][0]==0:
                         clicked.append(dict["b0"])
                         count+=1
@@ -516,15 +523,15 @@ def main(dict):
                     #how to know if user won
                     if dict==define1 and card_statis==[[0,0,0,0],[0,0,0,0],[1,1,1,1],[1,1,1,1],[1,1,1,1],[0,0,0,0],[0,0,0,0]]:
                         pygame.time.delay(700)
-                        screen.blit(fireworks,(0,0))
-                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
+                        screen.blit(fireworks,(0,0)) #new background
+                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white) #tels user their score
                         screen.blit(win,(100,350))
                         file1 = open("memoryEasy.txt", "r")
-                        if int(file1.read())>score:
+                        if int(file1.read())>score:#checks if score is better than best
                             file1.close()
-                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,white)
+                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,white) #lets user know they beat score
                             screen.blit(best,(150,450))
-                            file1=open("memoryEasy.txt","w")
+                            file1=open("memoryEasy.txt","w") #replaces old best score with new one
                             file1.write(str(score))
                         file1.close()
                         pygame.display.update()
@@ -561,10 +568,8 @@ def main(dict):
                         file3.close()
                         pygame.display.update()
                         pygame.time.delay(3000)
-                        menu()
+                        menu() #goes ack to menu and cycle starts again
 
-
-                    #draw(dict)
                     pygame.display.update()
 
 #menu
@@ -597,31 +602,31 @@ def menu():
         pygame.draw.circle(screen, black, (left, down+RADIUS*6+60), RADIUS, 3)
         pygame.draw.circle(screen, black, (left, down+RADIUS*8+80), RADIUS, 3)
 
-        #choice 1
+        #easy
         one=MENU_FONT.render("1",1,green)
         screen.blit(one,(left-8,down-12))
         choice1=MENU_FONT.render("Easy (12)",1,green)
         screen.blit(choice1,(235,down-15))
 
-        #choice2
+        #medium
         two=MENU_FONT.render("2",1,yellow)
         screen.blit(two,(left-8,down+RADIUS*2+6))
         choice2=MENU_FONT.render("Meduim (20)",1,yellow)
         screen.blit(choice2,(235,down+45))
 
-        #choice 3
+        #hard
         three=MENU_FONT.render("3",1,red)
         screen.blit(three,(left-8,down+RADIUS*4+25))
         choice3=MENU_FONT.render("Hard (28)",1,red)
         screen.blit(choice3,(235,down+105))
 
-        #choice 4
+        #scores
         four=MENU_FONT.render("4",1,purple)
         screen.blit(four,(left-8,down+RADIUS*6+45))
         choice4=MENU_FONT.render("Best Scores*",1,purple)
         screen.blit(choice4,(235,down+165))
 
-        #choice 5
+        #exit
         five=MENU_FONT.render("5",1,black)
         screen.blit(five,(left-8,down+RADIUS*8+65))
         choice5=MENU_FONT.render("EXIT",1,black)
@@ -637,21 +642,22 @@ def menu():
             if event.type == pygame.QUIT:
                 runMenu=False
                 run=False
+            #depending on where user clicked, the screen will change
             if event.type == pygame.MOUSEBUTTONDOWN:
                 m_x, m_y = pygame.mouse.get_pos()
                 dis = math.sqrt((left - m_x)**2 + (down - m_y)**2)
                 if dis<RADIUS:
-                    main(define1)
+                    main(define1) #easy pic list
                     runMenu=False
                 else:
                     dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*2+20) - m_y)**2)
                     if dis<RADIUS:
-                        main(define2)
+                        main(define2) #medium pic list
                         runMenu=False
                     else:
                         dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*4+40) - m_y)**2)
                         if dis<RADIUS:
-                            main(define3)
+                            main(define3) #hard pic list
                             runMenu=False
                         else:
                             dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*6+60) - m_y)**2)
@@ -667,4 +673,4 @@ def menu():
 
         pygame.display.update()
 
-menu()
+menu() #runs menu, and therefoe, everything else
