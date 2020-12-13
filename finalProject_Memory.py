@@ -74,27 +74,16 @@ BESTSCORES_FONT = pygame.font.SysFont('comicsansms', 60)
 #image lists
 #easy
 matches1=[panda,panda,bat,bat,elephant,elephant,giraffe,giraffe,hippo,hippo,lion,lion]
-random.shuffle(matches1)
-define1={}
-for number in range(12):
-    define1["b{0}".format(number)]=matches1[number]
 
 #medium
 matches2=[panda,panda,bat,bat,elephant,elephant,giraffe,giraffe,hippo,hippo,lion,lion,monkey,monkey,snake,snake,turtle,turtle,zebra,zebra]
-random.shuffle(matches2)
-define2={}
-for number in range(20):
-    define2["b{0}".format(number)]=matches2[number]
 
 #hard
 matches3=[panda,panda,bat,bat,elephant,elephant,giraffe,giraffe,hippo,hippo,lion,lion,monkey,monkey,snake,snake,turtle,turtle,zebra,zebra,bee,bee,ladybug,ladybug,crab,crab,starfish,starfish]
-random.shuffle(matches3)
-define3={}
-for number in range(28):
-    define3["b{0}".format(number)]=matches3[number]
 
 #best scores
 def best_scores():
+    global define1, define2, define3
     runBest=True
     #screen continues showing while true
     while runBest:
@@ -299,7 +288,7 @@ def draw(dict):
 
 #main code
 def main(dict):
-    global score, card_statis, square, run, runMenu
+    global score, card_statis, square, run, runMenu, define1, define2, define3
     clicked=[] #list for images(to know if they are the same)
     tracking=[] #list for tracking place in card_statis, so if not match, cards = 0 and go to back of card
     card_statis=[[0,0,0,0],
@@ -574,7 +563,7 @@ def main(dict):
 
 #menu
 def menu():
-    global run, runMenu
+    global run, runMenu, define1, define2, define3, matches1, matches2, matches3
     runMenu=True
     while runMenu:
         screen.fill(blue)
@@ -638,6 +627,22 @@ def menu():
         screen.blit(star,(20,700))
         screen.blit(star2,(20,star.get_height()+705))
 
+        #shuffle easy
+        random.shuffle(matches1)
+        define1={}
+        for number in range(12):
+            define1["b{0}".format(number)]=matches1[number]
+        #shuffle medium
+        random.shuffle(matches2)
+        define2={}
+        for number in range(20):
+            define2["b{0}".format(number)]=matches2[number]
+        #shuffle hard
+        random.shuffle(matches3)
+        define3={}
+        for number in range(28):
+            define3["b{0}".format(number)]=matches3[number]
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 runMenu=False
@@ -673,4 +678,4 @@ def menu():
 
         pygame.display.update()
 
-menu() #runs menu, and therefoe, everything else
+menu() #runs menu, and therefore, everything else
